@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f1720; 
-  --sidebar-bg: #121212; 
+  --background: #0f1720;
+  --sidebar-bg: #121212;
   --foreground: #ededed;
-  --primary-blue: #1038A2;
+  --primary-blue: #1038a2;
+  --secondary-purple: #694eff;
 }
 
 @theme inline {
@@ -30,4 +31,25 @@ body {
 
 .sidebar {
   background: var(--sidebar-bg);
+}
+
+@layer utilities {
+  .bg-custom {
+    background-image: url("/layout/background.svg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .text-secondary-purple {
+    color: var(--secondary-purple);
+  }
+
+  .bg-gradient-custom {
+    background: linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%);
+  }
+  .hr-gradient {
+    border: none;
+    height: 1px;
+    background: linear-gradient(270deg, #000000 38.41%, #277bee 46.67%);
+  }
 }

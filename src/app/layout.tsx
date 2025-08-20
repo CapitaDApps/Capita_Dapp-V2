@@ -29,10 +29,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)]`}
       >
         <div className="flex h-screen">
-          <div className="w-1/4">
+          <div>
             <Sidebar />
           </div>
-          <div className="w-3/4 overflow-auto">{children}</div>
+          <div className="w-full overflow-auto">{children}</div>
         </div>
       </body>
     </html>
