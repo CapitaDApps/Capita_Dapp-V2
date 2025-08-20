@@ -38,6 +38,7 @@ body {
     background-image: url("/layout/background.svg");
     background-size: cover;
     background-position: center;
+    background-size: auto 100%;
   }
 
   .text-secondary-purple {

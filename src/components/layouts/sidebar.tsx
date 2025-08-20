@@ -9,21 +9,11 @@ import { menuItems } from "@/lib/constants";
 
 export default function Sidebar() {
   return (
-    <div
-      className="bg-[var(--sidebar-bg)] flex flex-col items-center"
-      style={{
-        width: "260px",
-        height: "2362px",
-        left: "-0.17px",
-        gap: "26px",
-        transform: "rotate(0deg)",
-        opacity: 1,
-      }}
-    >
+    <div className="bg-[var(--sidebar-bg)] flex flex-col items-center w-[260px] h-full gap-[26px] relative left-[-0.17px]">
       <div className="flex items-center justify-center pt-6">
         <Link href={"/"} className="flex items-center">
           <Image
-            width={273.18} // Match the container's width
+            width={273.18}
             height={25}
             alt="capita_logo"
             src={"/layout/logo.svg"}
@@ -44,8 +34,8 @@ export default function Sidebar() {
           </Link>
         ))}
 
-        <div className="w-50 px-3 py-1.5 bg-[var(--primary-blue)] text-white text-sm font-semibold rounded-full text-center cursor-pointer flex items-center justify-center">
-          <GoPlus className="mr-1" />
+        <div className="w-[200px]  px-2 py-3 bg-[var(--primary-blue)] text-white text-sm font-semibold rounded-full text-center cursor-pointer flex items-center justify-center">
+          <GoPlus className="mr-2" />
           Create Campaign
         </div>
       </div>
