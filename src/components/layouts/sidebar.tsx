@@ -1,64 +1,52 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaInstagram, FaTelegramPlane } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { TbMoneybag } from "react-icons/tb";
+import { GoPlus } from "react-icons/go";
+import { CiSearch } from "react-icons/ci";
+import { FaBell, FaCrown, FaQuestionCircle, FaUser } from "react-icons/fa";
+import { menuItems } from "@/lib/constants";
 
 export default function Sidebar() {
-  const socials = [
-    {
-      name: <FaTelegramPlane />,
-      route: "https://t.me/CapitatokenHQ",
-    },
-    {
-      name: <FaXTwitter />,
-      route: "https://x.com/chainfundme_?t=nD6xjLAo0lipAijH7rEzCw&s=09",
-    },
-    {
-      name: <FaInstagram />,
-      route: "https://www.instagram.com/chainfundme?igsh=MTlheTNxdjh4MHFkNA==",
-    },
-  ];
-
   return (
-    <div className="h-screen bg-primary-bg w-full ">
-      <div className="flex items-center relative pt-6 pl-2">
-        <Link href={"/"}>
+    <div
+      className="bg-[var(--sidebar-bg)] flex flex-col items-center"
+      style={{
+        width: "260px",
+        height: "2362px",
+        left: "-0.17px",
+        gap: "26px",
+        transform: "rotate(0deg)",
+        opacity: 1,
+      }}
+    >
+      <div className="flex items-center justify-center pt-6">
+        <Link href={"/"} className="flex items-center">
           <Image
-            width={35}
-            height={35}
+            width={273.18} // Match the container's width
+            height={25}
             alt="capita_logo"
-            src="/chain.png"
+            src={"/layout/logo.svg"}
             className="pr-1"
           />
         </Link>
-        <div className="absolut left-[32%] ">
-          <h2 className="font-bold text-xs text-primary-text">ChainFundMe</h2>
-          <div className="text-secondary-text text-xs flex items-center gap-1">
-            {socials.map((social, i) => (
-              <Link
-                className="text-white text-xs cursor-pointer"
-                href={social.route}
-                target="_blank"
-                key={i}
-              >
-                {social.name}
-              </Link>
-            ))}
-          </div>
-        </div>
       </div>
 
-      <div className="flex flex-col gap-3 mt-8 space-y-2">
-        {/* Placeholder for links or menu items */}
-        <div className="px-5 py-2 bg-[#000033] text-primary-text text-[11px] font-bold">
-          Menu Item 1
-        </div>
-        <div className="px-5 py-2 bg-transparent hover:bg-[#0056CC] text-primary-text text-[11px] font-bold">
-          Menu Item 2
-        </div>
-        <div className="px-5 py-2 bg-transparent hover:bg-[#0056CC] text-primary-text text-[11px] font-bold">
-          Menu Item 3
+      <div className="flex flex-col gap-3 w-full px-4">
+        {menuItems.map((item, index) => (
+          <Link
+            key={index}
+            href={item.route}
+            className="flex items-center px-5 py-2 bg-transparent hover:bg-[#0056CC] text-primary-text text-[11px] font-bold gap-2 cursor-pointer rounded-md"
+          >
+            <span className="text-lg">{item.icon}</span>
+            {item.title}
+          </Link>
+        ))}
+
+        <div className="w-50 px-3 py-1.5 bg-[var(--primary-blue)] text-white text-sm font-semibold rounded-full text-center cursor-pointer flex items-center justify-center">
+          <GoPlus className="mr-1" />
+          Create Campaign
         </div>
       </div>
     </div>
