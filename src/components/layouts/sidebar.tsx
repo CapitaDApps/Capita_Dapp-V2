@@ -1,10 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { TbMoneybag } from "react-icons/tb";
 import { GoPlus } from "react-icons/go";
-import { CiSearch } from "react-icons/ci";
-import { FaBell, FaCrown, FaQuestionCircle, FaUser } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { menuItems } from "@/lib/constants";
 
