@@ -26,15 +26,16 @@ export default function Sidebar({
   return (
     <nav className={containerClass} aria-label="Sidebar">
       {mobile ? (
-        <div className="flex items-center justify-between w-full gap-3">
+        // mobile header: smaller logo, padded, vertically centered close button
+        <div className="flex items-center justify-between w-full px-4 py-3">
           <Link href="/" className="flex items-center">
-            <div className="w-[200px] h-[80px] flex items-center">
+            <div className="w-[200px] flex items-center flex-shrink-0">
               <Image
                 src={"/layout/logo.svg"}
                 alt="capita_logo"
-                width={200}
-                height={80}
-                className="w-full h-auto object-contain"
+                width={180}
+                height={40}
+                className=" object-contain"
               />
             </div>
           </Link>
@@ -42,9 +43,9 @@ export default function Sidebar({
           <button
             aria-label="Close menu"
             onClick={onClose}
-            className="p-2 rounded-md hover:bg-white/5"
+            className=" rounded-md hover:bg-white/5"
           >
-            <IoMdClose className="w-5 h-5" />
+            <IoMdClose className="w-6 h-6" />
           </button>
         </div>
       ) : (
@@ -68,7 +69,7 @@ export default function Sidebar({
           <Link
             key={index}
             href={item.route}
-            className="flex items-center px-4 py-2 hover:bgbackground: var(--Shadow, #000033); text-primary-text text-[13px] font-bold gap-3 cursor-pointer rounded-md"
+            className="flex items-center px-4 py-2 hover:bg-[var(--Shadow, #000033)] text-primary-text text-[13px] font-bold gap-3 cursor-pointer rounded-md"
           >
             <span className="text-lg">{item.icon}</span>
             <span className="truncate">{item.title}</span>
