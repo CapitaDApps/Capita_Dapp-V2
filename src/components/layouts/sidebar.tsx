@@ -14,7 +14,7 @@ export default function Sidebar() {
         <Link href={"/"} className="flex items-center">
           <Image
             width={273.18}
-            height={25}
+            height={10}
             alt="capita_logo"
             src={"/layout/logo.svg"}
             className="pr-1"
