@@ -11,7 +11,7 @@ export default function ClientShell({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="flex items-center  min-h-screen">
+    <div className="flex min-h-screen">
       {/* Desktop sidebar */}
       <Sidebar />
 
