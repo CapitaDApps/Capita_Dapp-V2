@@ -59,9 +59,8 @@ const ChainFundMe = () => {
           <button className="bg-white text-black px-3  md:px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors text-sm md:text-base">
             Connect Wallet
           </button>
-        </header>{" "}
-        <div className="text-center mt-16 py-12 md:py-20">
-          {" "}
+        </header>
+        <div className="text-center mt-24 md:mt-32 lg:mt-36 py-10">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
             Welcome to Chain
             <span className="text-secondary-purple">Fund</span>
