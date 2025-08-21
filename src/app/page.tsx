@@ -13,7 +13,7 @@ const ChainFundMe = () => {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
-  const faqs = [
+  const faqs: { question: React.ReactNode; answer: React.ReactNode }[] = [
     {
       question: "Is Capita Funding Campaign secure?",
       answer:
@@ -25,9 +25,20 @@ const ChainFundMe = () => {
         "You can withdraw funds from your campaign by following the instructions on our platform.",
     },
     {
-      question: "What is the minimum amount required to create a campaign?",
-      answer:
-        "The minimum amount varies depending on the campaign type and funding goals.",
+      question: (
+        <>
+          What is the minimum amount
+          <br className="block md:hidden" />
+          required to create a campaign?
+        </>
+      ),
+      answer: (
+        <>
+          The minimum amount varies depending on the campaign type
+          <br className="block md:hidden" />
+          and funding goals.
+        </>
+      ),
     },
   ];
 
@@ -42,30 +53,51 @@ const ChainFundMe = () => {
   return (
     <div className="relative text-white overflow-hidden w-full min-h-screen">
       <div className="relative bg-custom">
-        <header className="relative z-10 flex justify-between items-center px-6 py-4 md:py-6 mx-auto">
-          <div className="flex items-center space-x-4 mt-12 md:mt-0">
-            <div
-              className="bg-blue-500 rounded-full flex items-center justify-center
-                w-4 h-4"
-            >
+        <header className="relative z-10 flex items-center justify-between px-6 py-4 md:py-6  mx-auto w-full">
+          <div className="block md:hidden w-12" aria-hidden="true" />
+
+          {/* desktop left group (hidden on mobile) */}
+          <div className="hidden md:flex items-center space-x-4">
+            <div className="bg-blue-500 rounded-full flex items-center justify-center  flex-shrink-0">
               <Image
                 src="/layout/dot.svg"
                 alt="Logo"
-                width={24}
-                height={24}
-                className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 object-contain"
+                width={20}
+                height={20}
+                className="w-4 h-4  object-contain"
               />
             </div>
             <span className="text-sm md:text-lg font-medium bg-clip-text">
               Create your funding campaigns now!
             </span>
           </div>
-          <button className="bg-white text-black px-3  md:px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors text-sm md:text-base">
+
+          {/* Connect button (aligned to the right) */}
+          <button className="hidden md:inline-flex z-20 bg-white text-black px-3 md:px-4 py-2 rounded-lg font-medium  transition-colors text-sm md:text-base">
             Connect Wallet
           </button>
         </header>
-        <div className="text-center mt-24 md:mt-32 lg:mt-36 py-10">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
+
+        {/* Mobile-only left group shown below the header so the hamburger can occupy the header left spot */}
+        <div className="block md:hidden w-full px-4 mt-5">
+          <div className="flex items-center justify-start gap-3">
+            <div className="bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <Image
+                src="/layout/dot.svg"
+                alt="Logo"
+                width={20}
+                height={20}
+                className="w-4 h-4 object-contain"
+              />
+            </div>
+            <span className="text-sm font-medium text-left">
+              Create your funding campaigns now!
+            </span>
+          </div>
+        </div>
+
+        <div className="text-center mt-10 md:mt-32 lg:mt-36 py-2">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold  leading-tight">
             Welcome to Chain
             <span className="text-secondary-purple">Fund</span>
             <span className="text-white">Me</span>
@@ -81,12 +113,12 @@ const ChainFundMe = () => {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center md:justify-center gap-4 px-6 md:px-0">
-        <button className="w-50 md:w-auto  items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
+      <div className="flex flex-col md:flex-row items-center md:justify-center gap-1 px-6 md:px-0">
+        <button className="w-50 md:w-auto  items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-sm  md:text-lg transition-colors">
           Start a Chainfundme
         </button>
 
-        <button className="w-50 md:w-auto inline-flex items-center justify-center border border-gray-600 hover:border-gray-400 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
+        <button className="w-50 md:w-auto inline-flex items-center justify-center border border-gray-600 hover:border-gray-400 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-sm  md:text-lg transition-colors">
           Explore Campaigns
         </button>
       </div>
@@ -99,7 +131,7 @@ const ChainFundMe = () => {
               alt="List illustration"
               width={400}
               height={240}
-              className="w-70 md:w-96 h-auto"
+              className="w-[369px] md:w-96 h-auto"
             />
           </div>
 
@@ -109,12 +141,12 @@ const ChainFundMe = () => {
               alt="List illustration"
               width={400}
               height={240}
-              className="w-70 md:w-96 h-auto"
+              className="w-[369px] md:w-96 h-auto"
             />
           </div>
         </div>
 
-        <div className="mb-20">
+        <div className="mb-20 max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 md:mb-12">
             FAQs
           </h2>
