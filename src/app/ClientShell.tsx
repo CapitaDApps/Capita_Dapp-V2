@@ -10,10 +10,9 @@ export default function ClientShell({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="flex">
+    <div className="flex min-h-screen">
       {/* Desktop sidebar */}
       <Sidebar />
-
       {/* Mobile hamburger (visible on small screens) */}
       <button
         aria-label="Open menu"
@@ -35,7 +34,6 @@ export default function ClientShell({
           />
         </svg>
       </button>
-
       {/* Mobile overlay & Sidebar */}
       {mobileOpen && (
         <>
@@ -51,8 +49,7 @@ export default function ClientShell({
           />
         </>
       )}
-
-      <main className="w-full h-full overflow-auto">{children}</main>
+      <main className="flex-1 min-h-screen overflow-auto">{children}</main>
     </div>
   );
 }

@@ -42,9 +42,9 @@ const ChainFundMe = () => {
   return (
     <div className="relative text-white overflow-hidden w-full min-h-screen">
       <div className="relative bg-custom">
-        <header className="relative z-10 flex justify-between items-center p-4 md:p-6 w-full  mx-auto">
-          <div className="flex items-center space-x-4">
-            <div className="bg-blue-500 rounded-full flex items-center justify-center w-8 h-8">
+        <header className="relative z-10 flex justify-between items-center px-6 py-4 md:py-6 mx-auto">
+          <div className="flex items-center space-x-4 mt-12 md:mt-0">
+            <div className="bg-blue-500 rounded-full flex items-center justify-center w-8 h-5">
               <Image
                 src={"/layout/dot.svg"}
                 alt="Logo"
@@ -56,8 +56,7 @@ const ChainFundMe = () => {
               Create your funding campaigns now!
             </span>
           </div>
-
-          <button className="bg-white text-black px-3 md:px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors text-sm md:text-base">
+          <button className="bg-white text-black px-3  md:px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors text-sm md:text-base">
             Connect Wallet
           </button>
         </header>
@@ -112,28 +111,30 @@ const ChainFundMe = () => {
         </div>
 
         <div className="mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 md:mb-12">
             FAQs
           </h2>
-          <div className="max-w-3xl mx-auto space-y-4">
+
+          <div className="max-w-3xl mx-auto space-y-4 w-full">
             {faqs.map((faq, index) => (
-              <div key={index} className="rounded-xl">
+              <div key={index} className="rounded-xl w-full">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full flex items-center justify-between p-4 md:p-6 text-left rounded-xl"
+                  className="w-full flex items-center justify-between p-3 md:p-4 text-left rounded-xl"
                 >
-                  <span className="text-base md:text-lg font-medium">
+                  <span className="text-sm md:text-base lg:text-lg font-medium">
                     {faq.question}
                   </span>
                   <IoIosArrowDropdown
-                    className={`w-6 h-6 transition-transform ${
+                    className={`transition-transform w-5 h-5 md:w-6 md:h-6 ${
                       expandedFaq === index ? "rotate-180" : ""
                     }`}
                   />
                 </button>
+
                 {expandedFaq === index && (
-                  <div className="px-4 md:px-6 pb-4 md:pb-6">
-                    <p className="text-gray-300 text-sm md:text-base">
+                  <div className="px-3 md:px-6 pb-3 md:pb-6">
+                    <p className="text-xs md:text-sm lg:text-base text-gray-300 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -144,16 +145,16 @@ const ChainFundMe = () => {
             ))}
           </div>
 
-          <div className="flex items-center justify-center mt-8 space-x-2 text-gray-400 flex-1">
+          <div className="flex items-center justify-center mt-6 md:mt-8 gap-2 text-gray-400 text-sm md:text-base lg:text-lg whitespace-nowrap">
             <Link
-              href=""
+              href="https://t.me/CapitatokenHQ"
               target="_blank"
               rel="noreferrer"
-              className="text-blue-400 hover:text-blue-300 underline whitespace-nowrap"
+              className="block text-blue-400 hover:text-blue-300 underline overflow-hidden truncate max-w-[55vw] md:max-w-[40vw]"
             >
               Contact Telegram Support
             </Link>
-            <span className="whitespace-nowrap">for more information</span>
+            <span>for more information</span>
           </div>
         </div>
 

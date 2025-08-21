@@ -18,7 +18,7 @@ export default function Sidebar({
   onClose?: () => void;
 }) {
   const desktopClass =
-    "hidden md:flex bg-[var(--sidebar-bg)] flex-col items-center w-[260px] h-full gap-[26px] relative left-[-0.17px] p-4";
+    "hidden md:flex bg-[var(--sidebar-bg)] flex-col items-center w-[260px]  gap-[26px] relative left-[-0.17px] p-4";
 
   const mobileClass = `fixed inset-y-0 left-0 z-50 w-72 bg-[var(--sidebar-bg)] p-4 flex flex-col gap-4 transform transition-transform duration-300 md:hidden ${
     open ? "translate-x-0" : "-translate-x-full"
@@ -80,7 +80,7 @@ export default function Sidebar({
         </div>
       </div>
 
-      <div className="mt-auto w-full px-2 pb-6">
+      {/* <div className="mt-auto w-full px-2 pb-6">
         <div className="flex items-center justify-center space-x-4 text-gray-400">
           <a href="#" className="p-1" aria-label="telegram">
             <Image
@@ -91,7 +91,7 @@ export default function Sidebar({
             />
           </a>
         </div>
-      </div>
+      </div> */}
     </nav>
   );
 }
