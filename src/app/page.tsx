@@ -44,7 +44,7 @@ const ChainFundMe = () => {
       <div className="relative bg-custom">
         <header className="relative z-10 flex justify-between items-center px-6 py-4 md:py-6 mx-auto">
           <div className="flex items-center space-x-4 mt-12 md:mt-0">
-            <div className="bg-blue-500 rounded-full flex items-center justify-center w-8 h-5">
+            <div className="bg-blue-500 rounded-full flex items-center justify-center w-8 md:w-8 h-5 md:h-8">
               <Image
                 src={"/layout/dot.svg"}
                 alt="Logo"
@@ -60,8 +60,9 @@ const ChainFundMe = () => {
             Connect Wallet
           </button>
         </header>
-
-        <div className="text-center mt-8 md:mt-12 py-12 md:py-20">
+        +{" "}
+        <div className="text-center mt-16 py-12 md:py-20">
+          +{" "}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
             Welcome to Chain
             <span className="text-secondary-purple">Fund</span>
@@ -79,14 +80,15 @@ const ChainFundMe = () => {
       </div>
 
       <div className="flex flex-col md:flex-row items-center md:justify-center gap-4 px-6 md:px-0">
-        <button className="w-full md:w-auto inline-flex items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
+        <button className="w-50 md:w-auto inline-flex items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
           Start a Chainfundme
         </button>
 
-        <button className="w-full md:w-auto inline-flex items-center justify-center border border-gray-600 hover:border-gray-400 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
+        <button className="w-50 md:w-auto inline-flex items-center justify-center border border-gray-600 hover:border-gray-400 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
           Explore Campaigns
         </button>
       </div>
+
       <main className="relative z-10 max-w-6xl mx-auto px-6 md:px-6 pt-16 md:pt-20">
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-10">
           <div className="w-full md:w-1/2 flex justify-center">
@@ -95,7 +97,7 @@ const ChainFundMe = () => {
               alt="List illustration"
               width={400}
               height={240}
-              className="w-60 md:w-96 h-auto"
+              className="w-70 md:w-96 h-auto"
             />
           </div>
 
@@ -105,7 +107,7 @@ const ChainFundMe = () => {
               alt="List illustration"
               width={400}
               height={240}
-              className="w-60 md:w-96 h-auto"
+              className="w-70 md:w-96 h-auto"
             />
           </div>
         </div>
