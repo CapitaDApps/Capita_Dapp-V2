@@ -26,15 +26,19 @@ export default function Sidebar({
   return (
     <nav className={containerClass} aria-label="Sidebar">
       {mobile ? (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between w-full gap-3">
           <Link href="/" className="flex items-center">
-            <Image
-              src={"/layout/logo.svg"}
-              alt="capita_logo"
-              width={120}
-              height={36}
-            />
+            <div className="w-[200px] h-[80px] flex items-center">
+              <Image
+                src={"/layout/logo.svg"}
+                alt="capita_logo"
+                width={200}
+                height={80}
+                className="w-full h-auto object-contain"
+              />
+            </div>
           </Link>
+
           <button
             aria-label="Close menu"
             onClick={onClose}
@@ -44,15 +48,17 @@ export default function Sidebar({
           </button>
         </div>
       ) : (
-        <div className="flex items-center justify-center  w-full">
+        <div className="flex items-center justify-center w-full">
           <Link href="/" className="flex items-center">
-            <Image
-              width={273.18}
-              height={10}
-              alt="capita_logo"
-              src={"/layout/logo.svg"}
-              className="pr-1"
-            />
+            <div className="w-[273.18px] h-[80px] flex items-center">
+              <Image
+                src={"/layout/logo.svg"}
+                alt="capita_logo"
+                width={273}
+                height={80}
+                className="w-full h-auto object-contain pr-1"
+              />
+            </div>
           </Link>
         </div>
       )}

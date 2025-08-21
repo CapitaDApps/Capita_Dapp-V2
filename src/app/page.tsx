@@ -44,12 +44,16 @@ const ChainFundMe = () => {
       <div className="relative bg-custom">
         <header className="relative z-10 flex justify-between items-center px-6 py-4 md:py-6 mx-auto">
           <div className="flex items-center space-x-4 mt-12 md:mt-0">
-            <div className="bg-blue-500 rounded-full flex items-center justify-center w-8 md:w-8 h-8 md:h-8">
+            <div
+              className="bg-blue-500 rounded-full flex items-center justify-center
+                w-4 h-4"
+            >
               <Image
-                src={"/layout/dot.svg"}
+                src="/layout/dot.svg"
                 alt="Logo"
-                width={20}
-                height={20}
+                width={24}
+                height={24}
+                className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 object-contain"
               />
             </div>
             <span className="text-sm md:text-lg font-medium bg-clip-text">
@@ -78,7 +82,7 @@ const ChainFundMe = () => {
       </div>
 
       <div className="flex flex-col md:flex-row items-center md:justify-center gap-4 px-6 md:px-0">
-        <button className="w-50 md:w-auto inline-flex items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
+        <button className="w-50 md:w-auto  items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
           Start a Chainfundme
         </button>
 
