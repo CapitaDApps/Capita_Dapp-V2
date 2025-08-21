@@ -40,11 +40,11 @@ const ChainFundMe = () => {
   ];
 
   return (
-    <div className="relative  text-white overflow-hidden w-full">
+    <div className="relative text-white overflow-hidden w-full min-h-screen">
       <div className="relative bg-custom">
-        <header className="relative z-10 flex justify-between items-center p-6">
-          <div className="flex items-center space-x-4 ">
-            <div className=" bg-blue-500 rounded-full flex items-center justify-center">
+        <header className="relative z-10 flex justify-between items-center p-4 md:p-6 w-full  mx-auto">
+          <div className="flex items-center space-x-4">
+            <div className="bg-blue-500 rounded-full flex items-center justify-center w-8 h-8">
               <Image
                 src={"/layout/dot.svg"}
                 alt="Logo"
@@ -52,18 +52,18 @@ const ChainFundMe = () => {
                 height={20}
               />
             </div>
-            <span className="text-lg font-medium  bg-clip-text">
+            <span className="text-sm md:text-lg font-medium bg-clip-text">
               Create your funding campaigns now!
             </span>
           </div>
 
-          <button className="bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+          <button className="bg-white text-black px-3 md:px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors text-sm md:text-base">
             Connect Wallet
           </button>
         </header>
 
-        <div className="text-center mt-30">
-          <h1 className="text-6xl font-bold mb-5">
+        <div className="text-center mt-8 md:mt-12 py-12 md:py-20">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
             Welcome to Chain
             <span className="text-secondary-purple">Fund</span>
             <span className="text-white">Me</span>
@@ -71,50 +71,60 @@ const ChainFundMe = () => {
         </div>
       </div>
 
-      <div className="px-6">
-        <p className="text-xl text-gray-300 mb-5 max-w-2xl mx-auto leading-relaxed tracking-wide">
+      <div className="px-6 md:px-8 text-center">
+        <p className="text-base md:text-xl text-gray-300 my-5 leading-relaxed tracking-wide">
           Create and manage funding campaigns onchain without limits,
           <br />
-          <span className="block mx-auto  text-center">
-            restrictions and setbacks - bringing hope onchain.
-          </span>
+          restrictions and setbacks - bringing hope onchain.
         </p>
       </div>
 
-      <div className="flex justify-center space-x-4">
-        <button className="bg-gradient-custom px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+      <div className="flex flex-col md:flex-row items-center md:justify-center gap-4 px-6 md:px-0">
+        <button className="w-full md:w-auto inline-flex items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
           Start a Chainfundme
         </button>
-        <button className="border border-gray-600 hover:border-gray-400 px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+
+        <button className="w-full md:w-auto inline-flex items-center justify-center border border-gray-600 hover:border-gray-400 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors">
           Explore Campaigns
         </button>
       </div>
-      <main className="relative z-10 max-w-6xl mx-auto px-6 pt-20">
-        <div className="flex flex-col md:flex-row items-center justify-center mb-10">
-          <Image
-            src={"/layout/list2.svg"}
-            alt="List illustration"
-            width={400}
-            height={100}
-          />
-          <Image
-            src={"/layout/list2.svg"}
-            alt="List illustration"
-            width={400}
-            height={100}
-          />
+      <main className="relative z-10 max-w-6xl mx-auto px-6 md:px-6 pt-16 md:pt-20">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-10">
+          <div className="w-full md:w-1/2 flex justify-center">
+            <Image
+              src={"/layout/list2.svg"}
+              alt="List illustration"
+              width={400}
+              height={240}
+              className="w-60 md:w-96 h-auto"
+            />
+          </div>
+
+          <div className="w-full md:w-1/2 flex justify-center">
+            <Image
+              src={"/layout/list2.svg"}
+              alt="List illustration"
+              width={400}
+              height={240}
+              className="w-60 md:w-96 h-auto"
+            />
+          </div>
         </div>
 
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12">FAQs</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
+            FAQs
+          </h2>
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className=" rounded-xl">
+              <div key={index} className="rounded-xl">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full flex items-center justify-between p-6 text-left  rounded-xl"
+                  className="w-full flex items-center justify-between p-4 md:p-6 text-left rounded-xl"
                 >
-                  <span className="text-lg font-medium">{faq.question}</span>
+                  <span className="text-base md:text-lg font-medium">
+                    {faq.question}
+                  </span>
                   <IoIosArrowDropdown
                     className={`w-6 h-6 transition-transform ${
                       expandedFaq === index ? "rotate-180" : ""
@@ -122,8 +132,10 @@ const ChainFundMe = () => {
                   />
                 </button>
                 {expandedFaq === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-300">{faq.answer}</p>
+                  <div className="px-4 md:px-6 pb-4 md:pb-6">
+                    <p className="text-gray-300 text-sm md:text-base">
+                      {faq.answer}
+                    </p>
                   </div>
                 )}
 
@@ -145,8 +157,8 @@ const ChainFundMe = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mb-20">
-          <div className="border-2 border-[#0056CC] bg-[#000E29] rounded-2xl p-8 max-w-md w-full">
+        <div className="flex justify-center mb-20 px-4">
+          <div className="border-2 border-[#0056CC] bg-[#000E29] rounded-2xl p-6 md:p-8 max-w-md w-full">
             <div className="items-start mb-6">
               <div className="flex items-center justify-center space-x-2 mb-2">
                 <h3 className="text-2xl font-bold">Get Verified</h3>
@@ -166,7 +178,7 @@ const ChainFundMe = () => {
             <div className="space-y-3 mb-8">
               {verificationFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <GiCheckMark className="w-5 h-5mt-0.5 flex-shrink-0" />
+                  <GiCheckMark className="w-5 h-5 mt-0.5 flex-shrink-0 text-green-400" />
                   <span className="text-gray-300">{feature}</span>
                 </div>
               ))}
