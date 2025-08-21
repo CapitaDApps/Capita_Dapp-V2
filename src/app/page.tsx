@@ -44,7 +44,7 @@ const ChainFundMe = () => {
       <div className="relative bg-custom">
         <header className="relative z-10 flex justify-between items-center px-6 py-4 md:py-6 mx-auto">
           <div className="flex items-center space-x-4 mt-12 md:mt-0">
-            <div className="bg-blue-500 rounded-full flex items-center justify-center w-8 md:w-8 h-5 md:h-8">
+            <div className="bg-blue-500 rounded-full flex items-center justify-center w-8 md:w-8 h-8 md:h-8">
               <Image
                 src={"/layout/dot.svg"}
                 alt="Logo"
@@ -59,10 +59,9 @@ const ChainFundMe = () => {
           <button className="bg-white text-black px-3  md:px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors text-sm md:text-base">
             Connect Wallet
           </button>
-        </header>
-        +{" "}
+        </header>{" "}
         <div className="text-center mt-16 py-12 md:py-20">
-          +{" "}
+          {" "}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight">
             Welcome to Chain
             <span className="text-secondary-purple">Fund</span>
