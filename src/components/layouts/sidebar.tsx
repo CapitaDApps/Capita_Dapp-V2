@@ -15,9 +15,9 @@ export default function Sidebar({
   onClose?: () => void;
 }) {
   const desktopClass =
-    "hidden md:flex bg-[var(--sidebar-bg)] flex-col items-center w-[260px]  gap-[26px] relative left-[-0.17px] p-4";
+    "hidden md:flex bg-[var(--sidebar-bg)] flex-col items-center w-[260px]  gap-[26px] relative left-[-0.17px] ";
 
-  const mobileClass = `fixed inset-y-0 left-0 z-50 w-72 bg-[var(--sidebar-bg)] p-4 flex flex-col gap-4 transform transition-transform duration-300 md:hidden ${
+  const mobileClass = `fixed inset-y-0 left-0 z-50 w-72 bg-[var(--sidebar-bg)]  flex flex-col gap-4 transform transition-transform duration-300 md:hidden ${
     open ? "translate-x-0" : "-translate-x-full"
   }`;
 
@@ -44,7 +44,7 @@ export default function Sidebar({
           </button>
         </div>
       ) : (
-        <div className="flex items-center justify-center pt-6 w-full">
+        <div className="flex items-center justify-center  w-full">
           <Link href="/" className="flex items-center">
             <Image
               width={273.18}
