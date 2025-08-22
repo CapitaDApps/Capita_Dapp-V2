@@ -136,7 +136,7 @@ export default function Notifications() {
 
         <div className="mt-6  border border-[#172028] rounded-2xl p-4 sm:p-6">
           <div className="divide-y divide-[#172028]">
-            {notifications.map((n, idx) => (
+            {notifications.map((n) => (
               <div
                 key={n.id}
                 className={`flex gap-4 items-start py-4 sm:py-5 ${

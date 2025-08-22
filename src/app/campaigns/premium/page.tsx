@@ -34,7 +34,7 @@ export default function Premium() {
                 }}
               />
 
-              <div className="relative z-10 bg-[#1E1E1E] border border-zinc-800 rounded-2xl px-4 py-6 sm:px-6 sm:py-8 w-full sm:w-[443px] sm:h-[368px] flex flex-col justify-between">
+              <div className="relative z-10 bg-[#1E1E1E] border border-zinc-800 rounded-2xl px-4 py-6 sm:px-6 sm:py-8 w-full sm:w-[443px] sm:h-[450px] flex flex-col justify-between">
                 <div className="space-y-6">
                   <div>
                     <h2 className="text-xl md:text-2xl font-semibold text-white flex items-center gap-2">
