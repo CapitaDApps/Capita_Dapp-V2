@@ -19,16 +19,35 @@ const CATEGORIES = [
 
 type NetworkKey = "base" | "solana" | "bnb";
 
-const NETWORKS: { id: NetworkKey; label: string }[] = [
-  { id: "base", label: "Base" },
-  { id: "solana", label: "Solana" },
-  { id: "bnb", label: "BNB" },
+const NETWORKS: { id: NetworkKey; label: string; image: string }[] = [
+  { id: "base", label: "Base", image: "/tokens/base.svg" },
+  { id: "solana", label: "Solana", image: "/tokens/solana.svg" },
+  { id: "bnb", label: "BNB", image: "/tokens/binance.svg" },
 ];
 
-const TOKENS: Record<"base" | "solana" | "bnb", string[]> = {
-  base: ["ETH", "USDC", "CNGN", "FRENCHIE", "ENB", "BHUSKY"],
-  solana: ["UNICOIN"],
-  bnb: ["BNB", "ETH"],
+const TOKENS: Record<
+  "base" | "solana" | "bnb",
+  { tokens: { symbol: string; image: string }[] }
+> = {
+  base: {
+    tokens: [
+      { symbol: "ETH", image: "/tokens/eth.svg" },
+      { symbol: "USDC", image: "/tokens/usdc.svg" },
+      { symbol: "CNGN", image: "/tokens/cngn.svg" },
+      { symbol: "FRENCHIE", image: "/tokens/frenchie.svg" },
+      { symbol: "ENB", image: "/tokens/enb.svg" },
+      { symbol: "BHUSKY", image: "/tokens/bhusky.svg" },
+    ],
+  },
+  solana: {
+    tokens: [{ symbol: "UNICOIN", image: "/tokens/unicorn.svg" }],
+  },
+  bnb: {
+    tokens: [
+      { symbol: "BNB", image: "/tokens/binance.svg" },
+      { symbol: "ETH", image: "/tokens/eth.svg" },
+    ],
+  },
 };
 
 export default function CreateCampaignPage() {
@@ -245,7 +264,8 @@ export default function CreateCampaignPage() {
                               onClick={() => {
                                 setSelectedNetwork(n.id as keyof typeof TOKENS);
                                 setSelectedToken(
-                                  TOKENS[n.id as keyof typeof TOKENS][0] ?? null
+                                  TOKENS[n.id as keyof typeof TOKENS].tokens[0]
+                                    ?.symbol ?? null
                                 );
                               }}
                               className={`w-full text-left flex items-center justify-between gap-3 px-3 py-3 rounded-md border border-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0 ${
@@ -255,9 +275,14 @@ export default function CreateCampaignPage() {
                               }`}
                             >
                               <div className="flex items-center gap-3">
-                                <span className="w-10 h-10 rounded-md bg-zinc-700 flex items-center justify-center text-sm text-white">
-                                  {n.label[0]}
-                                </span>
+                                <div className="w-10 h-10 rounded-md  flex items-center justify-center overflow-hidden">
+                                  <Image
+                                    src={n.image}
+                                    alt={`${n.label} icon`}
+                                    width={28}
+                                    height={28}
+                                  />
+                                </div>
                                 <span className="text-sm text-white">
                                   {n.label}
                                 </span>
@@ -305,59 +330,64 @@ export default function CreateCampaignPage() {
                           </div>
 
                           <div className="space-y-2">
-                            {TOKENS[selectedNetwork as keyof typeof TOKENS].map(
-                              (t) => (
-                                <button
-                                  key={t}
-                                  onClick={() => setSelectedToken(t)}
-                                  className={`w-full text-left flex items-center justify-between gap-3 px-3 py-3 rounded-md border border-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0 ${
-                                    selectedToken === t
-                                      ? "bg-[#1f1146] ring-1 ring-[#6B4EFF]"
-                                      : "hover:bg-[rgba(255,255,255,0.02)]"
-                                  }`}
-                                >
-                                  <div className="flex items-center gap-3">
-                                    <span className="w-10 h-10 rounded-md bg-zinc-700 flex items-center justify-center text-sm text-white">
-                                      {t[0]}
-                                    </span>
-                                    <span className="text-sm text-white">
-                                      {t}
-                                    </span>
+                            {TOKENS[
+                              selectedNetwork as keyof typeof TOKENS
+                            ].tokens.map((t) => (
+                              <button
+                                key={t.symbol}
+                                onClick={() => setSelectedToken(t.symbol)}
+                                className={`w-full text-left flex items-center justify-between gap-3 px-3 py-3 rounded-md border border-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0 ${
+                                  selectedToken === t.symbol
+                                    ? "bg-[#1f1146] ring-1 ring-[#6B4EFF]"
+                                    : "hover:bg-[rgba(255,255,255,0.02)]"
+                                }`}
+                              >
+                                <div className="flex items-center gap-3">
+                                  <div className="w-10 h-10 rounded-md  flex items-center justify-center overflow-hidden">
+                                    <Image
+                                      src={t.image}
+                                      alt={`${t.symbol} icon`}
+                                      width={28}
+                                      height={28}
+                                    />
                                   </div>
+                                  <span className="text-sm text-white">
+                                    {t.symbol}
+                                  </span>
+                                </div>
 
-                                  {/* right-side check indicator for tokens */}
-                                  <span className="ml-2 flex items-center">
-                                    {selectedToken === t ? (
-                                      <svg
+                                {/* right-side check indicator for tokens */}
+                                <span className="ml-2 flex items-center">
+                                  {selectedToken === t.symbol ? (
+                                    <svg
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <rect
+                                        x="2"
+                                        y="2"
                                         width="20"
                                         height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      >
-                                        <rect
-                                          x="2"
-                                          y="2"
-                                          width="20"
-                                          height="20"
-                                          rx="6"
-                                          fill="#6B4EFF"
-                                        />
-                                        <path
-                                          d="M8.5 12.8l2.1 2.1L15 11.5"
-                                          stroke="#fff"
-                                          strokeWidth="1.6"
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                        />
-                                      </svg>
-                                    ) : (
-                                      <span className="w-4 h-4" aria-hidden />
-                                    )}
-                                  </span>
-                                </button>
-                              )
-                            )}
+                                        rx="6"
+                                        fill="#6B4EFF"
+                                      />
+                                      <path
+                                        d="M8.5 12.8l2.1 2.1L15 11.5"
+                                        stroke="#fff"
+                                        strokeWidth="1.6"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      />
+                                    </svg>
+                                  ) : (
+                                    <span className="w-4 h-4" aria-hidden />
+                                  )}
+                                </span>
+                              </button>
+                            ))}
                           </div>
                         </div>
                       </div>
