@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
+import ImageUpload, { ImageValue } from "@/components/ImageUpload";
 
 const CREATOR_TYPES = ["Individual", "Organization", "Start up", "DAO"];
 const CATEGORIES = [
@@ -58,6 +60,8 @@ export default function CreateCampaignPage() {
   const [selectedNetwork, setSelectedNetwork] = useState<string>("base");
   const [selectedToken, setSelectedToken] = useState<string | null>("ETH");
   const [name, setName] = useState("");
+  const [cover, setCover] = useState<ImageValue>(null);
+  const [avatar, setAvatar] = useState<ImageValue>(null);
   const [dissolve, setDissolve] = useState(false);
   const router = useRouter();
 
@@ -70,10 +74,10 @@ export default function CreateCampaignPage() {
 
   return (
     <div className="min-h-screen bg-[#0b1014] py-12">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-10xl mx-auto px-6">
         <div className="flex justify-center">
           <div
-            className="w-full sm:w-[720px] rounded-2xl border border-zinc-800 overflow-hidden relative"
+            className="w-full sm:w-[749px] rounded-2xl border border-zinc-800 overflow-hidden relative"
             style={{
               backgroundColor: "#0b0f12",
               boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
@@ -104,39 +108,23 @@ export default function CreateCampaignPage() {
                 }`}
               >
                 <div className="space-y-6">
-                  {/* Upload area with large rounded rect and circular upload button */}
-                  <div className="relative">
-                    <div className="h-36 sm:h-44 rounded-md border border-[#08386a] bg-[#02152a] flex items-center justify-center text-slate-400">
-                      <div className="text-center">
-                        <div className="mb-2">Upload campaign cover</div>
-                        <div className="flex items-center justify-center gap-2">
-                          <button className="px-3 py-2 rounded bg-[rgba(255,255,255,0.02)] border border-[#08386a] text-sm inline-flex items-center gap-2">
-                            <Image
-                              src="/layout/camera.svg"
-                              alt="camera"
-                              width={16}
-                              height={16}
-                            />
-                            <span>Upload</span>
-                          </button>
-                          <button className="px-3 py-2 rounded bg-transparent border border-zinc-700 text-sm">
-                            Remove
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                  {/* Cover image container */}
 
-                    {/* circular upload button overlapping bottom center */}
-                    <div className="absolute left-1/2 -bottom-6 -translate-x-1/2">
-                      <button className="w-14 h-14 rounded-full bg-[#012f58] border-2 border-[#0b66ff] flex items-center justify-center shadow-lg">
-                        <Image
-                          src="/layout/camera.svg"
-                          alt="camera"
-                          width={18}
-                          height={18}
-                        />
-                      </button>
-                    </div>
+                  <div className="relative">
+                    <ImageUpload
+                      value={cover}
+                      onChange={(v) => setCover(v)}
+                      variant="cover"
+                    />
+                  </div>
+
+                  {/* Avatar positioned relative to the cover, but outside its container */}
+                  <div className="flex justify-center -mt-15 relative z-10">
+                    <ImageUpload
+                      value={avatar}
+                      onChange={(v) => setAvatar(v)}
+                      variant="avatar"
+                    />
                   </div>
 
                   {/* Form fields */}
@@ -255,9 +243,10 @@ export default function CreateCampaignPage() {
                         </button>
                       </div>
 
-                      <div className="mt-4 bg-[#071015] border border-zinc-800 rounded-lg p-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="mt-4 bg-[#2A2A2A] border border-zinc-800 rounded-lg p-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Networks column */}
-                        <div className="space-y-3">
+                        <div className="space-y-3 ">
+                          <h3 className="my-4 font-medium">Choose Network</h3>
                           {NETWORKS.map((n) => (
                             <button
                               key={n.id}
@@ -268,14 +257,14 @@ export default function CreateCampaignPage() {
                                     ?.symbol ?? null
                                 );
                               }}
-                              className={`w-full text-left flex items-center justify-between gap-3 px-3 py-3 rounded-md border border-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0 ${
+                              className={`w-[180px] text-left flex items-center justify-between gap-3  px-4 py-2 rounded-lg transition-colors focus:outline-none focus:ring-0 border ${
                                 selectedNetwork === n.id
-                                  ? "bg-[#081731] ring-1 ring-[#6B4EFF]"
-                                  : "hover:bg-[rgba(255,255,255,0.02)]"
+                                  ? "bg-transparent border-[#6B4EFF] ring-1 ring-[#6B4EFF]"
+                                  : "bg-transparent border-[#555555] hover:bg-[rgba(255,255,255,0.02)]"
                               }`}
                             >
                               <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-md  flex items-center justify-center overflow-hidden">
+                                <div className="w-9 h-9 rounded-full  flex items-center justify-center overflow-hidden border border-zinc-800">
                                   <Image
                                     src={n.image}
                                     alt={`${n.label} icon`}
@@ -283,7 +272,7 @@ export default function CreateCampaignPage() {
                                     height={28}
                                   />
                                 </div>
-                                <span className="text-sm text-white">
+                                <span className="text-sm text-white font-medium">
                                   {n.label}
                                 </span>
                               </div>
@@ -291,29 +280,25 @@ export default function CreateCampaignPage() {
                               {/* right-side check indicator */}
                               <span className="ml-2 flex items-center">
                                 {selectedNetwork === n.id ? (
-                                  <svg
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <circle
-                                      cx="12"
-                                      cy="12"
-                                      r="10"
-                                      fill="#6B4EFF"
-                                    />
-                                    <path
-                                      d="M9 12.5l1.8 1.8L15 10"
-                                      stroke="#fff"
-                                      strokeWidth="1.8"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                    />
-                                  </svg>
+                                  <span className="w-6 h-6 rounded-full bg-[#6B4EFF] flex items-center justify-center">
+                                    <svg
+                                      width="12"
+                                      height="12"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M9 12.5l1.8 1.8L15 10"
+                                        stroke="#fff"
+                                        strokeWidth="1.8"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      />
+                                    </svg>
+                                  </span>
                                 ) : (
-                                  <span className="w-4 h-4" aria-hidden />
+                                  <span className="w-6 h-6" aria-hidden />
                                 )}
                               </span>
                             </button>
@@ -321,29 +306,39 @@ export default function CreateCampaignPage() {
                         </div>
 
                         {/* Tokens column */}
-                        <div>
-                          <div className="mb-2">
-                            <input
-                              placeholder="Search by name, symbol or address"
-                              className="w-full rounded-md bg-[#061014] border border-zinc-800 px-3 py-2 text-sm text-slate-300"
-                            />
+                        <div className="bg-[#2A2A2A]">
+                          <h3 className="my-4 font-medium">Choose Token</h3>
+                          <div className="mb-3">
+                            <div className="rounded-lg border border-text-gray px-3 py-1 flex items-center gap-3">
+                              <Image
+                                height={16}
+                                width={16}
+                                src="/campaign/magnifying_glass.png"
+                                alt="magnifying glass"
+                              />
+                              <Input
+                                type="text"
+                                placeholder="Search by name, symbol or address"
+                                className="text-sm font-normal text-text-gray pl-3 pr-4 py-1.5 focus-visible:outline-none focus-visible:ring-0"
+                              />
+                            </div>
                           </div>
 
-                          <div className="space-y-2">
+                          <div className="space-y-4 my-5">
                             {TOKENS[
                               selectedNetwork as keyof typeof TOKENS
                             ].tokens.map((t) => (
                               <button
                                 key={t.symbol}
                                 onClick={() => setSelectedToken(t.symbol)}
-                                className={`w-full text-left flex items-center justify-between gap-3 px-3 py-3 rounded-md border border-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0 ${
+                                className={`w-full text-left flex items-center justify-between gap-3 px-4 py-2 rounded-lg transition-colors focus:outline-none focus:ring-0 border ${
                                   selectedToken === t.symbol
-                                    ? "bg-[#1f1146] ring-1 ring-[#6B4EFF]"
-                                    : "hover:bg-[rgba(255,255,255,0.02)]"
+                                    ? "bg-transparent border-[#6B4EFF] ring-1 ring-[#6B4EFF]"
+                                    : "bg-transparent border-[#555555] hover:bg-[rgba(255,255,255,0.02)]"
                                 }`}
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="w-10 h-10 rounded-md  flex items-center justify-center overflow-hidden">
+                                  <div className="w-9 h-9 rounded-full  flex items-center justify-center overflow-hidden border border-zinc-800">
                                     <Image
                                       src={t.image}
                                       alt={`${t.symbol} icon`}
@@ -351,7 +346,7 @@ export default function CreateCampaignPage() {
                                       height={28}
                                     />
                                   </div>
-                                  <span className="text-sm text-white">
+                                  <span className="text-sm text-white font-medium">
                                     {t.symbol}
                                   </span>
                                 </div>
@@ -359,31 +354,25 @@ export default function CreateCampaignPage() {
                                 {/* right-side check indicator for tokens */}
                                 <span className="ml-2 flex items-center">
                                   {selectedToken === t.symbol ? (
-                                    <svg
-                                      width="20"
-                                      height="20"
-                                      viewBox="0 0 24 24"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <rect
-                                        x="2"
-                                        y="2"
-                                        width="20"
-                                        height="20"
-                                        rx="6"
-                                        fill="#6B4EFF"
-                                      />
-                                      <path
-                                        d="M8.5 12.8l2.1 2.1L15 11.5"
-                                        stroke="#fff"
-                                        strokeWidth="1.6"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                      />
-                                    </svg>
+                                    <span className="w-6 h-6 rounded-full bg-[#6B4EFF] flex items-center justify-center">
+                                      <svg
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M8.5 12.8l2.1 2.1L15 11.5"
+                                          stroke="#fff"
+                                          strokeWidth="1.6"
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        />
+                                      </svg>
+                                    </span>
                                   ) : (
-                                    <span className="w-4 h-4" aria-hidden />
+                                    <span className="w-6 h-6" aria-hidden />
                                   )}
                                 </span>
                               </button>
