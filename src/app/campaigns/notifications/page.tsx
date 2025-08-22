@@ -134,8 +134,8 @@ export default function Notifications() {
           </div>
         </div>
 
-        <div className="mt-6  border border-[#172028] rounded-2xl p-4 sm:p-6">
-          <div className="divide-y divide-[#172028]">
+        <div className="mt-6  border border-[#383838] rounded-2xl p-4 sm:p-6">
+          <div className="divide-y divide-[#383838]">
             {notifications.map((n) => (
               <div
                 key={n.id}
