@@ -77,10 +77,14 @@ export default function Sidebar({
         ))}
 
         <div className="mx-auto mt-4">
-          <button className="w-[200px] px-2 py-3 bg-[var(--primary-blue)] text-white text-sm font-semibold rounded-full text-center cursor-pointer flex items-center justify-center">
+          <Link
+            href="/campaigns/create-campaigns"
+            onClick={() => onClose && onClose()}
+            className="w-[200px] inline-flex px-2 py-3 bg-[var(--primary-blue)] text-white text-sm font-semibold rounded-full text-center cursor-pointer items-center justify-center"
+          >
             <GoPlus className="mr-2" />
-            Create Campaign
-          </button>
+            <span>Create Campaign</span>
+          </Link>
         </div>
       </div>
 

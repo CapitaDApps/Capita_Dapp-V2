@@ -96,9 +96,12 @@ const ChainFundMe = () => {
       </div>
 
       <div className="flex flex-col md:flex-row items-center md:justify-center gap-1 px-6 md:px-0">
-        <button className="w-50 md:w-auto  items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-sm  md:text-lg transition-colors">
+        <Link
+          href="/campaigns/create-campaigns"
+          className="w-50 md:w-auto  items-center justify-center bg-gradient-custom px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-sm  md:text-lg transition-colors"
+        >
           Start a Chainfundme
-        </button>
+        </Link>
 
         <button className="w-50 md:w-auto inline-flex items-center justify-center border border-gray-600 hover:border-gray-400 px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-sm  md:text-lg transition-colors">
           Explore Campaigns
