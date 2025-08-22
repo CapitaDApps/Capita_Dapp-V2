@@ -78,24 +78,6 @@ const ChainFundMe = () => {
           </button>
         </header>
 
-        {/* Mobile-only left group shown below the header so the hamburger can occupy the header left spot */}
-        <div className="block md:hidden w-full px-4 mt-5">
-          <div className="flex items-center justify-start gap-3">
-            <div className="bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <Image
-                src="/layout/dot.svg"
-                alt="Logo"
-                width={20}
-                height={20}
-                className="w-4 h-4 object-contain"
-              />
-            </div>
-            <span className="text-sm font-medium text-left">
-              Create your funding campaigns now!
-            </span>
-          </div>
-        </div>
-
         <div className="text-center mt-10 md:mt-32 lg:mt-36 py-2">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold  leading-tight">
             Welcome to Chain

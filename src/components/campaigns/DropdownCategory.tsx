@@ -12,7 +12,7 @@ import {
 import { CheckedState } from "@radix-ui/react-checkbox";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useOustsideClick } from "../hooks/useOutsideClick";
-import { Label } from "@/components/ui/label"; 
+import { Label } from "@/components/ui/label";
 import { BiCategory } from "react-icons/bi";
 
 export default function DropdownCategory() {
@@ -87,26 +87,33 @@ export default function DropdownCategory() {
             SORT BY
           </DropdownMenuLabel>
           <div className="space-y-1">
-            {sort.map((sot) => (
-              <DropdownMenuItem
-                key={sot.value}
-                className="flex items-center text-primary-text text-xs  hover:bg-transparent cursor-pointe"
-              >
-                <Checkbox
-                  id={sot.value}
-                  checked={Boolean(searchParams.get(sot?.value ?? ""))}
-                  onCheckedChange={(checked) =>
-                    handleQuerySave(sot?.value ?? "", checked)
-                  }
-                />
-                <Label
-                  htmlFor="most_recent"
-                  className="text-xs font-normal leading-none peer-disabled:cursor-not-allowed cursor-pointer peer-disabled:opacity-70"
+            {sort.map((sot) => {
+              const isChecked = Boolean(searchParams.get(sot?.value ?? ""));
+              return (
+                <DropdownMenuItem
+                  key={sot.value}
+                  className={`flex items-center text-primary-text text-xs cursor-pointer rounded-sm px-2 py-1 transition-colors duration-150 ${
+                    isChecked
+                      ? "bg-[var(--background)] text-white"
+                      : "hover:bg-[rgba(255,255,255,0.04)]"
+                  }`}
                 >
-                  {sot.title}
-                </Label>
-              </DropdownMenuItem>
-            ))}
+                  <Checkbox
+                    id={sot.value}
+                    checked={isChecked}
+                    onCheckedChange={(checked) =>
+                      handleQuerySave(sot?.value ?? "", checked)
+                    }
+                  />
+                  <Label
+                    htmlFor={sot.value}
+                    className="text-xs font-normal leading-none peer-disabled:cursor-not-allowed cursor-pointer peer-disabled:opacity-70 ml-2"
+                  >
+                    {sot.title}
+                  </Label>
+                </DropdownMenuItem>
+              );
+            })}
             {/* 
             <DropdownMenuItem className="flex items-center text-primary-text text-sm  hover:bg-transparent cursor-pointe">
               <Checkbox

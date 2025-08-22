@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Sidebar from "@/components/layout/sidebar";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { usePathname } from "next/navigation";
 
 export default function ClientShell({
   children,
@@ -10,14 +11,21 @@ export default function ClientShell({
   children: React.ReactNode;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  // Hide the desktop topbar on the homepage but still show the mobile topbar
+  const topbarHiddenOnDesktop = pathname === "/";
+  const topbarResponsiveClass = topbarHiddenOnDesktop ? "md:hidden" : "";
+  const mainPaddingClass = topbarHiddenOnDesktop ? "pt-14 md:pt-0" : "pt-14";
 
   return (
     <div className="flex min-h-screen">
       {/* Desktop sidebar */}
       <Sidebar />
 
-      {/* Global top bar (fixed) - shows hamburger on mobile and Connect Wallet/notifications globally */}
-      <div className="fixed top-0 left-0 right-0 z-50">
+      {/* Global top bar (fixed) - visible on mobile on all routes; hidden on desktop for homepage */}
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 ${topbarResponsiveClass}`}
+      >
         <div className="w-full bg-[#121212] bg-opacity-95 flex items-center justify-between py-2 px-4 shadow-sm">
           <div className="flex items-center gap-3">
             {/* Hamburger - visible on mobile only */}
@@ -76,7 +84,7 @@ export default function ClientShell({
         </div>
       </div>
 
-      {/* Mobile overlay & Sidebar */}
+      {/* Mobile overlay & Sidebar (always available when mobileOpen) */}
       {mobileOpen && (
         <>
           <div
@@ -92,8 +100,8 @@ export default function ClientShell({
         </>
       )}
 
-      {/* add top padding so main content isn't hidden behind the fixed topbar */}
-      <main className="flex-1 min-h-screen overflow-auto pt-14">
+      {/* add top padding so main content isn't hidden behind the fixed topbar where applicable */}
+      <main className={`flex-1 min-h-screen overflow-auto ${mainPaddingClass}`}>
         {children}
       </main>
     </div>

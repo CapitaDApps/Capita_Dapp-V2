@@ -38,7 +38,6 @@ export default function Filter() {
           />
         </div>
         <div className="flex items-center gap-5">
-          {/* Render all filters (show 3) with icons, no dropdown */}
           <div className="flex items-center gap-4">
             {filters.map((fil) => (
               <button

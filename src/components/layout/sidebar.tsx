@@ -15,7 +15,7 @@ export default function Sidebar({
   onClose?: () => void;
 }) {
   const desktopClass =
-    "hidden md:flex bg-[var(--sidebar-bg)] flex-col items-center w-[260px]  gap-[26px] relative left-[-0.17px] ";
+    "hidden md:flex bg-[var(--sidebar-bg)] flex-col items-center w-[260px]  relative left-[-0.17px] ";
 
   const mobileClass = `fixed inset-y-0 left-0 z-50 w-72 bg-[var(--sidebar-bg)]  flex flex-col gap-4 transform transition-transform duration-300 md:hidden ${
     open ? "translate-x-0" : "-translate-x-full"
@@ -51,13 +51,13 @@ export default function Sidebar({
       ) : (
         <div className="flex items-center justify-center w-full">
           <Link href="/" className="flex items-center">
-            <div className="w-[273.18px] h-[80px] flex items-center">
+            <div className="w-[273.18px]  flex items-center">
               <Image
                 src={"/layout/logo.svg"}
                 alt="capita_logo"
                 width={273}
                 height={80}
-                className="w-full h-auto object-contain pr-1"
+                className="w-full object-contain pr-1"
               />
             </div>
           </Link>

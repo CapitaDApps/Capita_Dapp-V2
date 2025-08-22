@@ -2,10 +2,10 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 
-export default function CampaignCard({ campaign }: { campaign: any }) {
+export default function CampaignCard({ campaign }: { campaign:  }) {
   return (
-    <article className="w-[324px] h-[400px] rounded-[16px] bg-[var(--Primary-Background,#121212)] border-2 border-transparent hover:border-[#6B4EFF] transition-colors duration-200 overflow-hidden flex flex-col">
-      <div className="relative h-[220px] w-full">
+    <article className="w-full h-auto md:h-[380px] lg:h-[400px] rounded-[16px] bg-[var(--Primary-Background,#121212)] border-2 border-transparent hover:border-[#6B4EFF] transition-colors duration-200 overflow-hidden flex flex-col">
+      <div className="relative w-full h-40 md:h-[180px] lg:h-[220px]">
         <Image
           src={campaign.image}
           alt={campaign.title}
@@ -14,26 +14,29 @@ export default function CampaignCard({ campaign }: { campaign: any }) {
         />
       </div>
 
-      <div className="p-4 flex flex-col gap-[3px] flex-1">
-        <div className="flex items-center gap-3">
+      <div className="p-3 md:p-4 flex flex-col gap-2 flex-1">
+        <div className="flex items-start gap-3">
           <Image
             src={campaign.avatar}
             alt="avatar"
-            width={36}
-            height={36}
-            className="rounded-full"
+            width={32}
+            height={32}
+            className="rounded-full md:w-9 md:h-9"
           />
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-semibold">{campaign.title}</h3>
+              <h3 className="text-sm md:text-base lg:text-lg font-semibold truncate">
+                {campaign.title}
+              </h3>
               <Image
                 src={"/layout/checkmark.svg"}
                 alt="checkmark"
-                width={35}
-                height={35}
+                width={20}
+                height={20}
+                className="hidden md:block"
               />
             </div>
-            <p className="text-xs text-secondary-text line-clamp-2">
+            <p className="text-xs md:text-sm text-secondary-text leading-tight line-clamp-2 lg:line-clamp-3">
               {campaign.excerpt}
             </p>
           </div>
@@ -45,14 +48,16 @@ export default function CampaignCard({ campaign }: { campaign: any }) {
               <Image
                 src={campaign.tokenImage}
                 alt={campaign.token}
-                width={16}
-                height={16}
+                width={14}
+                height={14}
                 className="rounded-full"
               />
             )}
-            <span className="text-[12px]">{campaign.token}</span>
+            <span className="text-[12px] md:text-sm truncate">
+              {campaign.token}
+            </span>
           </div>
-          <Button className="w-[81px] h-[36px] px-[20px] py-[8px] text-sm bg-[var(--Primary,#1038A2)] border border-[var(--Secondary-Text,#B3B3B3)] rounded-md flex items-center justify-center">
+          <Button className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-[var(--Primary,#1038A2)] border border-[var(--Secondary-Text,#B3B3B3)] rounded-md flex items-center justify-center">
             Fund
           </Button>
         </div>
