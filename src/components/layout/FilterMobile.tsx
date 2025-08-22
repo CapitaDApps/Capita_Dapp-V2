@@ -127,7 +127,11 @@ export default function FilterMobile() {
       </form>
 
       <div className="mt-4">
-        <div className="flex items-center gap-3 overflow-x-auto pb-1 hide-scrollbar">
+        <div
+          className="flex items-center gap-3 overflow-x-auto pb-1 hide-scrollbar"
+          role="tablist"
+          aria-label="Campaign Filters"
+        >
           {filters.map((fil) => {
             const isActive = active === fil.slug;
             return (
@@ -135,8 +139,13 @@ export default function FilterMobile() {
                 key={fil.id}
                 onClick={() => handleClick(fil.slug)}
                 role="tab"
-                aria-pressed={isActive}
-                className={`flex items-center gap-2 whitespace-nowrap rounded-full px-3 text-[13px] font-normal transition-colors duration-150 focus:outline-none `}
+                aria-selected={isActive}
+                tabIndex={0}
+                className={`flex items-center gap-2 whitespace-nowrap rounded-full px-3 text-[13px] font-normal transition-colors duration-150 focus:outline-none ${
+                  isActive
+                    ? "bg-[var(--background)] text-white"
+                    : "text-primary-text hover:bg-[rgba(255,255,255,0.03)]"
+                }`}
               >
                 <Image src={fil.svg} width={14} height={14} alt={fil.title} />
                 <span>{fil.title}</span>
