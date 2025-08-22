@@ -1,8 +1,25 @@
-export default function ExploreCampaigns() {
+import CreateCampaign from "@/components/layout/CreateCampaign";
+import Filter from "@/components/layout/Filter";
+import FilterMobile from "@/components/layout/FilterMobile";
+import React, { Suspense } from "react";
+import CampaignList from "@/components/campaigns/CampaignList";
+
+import Load from "@/components/ui/Load";
+
+export async function generateMetadata() {
+  return {
+    title: `Funding Campaigns`,
+  };
+}
+export default async function ExploreCampaigns() {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold">Explore Campaigns</h1>
-      <p>Discover and explore various campaigns here.</p>
+    <div className="h-full py-1.5 lg:py-3 px-4 md:px-8">
+      <CreateCampaign />
+      <Suspense fallback={<Load />}>
+        <Filter />
+        <FilterMobile />
+        <CampaignList />
+      </Suspense>
     </div>
   );
 }
