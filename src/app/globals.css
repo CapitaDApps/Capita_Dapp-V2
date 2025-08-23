@@ -6,7 +6,9 @@
   --foreground: #ededed;
   --primary-blue: #1038a2;
   --secondary-purple: #694eff;
-  /* The Sora font from next/font/google will be made available as --font-sora */
+  --form-blue: #000e29;
+  --form-blue-border: #0056cc;
+  --form-label: #c2d7ff;
   --font-sans: var(--font-sora);
 }
 
