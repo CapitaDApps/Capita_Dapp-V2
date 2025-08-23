@@ -1,28 +1,29 @@
 import { TbMoneybag } from "react-icons/tb";
 import { CiSearch } from "react-icons/ci";
 import { FaBell, FaCrown, FaQuestionCircle, FaUser } from "react-icons/fa";
+import { z } from "zod";
 
 export const menuItems = [
   {
     title: "My Campaigns",
-    icon: <TbMoneybag />,
+    icon: TbMoneybag,
     route: "/campaigns/my-campaigns",
   },
   {
     title: "Explore Campaigns",
-    icon: <CiSearch />,
+    icon: CiSearch,
     route: "/campaigns/explore-campaigns",
   },
   {
     title: "Notifications",
-    icon: <FaBell />,
+    icon: FaBell,
     route: "/campaigns/notifications",
   },
-  { title: "Premium", icon: <FaCrown />, route: "/campaigns/premium" },
-  { title: "Profile", icon: <FaUser />, route: "/campaigns/profile" },
+  { title: "Premium", icon: FaCrown, route: "/campaigns/premium" },
+  { title: "Profile", icon: FaUser, route: "/campaigns/profile" },
   {
     title: "Help Center",
-    icon: <FaQuestionCircle />,
+    icon: FaQuestionCircle,
     route: "/campaigns/help-center",
   },
 ];
@@ -47,3 +48,27 @@ export const filters = [
     slug: "favorites",
   },
 ];
+
+
+export const DateOnlySchema = z
+  .object({
+    startDate: z
+      .string()
+      .nonempty("Start date is required")
+      .refine((s) => !Number.isNaN(Date.parse(s)), {
+        message: "Start date is invalid",
+      }),
+    endDate: z
+      .string()
+      .nonempty("End date is required")
+      .refine((s) => !Number.isNaN(Date.parse(s)), {
+        message: "End date is invalid",
+      }),
+  })
+  .refine(
+    (d) => new Date(d.endDate).getTime() > new Date(d.startDate).getTime(),
+    {
+      message: "End date must be after start date",
+      path: ["endDate"],
+    }
+  );

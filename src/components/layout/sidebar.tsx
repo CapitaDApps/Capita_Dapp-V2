@@ -71,7 +71,7 @@ export default function Sidebar({
             href={item.route}
             className="flex items-center px-4 py-2 hover:bg-[var(--Shadow, #000033)] text-primary-text text-[13px] font-bold gap-3 cursor-pointer rounded-md"
           >
-            <span className="text-lg">{item.icon}</span>
+            <span className="text-lg">{<item.icon />}</span>
             <span className="truncate">{item.title}</span>
           </Link>
         ))}
