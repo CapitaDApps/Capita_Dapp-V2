@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import ImageUpload, { ImageValue } from "@/components/ImageUpload";
 import FormFields from "@/components/FormField";
+import Stepper from "@/components/campaigns/Stepper";
 
 export default function CreateCampaignPage() {
   const [creatorOpen, setCreatorOpen] = useState(false);
@@ -15,11 +16,11 @@ export default function CreateCampaignPage() {
   const [name, setName] = useState("");
   const [cover, setCover] = useState<ImageValue>(null);
   const [avatar, setAvatar] = useState<ImageValue>(null);
-  const [dissolve, setDissolve] = useState(false);
+  // const [dissolve, setDissolve] = useState(false);
   const router = useRouter();
 
   function handleSubmitClick() {
-    setDissolve(true);
+    // setDissolve(true);
     setTimeout(() => {
       router.push("/campaigns/premium/terms");
     }, 300);
@@ -27,9 +28,9 @@ export default function CreateCampaignPage() {
 
   return (
     <div className="min-h-screen bg-[#101821] py-12">
-      <div className="max-w-10xl mx-auto px-6">
+      <div className="h-full  px-2 relative flex flex-col w-full lg:pb-0 pb-16">
         <div className="flex justify-center">
-          <div className="relative mx-auto w-full sm:w-[900px] p-6 sm:p-8">
+          <div className="w-[95%] lg:w-[70%] pt-5 lg:pt-8 pb-10 md:pb-20 mx-auto">
             <div
               aria-hidden
               className="absolute -inset-3 pointer-events-none"
@@ -43,12 +44,11 @@ export default function CreateCampaignPage() {
                 borderRadius: "28px",
               }}
             />
-
+            <Stepper step={1} />
             {/* Card content (above the overlay) */}
             <div
-              className={`relative z-10 bg-[#0b0f12] border border-[#666666] rounded-2xl p-8 ${
-                dissolve ? "dissolve" : ""
-              }`}
+            // className={`relative z-10 bg-[#0b0f12] border border-[#666666] rounded-2xl w-full p-6 sm:p-8
+            // `}
             >
               {/* glossy/shiny content overlay (subtle) */}
               <div
@@ -67,7 +67,7 @@ export default function CreateCampaignPage() {
               >
                 &lt; Back
               </button>
-              <div className="space-y-6">
+              <div className="space-y-8 sm:space-y-6">
                 {/* Cover image container */}
 
                 <div className="relative">
@@ -78,7 +78,7 @@ export default function CreateCampaignPage() {
                   />
                 </div>
 
-                <div className="flex justify-center -mt-15 relative z-10">
+                <div className="flex justify-center -mt-16 relative z-10">
                   <ImageUpload
                     value={avatar}
                     onChange={(v) => setAvatar(v)}
