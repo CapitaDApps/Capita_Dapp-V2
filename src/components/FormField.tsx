@@ -53,18 +53,22 @@ export default function FormFields({
 
   // token search state and derived filtered list for the selected network
   const [tokenSearch, setTokenSearch] = useState("");
-  const tokensForNetwork = TOKENS[selectedNetwork as NetworkKey]?.tokens ?? [];
 
   const filteredTokens = useMemo(() => {
+    // compute tokens for the currently selected network inside the memo
+    const tokensForNetwork =
+      TOKENS[selectedNetwork as NetworkKey]?.tokens ?? [];
     const q = tokenSearch.trim().toLowerCase();
     if (!q) return tokensForNetwork;
+
     return tokensForNetwork.filter((t) => {
       const symbol = (t.symbol ?? "").toLowerCase();
-      const name = ((t as any).name ?? "").toLowerCase();
-      const address = ((t as any).address ?? "").toLowerCase();
+      // avoid `any` by asserting a narrow inline type for optional fields
+      const name = ((t as { name?: string }).name ?? "").toLowerCase();
+      const address = ((t as { address?: string }).address ?? "").toLowerCase();
       return symbol.includes(q) || name.includes(q) || address.includes(q);
     });
-  }, [tokenSearch, tokensForNetwork]);
+  }, [tokenSearch, selectedNetwork]);
 
   const onReportChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -157,7 +161,7 @@ export default function FormFields({
           </div>
 
           <div className="rounded-lg border-2 border-dashed border-[var(--form-blue-border)] bg-[var(--form-blue)] p-4 flex flex-col items-center justify-center gap-3 h-36">
-            <div className="text-sm text-slate-300">
+            <div className="text-xs text-slate-300">
               Hospital bills & others
             </div>
             <div className="w-12 h-12 rounded-md  flex items-center justify-center">
@@ -464,7 +468,7 @@ export default function FormFields({
                     ))
                   ) : (
                     <div className="py-6 text-center text-sm text-slate-400">
-                      No tokens found for this network matching "{tokenSearch}"
+                      {`No tokens found for this network matching "${tokenSearch}"`}
                     </div>
                   )}
                 </div>

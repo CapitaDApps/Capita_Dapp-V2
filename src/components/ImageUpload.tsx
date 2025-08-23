@@ -29,12 +29,14 @@ export default function ImageUpload({
     !!u && (u.startsWith("blob:") || u.startsWith("data:"));
 
   useEffect(() => {
+    // revoke the previous blob URL when value.url changes or on unmount
+    const url = value?.url;
     return () => {
-      if (value && value.url?.startsWith("blob:")) {
-        URL.revokeObjectURL(value.url);
+      if (url && url.startsWith("blob:")) {
+        URL.revokeObjectURL(url);
       }
     };
-  }, []);
+  }, [value?.url]);
 
   function handleCoverFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0];
@@ -69,7 +71,7 @@ export default function ImageUpload({
         {value ? (
           <div className="relative">
             {isBlobOrDataUrl(value.url) ? (
-              <img
+              <Image
                 src={value.url}
                 alt="avatar"
                 width={80}
@@ -126,22 +128,15 @@ export default function ImageUpload({
     <div className={`relative ${className}`}>
       {value ? (
         <div className="relative">
-          <div className="h-36 sm:h-44 rounded-md overflow-hidden border border-[var(--form-blue-border)] bg-[var(--form-blue)]">
-            {isBlobOrDataUrl(value.url) ? (
-              <img
-                src={value.url}
-                alt="preview"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            ) : (
-              <Image
-                src={value.url}
-                alt="preview"
-                fill
-                className="object-cover"
-                unoptimized
-              />
-            )}
+          <div className="relative h-36 sm:h-44 rounded-md overflow-hidden border border-[var(--form-blue-border)] bg-[var(--form-blue)]">
+            {/* use Next/Image for blob/data URLs as well (unoptimized) and use fill to cover */}
+            <Image
+              src={value.url}
+              alt="preview"
+              fill
+              className="object-cover"
+              unoptimized
+            />
           </div>
 
           {showRemove && (
