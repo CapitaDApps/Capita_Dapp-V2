@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import {
   CREATOR_TYPES,
@@ -50,6 +50,21 @@ export default function FormFields({
   const billsRef = useRef<HTMLInputElement | null>(null);
   const [reportFileName, setReportFileName] = useState<string | null>(null);
   const [billsFileName, setBillsFileName] = useState<string | null>(null);
+
+  // token search state and derived filtered list for the selected network
+  const [tokenSearch, setTokenSearch] = useState("");
+  const tokensForNetwork = TOKENS[selectedNetwork as NetworkKey]?.tokens ?? [];
+
+  const filteredTokens = useMemo(() => {
+    const q = tokenSearch.trim().toLowerCase();
+    if (!q) return tokensForNetwork;
+    return tokensForNetwork.filter((t) => {
+      const symbol = (t.symbol ?? "").toLowerCase();
+      const name = ((t as any).name ?? "").toLowerCase();
+      const address = ((t as any).address ?? "").toLowerCase();
+      return symbol.includes(q) || name.includes(q) || address.includes(q);
+    });
+  }, [tokenSearch, tokensForNetwork]);
 
   const onReportChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -387,62 +402,71 @@ export default function FormFields({
                     />
                     <Input
                       type="text"
+                      value={tokenSearch}
+                      onChange={(e) => setTokenSearch(e.target.value)}
                       placeholder="Search by name, symbol or address"
-                      className="w-full text-sm text-text-gray bg-[#1E1E1E] border-0 pl-3 pr-4 py-1.5 focus-visible:outline-none focus-visible:ring-0"
+                      className="w-full text-sm text-text-gray bg-transparent border-0 pl-3 pr-4 py-1.5 focus-visible:outline-none focus-visible:ring-0"
+                      aria-label="Search tokens"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  {TOKENS[selectedNetwork as NetworkKey].tokens.map((t) => (
-                    <button
-                      key={t.symbol}
-                      onClick={() => setSelectedToken(t.symbol)}
-                      className={`w-full text-left flex items-center justify-between gap-3 px-4 py-3 rounded-lg transition-colors border ${
-                        selectedToken === t.symbol
-                          ? "border-[#6B4EFF] ring-1 ring-[#6B4EFF]"
-                          : "border-[#666666] hover:bg-[rgba(255,255,255,0.02)]"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full flex items-center justify-center overflow-hidden border border-zinc-800">
-                          <Image
-                            src={t.image}
-                            alt={`${t.symbol} icon`}
-                            width={28}
-                            height={28}
-                          />
-                        </div>
-                        <span className="text-sm text-white font-medium">
-                          {t.symbol}
-                        </span>
-                      </div>
-
-                      <span className="ml-2 flex items-center">
-                        {selectedToken === t.symbol ? (
-                          <span className="w-6 h-6 rounded-full bg-[#6B4EFF] flex items-center justify-center">
-                            <svg
-                              width="12"
-                              height="12"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M8.5 12.8l2.1 2.1L15 11.5"
-                                stroke="#fff"
-                                strokeWidth="1.6"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
+                  {filteredTokens.length > 0 ? (
+                    filteredTokens.map((t) => (
+                      <button
+                        key={t.symbol}
+                        onClick={() => setSelectedToken(t.symbol)}
+                        className={`w-full text-left flex items-center justify-between gap-3 px-4 py-3 rounded-lg transition-colors border ${
+                          selectedToken === t.symbol
+                            ? "border-[#6B4EFF] ring-1 ring-[#6B4EFF]"
+                            : "border-[#666666] hover:bg-[rgba(255,255,255,0.02)]"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-full flex items-center justify-center overflow-hidden border border-zinc-800">
+                            <Image
+                              src={t.image}
+                              alt={`${t.symbol} icon`}
+                              width={28}
+                              height={28}
+                            />
+                          </div>
+                          <span className="text-sm text-white font-medium">
+                            {t.symbol}
                           </span>
-                        ) : (
-                          <span className="w-6 h-6" aria-hidden />
-                        )}
-                      </span>
-                    </button>
-                  ))}
+                        </div>
+
+                        <span className="ml-2 flex items-center">
+                          {selectedToken === t.symbol ? (
+                            <span className="w-6 h-6 rounded-full bg-[#6B4EFF] flex items-center justify-center">
+                              <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M8.5 12.8l2.1 2.1L15 11.5"
+                                  stroke="#fff"
+                                  strokeWidth="1.6"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </span>
+                          ) : (
+                            <span className="w-6 h-6" aria-hidden />
+                          )}
+                        </span>
+                      </button>
+                    ))
+                  ) : (
+                    <div className="py-6 text-center text-sm text-slate-400">
+                      No tokens found for this network matching "{tokenSearch}"
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
