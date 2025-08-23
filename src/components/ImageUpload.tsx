@@ -22,29 +22,23 @@ export default function ImageUpload({
   showRemove?: boolean;
   className?: string;
 }) {
-  // separate refs so cover and avatar inputs don't conflict
   const coverInputRef = useRef<HTMLInputElement | null>(null);
   const avatarInputRef = useRef<HTMLInputElement | null>(null);
 
-  // helper to determine whether to render a native <img> for object/data URLs
   const isBlobOrDataUrl = (u?: string) =>
     !!u && (u.startsWith("blob:") || u.startsWith("data:"));
 
   useEffect(() => {
     return () => {
-      // revoke object URL if set by this component
       if (value && value.url?.startsWith("blob:")) {
         URL.revokeObjectURL(value.url);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // separate handlers so cover/avatar can have different logic later
   function handleCoverFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0];
     if (!f) return;
-    // cover-specific validation could go here
     const url = URL.createObjectURL(f);
     onChange({ url, file: f });
   }
@@ -52,7 +46,6 @@ export default function ImageUpload({
   function handleAvatarFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0];
     if (!f) return;
-    // avatar-specific validation/cropping hook could go here
     const url = URL.createObjectURL(f);
     onChange({ url, file: f });
   }
@@ -62,7 +55,7 @@ export default function ImageUpload({
       URL.revokeObjectURL(value.url);
     }
     onChange(null);
-    // only clear the input that belongs to this variant
+
     if (variant === "cover") {
       if (coverInputRef.current) coverInputRef.current.value = "";
     } else {
@@ -75,7 +68,6 @@ export default function ImageUpload({
       <div className={`relative inline-block ${className}`}>
         {value ? (
           <div className="relative">
-            {/* Render native <img> for object/data URLs because next/image cannot optimize blob: or data: URLs. For remote/static sources use Next Image (unoptimized fallback). */}
             {isBlobOrDataUrl(value.url) ? (
               <img
                 src={value.url}
@@ -108,7 +100,7 @@ export default function ImageUpload({
         ) : (
           <div className="relative inline-flex items-center justify-center">
             <label className="cursor-pointer">
-              <div className="w-20 h-20 rounded-full bg-[#0f1720] flex items-center justify-center overflow-hidden border border-zinc-800 hover:border-zinc-600 transition-colors">
+              <div className="w-20 h-20 rounded-full bg-[#0f1720] border-[var(--form-blue-border)] flex items-center justify-center overflow-hidden border  hover:border-zinc-600 transition-colors">
                 <Image
                   src="/layout/camera.png"
                   alt={placeholder}
@@ -134,11 +126,8 @@ export default function ImageUpload({
     <div className={`relative ${className}`}>
       {value ? (
         <div className="relative">
-          <div className="h-36 sm:h-44 rounded-md overflow-hidden border border-[#08386a] bg-[#02152a]">
-            {/* For object/data URLs use native <img> to ensure immediate display. For remote/static images use Next Image with unoptimized fallback. */}
+          <div className="h-36 sm:h-44 rounded-md overflow-hidden border border-[var(--form-blue-border)] bg-[var(--form-blue)]">
             {isBlobOrDataUrl(value.url) ? (
-              // use native <img> for blob/data URLs so preview appears immediately
-              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={value.url}
                 alt="preview"
@@ -166,7 +155,7 @@ export default function ImageUpload({
           )}
         </div>
       ) : (
-        <div className="h-36 sm:h-44 rounded-md border border-[#08386a] bg-[#02152a] flex items-center justify-center text-slate-400">
+        <div className="h-36 sm:h-44 rounded-md border border-[var(--form-blue-border)] bg-[#02152a] flex items-center justify-center text-slate-400">
           <div className="text-center">
             <div className="flex items-center justify-center gap-2">
               <label className="inline-flex items-center gap-2 cursor-pointer">
@@ -190,11 +179,10 @@ export default function ImageUpload({
         </div>
       )}
 
-      {/* circular upload button overlapping bottom center (only for cover variant) */}
       {variant === "cover" && (
         <div className="absolute left-1/2 -bottom-6 -translate-x-1/2">
           <label className="cursor-pointer">
-            <div className="w-14 h-14 rounded-full bg-[#02152a] border-2 border-[#0b66ff] flex items-center justify-center shadow-lg hover:border-[#1a75ff] transition-colors">
+            <div className="w-14 h-14 rounded-full bg-[#02152a] border-2 border-[var(--form-blue-border)] flex items-center justify-center shadow-lg  transition-colors">
               <Image
                 src="/layout/camera.png"
                 alt="camera"
@@ -202,7 +190,7 @@ export default function ImageUpload({
                 height={18}
               />
             </div>
-            {/* FIXED: This was using coverInputRef instead of a separate input */}
+
             <input
               type="file"
               accept={accept}
