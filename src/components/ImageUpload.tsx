@@ -74,7 +74,7 @@ export default function ImageUpload({
     return (
       <div className={`relative inline-block ${className}`}>
         {value ? (
-          <div className="relative">
+          <div className="relative group">
             {isBlobOrDataUrl(value.url) ? (
               <Image
                 src={value.url}
@@ -94,7 +94,8 @@ export default function ImageUpload({
               />
             )}
 
-            <label className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#02152a] border border-[var(--form-blue-border)] flex items-center justify-center cursor-pointer">
+            {/* change button: hidden by default, appears on hover/focus */}
+            <label className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#02152a] border border-[var(--form-blue-border)] flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
               <Image
                 src="/layout/camera.png"
                 alt="Change avatar"
