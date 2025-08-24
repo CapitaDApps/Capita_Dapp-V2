@@ -5,6 +5,7 @@ import Image from "next/image";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
+import Avatar from "@/components/ui/Avatar";
 
 type Reply = {
   id: number;
@@ -62,9 +63,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
         ]
   );
 
-  // Pagination for comments: start by showing up to 10
   const [visibleCommentsCount, setVisibleCommentsCount] = useState<number>(10);
-  // Per-comment visible replies count (defaults to 3 when not provided)
   const [visibleRepliesCount, setVisibleRepliesCount] = useState<
     Record<number, number>
   >({});
@@ -76,7 +75,6 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingText, setEditingText] = useState("");
 
-  // liked state
   const [likedComments, setLikedComments] = useState<Record<number, boolean>>(
     {}
   );
@@ -97,7 +95,6 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
     };
     setComments([next, ...comments]);
     setNewText("");
-    // ensure newly added comment is visible
     setVisibleCommentsCount((v) => Math.max(v, 1));
   }
 
@@ -156,8 +153,6 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
         c.id === parentId ? { ...c, replies: [...c.replies, newReply] } : c
       )
     );
-
-    // clear the input for that comment and ensure the new reply is visible
     setReplyText((s) => ({ ...s, [parentId]: "" }));
     setReplyOpen((s) => ({ ...s, [parentId]: true }));
     setVisibleRepliesCount((s) => ({
@@ -177,10 +172,9 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
     }));
   }
 
-  // Toggle like for a comment (updates count and visual state)
   function toggleLikeComment(commentId: number) {
     const currentlyLiked = !!likedComments[commentId];
-    // update comment likes based on current liked state
+
     setComments((prevComments) =>
       prevComments.map((c) =>
         c.id === commentId
@@ -188,11 +182,10 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
           : c
       )
     );
-    // toggle liked state
+
     setLikedComments((prev) => ({ ...prev, [commentId]: !currentlyLiked }));
   }
 
-  // Toggle like for a reply (updates count and visual state)
   function toggleLikeReply(replyId: number) {
     const currentlyLiked = !!likedReplies[replyId];
     setComments((prevComments) =>
@@ -208,7 +201,6 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
     setLikedReplies((prev) => ({ ...prev, [replyId]: !currentlyLiked }));
   }
 
-  // show the first N comments according to visibleCommentsCount
   const visibleComments = comments.slice(0, visibleCommentsCount);
 
   return (
@@ -216,17 +208,9 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
       <div className="pt-6">
         <h3 className="text-lg mb-4">Comments ({comments.length})</h3>
 
-        {/* Input bar */}
         <div className="mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full overflow-hidden bg-slate-700 flex-shrink-0">
-              <Image
-                src="/layout/avatarboy.svg"
-                alt="you"
-                width={40}
-                height={40}
-              />
-            </div>
+            <Avatar src="/layout/avatarboy.svg" alt="you" size={40} />
 
             <div className="flex-1">
               <div className="relative">
@@ -253,9 +237,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
           {visibleComments.map((c) => (
             <div key={c.id} className="pt-4">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-700 flex-shrink-0">
-                  {/* Placeholder avatar */}
-                </div>
+                <Avatar src="/layout/avatarboy.svg" alt="you" size={32} />
 
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
@@ -373,7 +355,6 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                   {c.replies.length > 0 && (
                     <div className="mt-4">
                       <div className="border-l border-slate-700 pl-4 space-y-4">
-                        {/** Determine how many replies are visible for this comment */}
                         {c.replies
                           .slice(0, visibleRepliesCount[c.id] ?? 3)
                           .map((r) => (
@@ -447,14 +428,8 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
 
                   {replyOpen[c.id] && (
                     <div className="mt-4 flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full overflow-hidden bg-slate-700 flex-shrink-0">
-                        <Image
-                          src="/layout/avatarboy.svg"
-                          alt="you"
-                          width={32}
-                          height={32}
-                        />
-                      </div>
+                      <Avatar src="/layout/avatarboy.svg" alt="you" size={32} />
+
                       <div className="flex-1">
                         <div className="relative">
                           <input

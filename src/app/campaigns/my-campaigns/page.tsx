@@ -5,6 +5,8 @@ import Image from "next/image";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import Comments from "@/components/campaigns/Comments";
 import ReportFlow from "@/components/campaigns/ReportFlow";
+import Avatar from "@/components/ui/Avatar";
+import TokensList from "@/components/ui/TokensList";
 
 const sampleComments = [
   {
@@ -73,14 +75,12 @@ export default function Page() {
         </div>
 
         <div className="my-5 flex items-center gap-4">
-          <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--form-blue-border)] bg-[#0f1720] z-10">
-            <Image
-              src="/campaign/c.png"
-              alt="avatar"
-              fill
-              className="object-cover"
-            />
-          </div>
+          <Avatar
+            src="/campaign/c.png"
+            alt="avatar"
+            size={80}
+            className="border-2 border-[var(--form-blue-border)] bg-[#0f1720] z-10"
+          />
 
           <div className="flex items-center gap-3">
             <h1 className="text-2xl font-semibold">Campaign Name</h1>
@@ -134,18 +134,7 @@ export default function Page() {
             </div>
 
             <div>
-              <div className="text-sm text-slate-400 mb-2">Tokens</div>
-              <div className="flex gap-2 items-center">
-                <div className="px-3 py-1 rounded-full bg-[#0f1720] text-sm">
-                  CPT
-                </div>
-                <div className="px-3 py-1 rounded-full bg-[#0f1720] text-sm">
-                  Eth(Base)
-                </div>
-                <div className="px-3 py-1 rounded-full bg-[#0f1720] text-sm">
-                  USDC(Base)
-                </div>
-              </div>
+              <TokensList />
             </div>
           </div>
 
@@ -188,7 +177,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Comments (component) */}
           <Comments initial={sampleComments} />
         </div>
       </div>
