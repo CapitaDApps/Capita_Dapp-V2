@@ -221,7 +221,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-slate-700 flex-shrink-0">
               <Image
-                src="/avatar-placeholder.png"
+                src="/layout/avatarboy.svg"
                 alt="you"
                 width={40}
                 height={40}
@@ -445,12 +445,11 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                     </div>
                   )}
 
-                  {/* Reply input (expanded) */}
                   {replyOpen[c.id] && (
                     <div className="mt-4 flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full overflow-hidden bg-slate-700 flex-shrink-0">
                         <Image
-                          src="/avatar-placeholder.png"
+                          src="/layout/avatarboy.svg"
                           alt="you"
                           width={32}
                           height={32}
