@@ -44,11 +44,10 @@ function Calendar({
     if (initialMonth) {
       setMonth(startOfMonth(initialMonth));
     }
-    // honor initialFocus if consumers pass it (no-op here but reserved for future)
+
     if (initialFocus) {
-      // no-op: popover/trigger handles focus; keep prop for compatibility
     }
-  }, [initialMonth]);
+  }, [initialMonth, initialFocus]);
 
   const prevMonth = React.useCallback(
     () => setMonth((m) => startOfMonth(subMonths(m, 1))),
