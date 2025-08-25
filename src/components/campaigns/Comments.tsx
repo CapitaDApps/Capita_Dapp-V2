@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
+
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";

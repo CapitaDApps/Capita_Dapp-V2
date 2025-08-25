@@ -103,8 +103,8 @@ export default function ReportFlow({ open, onClose }: Props) {
                     Misleading or false information
                   </div>
                   <div className="text-sm text-slate-400 mt-1">
-                    Details provided don't match reality or are intentionally
-                    inaccurate
+                    Details provided don&rdquo;t match reality or are
+                    intentionally inaccurate
                   </div>
                 </div>
                 <input

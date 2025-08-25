@@ -96,9 +96,10 @@ export default function Page() {
         <div className="space-y-4">
           <p className="text-slate-300 leading-relaxed">
             Our startup was born out of a passion for solving [state the
-            specific pain point, e.g., "the challenges of renting affordable
-            housing in Nigeria"]. Since launching, we've [mention any
-            milestones, e.g., "developed a prototype", "secured beta testers"].
+            specific pain point, e.g., &rdquo;the challenges of renting
+            affordable housing in Nigeria&rdquo;]. Since launching, we&rdquo;ve
+            [mention any milestones, e.g., &rdquo;developed a prototype&rdquo;,
+            &rdquo;secured beta testers&rdquo;].
           </p>
 
           {/* Progress */}
