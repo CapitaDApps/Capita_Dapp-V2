@@ -7,24 +7,40 @@ export const menuItems = [
   {
     title: "My Campaigns",
     icon: TbMoneybag,
-    route: "/campaigns/my-campaigns",
+    route: "/my-campaigns",
+    slug: "campaigns",
   },
   {
     title: "Explore Campaigns",
     icon: CiSearch,
-    route: "/campaigns/explore-campaigns",
+    route: "/explore-campaigns",
+    slug: "explore-campaigns",
   },
   {
     title: "Notifications",
     icon: FaBell,
-    route: "/campaigns/notifications",
+    route: "/notifications",
+    slug: "notifications",
   },
-  { title: "Premium", icon: FaCrown, route: "/campaigns/premium" },
-  { title: "Profile", icon: FaUser, route: "/campaigns/profile" },
+  {
+    title: "Premium",
+    icon: FaCrown,
+    route: "/premium",
+
+    slug: "premium",
+  },
+  {
+    title: "Profile",
+    icon: FaUser,
+    route: "/profile",
+
+    slug: "profile",
+  },
   {
     title: "Help Center",
     icon: FaQuestionCircle,
-    route: "/campaigns/help-center",
+    route: "/help-center",
+    slug: "help-center",
   },
 ];
 
@@ -48,7 +64,6 @@ export const filters = [
     slug: "favorites",
   },
 ];
-
 
 export const DateOnlySchema = z
   .object({
