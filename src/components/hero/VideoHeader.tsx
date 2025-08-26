@@ -1,0 +1,31 @@
+import Image from "next/image";
+import React from "react";
+
+export default function VideoHeader() {
+  return (
+    <div className="relative w-full h-[260px] lg:h-[350px] overflow-hidden">
+      <video
+        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/layout/mp.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div className="relative bg-custo h-full">
+        <div className="flex flex-col lg:flex-row items-center z-20 absolute bottom-[15px] md:bottom-[10px] left-0 right-0 justify-center gap-2 md:gap-3">
+          <h1 className="text-xl md:text-[40px] lg:text-[56px] font-semibold  leading-tight">
+            Welcome to{" "}
+          </h1>
+          <div className="relative aspect-auto w-[200px] h-[20px] lg:w-[380px] lg:h-[100px]">
+            <Image src="/layout/wordmark.svg" alt="word" fill />
+          </div>
+        </div>
+      </div>
+      <div className="absolute inset-0 bg-black/40 z-[1]" />
+    </div>
+  );
+}
