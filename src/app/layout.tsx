@@ -4,6 +4,7 @@ import { Sora } from "next/font/google";
 import "./globals.css";
 import ClientShell from "./ClientShell";
 import NextTopLoader from "nextjs-toploader";
+import Footer from "@/components/layout/Footer";
 
 const sora = Sora({
   variable: "--font-sans",
@@ -27,7 +28,10 @@ export default function RootLayout({
         className={`${sora.variable} bg antialiased relative min-h-screen  max-w-[144rem] mx-auto bg-[var(--background)`}
       >
         <NextTopLoader color="#003DEF" height={4} showSpinner={false} />
-        <ClientShell>{children}</ClientShell>
+        <ClientShell>
+          {children}
+          <Footer />
+        </ClientShell>
       </body>
     </html>
   );

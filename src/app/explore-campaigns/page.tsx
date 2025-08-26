@@ -13,7 +13,7 @@ export async function generateMetadata() {
 }
 export default async function ExploreCampaigns() {
   return (
-    <div className="h-full py-1.5 lg:py-3 px-4 md:px-8">
+    <div className="h-full py-1.5 lg:py-3 px-4 md:px-8 mt-12">
       <CreateCampaign />
       <Suspense fallback={<Load />}>
         <Filter />

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 type Campaign = {
   id: string | number;
@@ -14,6 +15,7 @@ type Campaign = {
 };
 
 export default function CampaignCard({ campaign }: { campaign: Campaign }) {
+  const router = useRouter();
   return (
     <article className="w-full h-auto md:h-[380px] lg:h-[400px] rounded-[16px] bg-[var(--Primary-Background,#121212)] border-2 border-transparent hover:border-[#6B4EFF] transition-colors duration-200 overflow-hidden flex flex-col">
       <div className="relative w-full h-40 md:h-[180px] lg:h-[220px]">
@@ -72,7 +74,10 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
               {campaign.token ?? ""}
             </span>
           </div>
-          <Button className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-[var(--Primary,#1038A2)] border border-[var(--Secondary-Text,#B3B3B3)] rounded-md flex items-center justify-center">
+          <Button
+            className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-[var(--Primary,#1038A2)] border border-[var(--Secondary-Text,#B3B3B3)] rounded-md flex items-center justify-center"
+            onClick={() => router.push(`/campaigns/${campaign.id}`)}
+          >
             Fund
           </Button>
         </div>
