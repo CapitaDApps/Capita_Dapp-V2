@@ -3,7 +3,7 @@ import React from "react";
 
 export default function VideoHeader() {
   return (
-    <div className="relative w-full h-[260px] lg:h-[350px] overflow-hidden">
+    <div className="relative w-full h-[260px] md:h-[320px] lg:h-[350px] overflow-hidden">
       <video
         className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
         autoPlay
@@ -20,7 +20,7 @@ export default function VideoHeader() {
           <h1 className="text-xl md:text-[40px] lg:text-[56px] font-semibold  leading-tight">
             Welcome to{" "}
           </h1>
-          <div className="relative aspect-auto w-[200px] h-[20px] lg:w-[380px] lg:h-[100px]">
+          <div className="relative aspect-auto w-[200px] h-[20px] md:h-[50px] md:w-[320px] lg:w-[380px] lg:h-[100px]">
             <Image src="/layout/wordmark.svg" alt="word" fill />
           </div>
         </div>
