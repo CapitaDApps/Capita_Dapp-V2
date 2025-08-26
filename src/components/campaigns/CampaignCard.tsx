@@ -75,7 +75,7 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
             </span>
           </div>
           <Button
-            className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-[var(--Primary,#1038A2)] border border-[var(--Secondary-Text,#B3B3B3)] rounded-md flex items-center justify-center"
+            className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-[var(--Primary,#1038A2)]  rounded-md flex items-center justify-center"
             onClick={() => router.push(`/campaigns/${campaign.id}`)}
           >
             Fund

@@ -35,7 +35,7 @@ export default function ReportFlow({ open, onClose }: Props) {
           right="9rem"
           onClick={() => setStep(2)}
         >
-          <div className="text-lg py-5">Report Campaign</div>
+          <div className="text-sm md:text-lg py-3 md:py-5">Report Campaign</div>
           <Image
             src={"/layout/flag.svg"}
             width={12}
@@ -60,7 +60,7 @@ export default function ReportFlow({ open, onClose }: Props) {
         >
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3">
-            <h3 className="text-lg font-semibold">Gathering Info</h3>
+            <h3 className="text-sm md:text-lg font-semibold">Gathering Info</h3>
             <button
               onClick={onClose}
               aria-label="Close report dialog"
@@ -71,18 +71,18 @@ export default function ReportFlow({ open, onClose }: Props) {
           </div>
 
           <div className="border-t border-[#1b2226]" />
-          <div className="px-6 pt-6 pb-4 max-h-[68vh] overflow-y-auto">
-            <h2 className="text-2xl font-medium text-white mb-6">
+          <div className="px-4 sm:px-6 pt-6 pb-4 max-h-[72vh] overflow-y-auto">
+            <h2 className="text-sm md:text-lg font-medium text-white mb-6">
               What type of issue are you reporting?
             </h2>
 
             <div className="space-y-6">
-              <label className="flex justify-between items-start gap-4">
-                <div>
-                  <div className="font-medium text-white">
+              <label className="flex flex-row justify-between items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm md:text-lg font-medium text-white">
                     Fraudulent or scam
                   </div>
-                  <div className="text-sm text-slate-400 mt-1">
+                  <div className="text-xs md:text-sm text-slate-400 mt-1 whitespace-normal">
                     The campaign appears deceptive, with intent to mislead or
                     steal funds
                   </div>
@@ -93,16 +93,16 @@ export default function ReportFlow({ open, onClose }: Props) {
                   value="fraud"
                   checked={selected === "fraud"}
                   onChange={() => setSelected("fraud")}
-                  className="w-5 h-5 mt-2 accent-[#0070f3]"
+                  className="w-5 h-5 self-center accent-[#0070f3]"
                 />
               </label>
 
-              <label className="flex justify-between items-start gap-4">
-                <div>
-                  <div className="font-medium text-white">
+              <label className="flex flex-row justify-between items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm md:text-lg font-medium text-white">
                     Misleading or false information
                   </div>
-                  <div className="text-sm text-slate-400 mt-1">
+                  <div className="text-xs md:text-sm text-slate-400 mt-1 whitespace-normal">
                     Details provided don&rdquo;t match reality or are
                     intentionally inaccurate
                   </div>
@@ -113,16 +113,16 @@ export default function ReportFlow({ open, onClose }: Props) {
                   value="misleading"
                   checked={selected === "misleading"}
                   onChange={() => setSelected("misleading")}
-                  className="w-5 h-5 mt-2 accent-[#0070f3]"
+                  className="w-5 h-5 self-center accent-[#0070f3]"
                 />
               </label>
 
-              <label className="flex justify-between items-start gap-4">
-                <div>
-                  <div className="font-medium text-white">
+              <label className="flex flex-row justify-between items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm md:text-lg font-medium text-white">
                     Offensive or harmful content
                   </div>
-                  <div className="text-sm text-slate-400 mt-1">
+                  <div className="text-xs md:text-sm text-slate-400 mt-1 whitespace-normal">
                     The campaign includes abusive, discriminatory, or unsafe
                     material
                   </div>
@@ -133,16 +133,16 @@ export default function ReportFlow({ open, onClose }: Props) {
                   value="offensive"
                   checked={selected === "offensive"}
                   onChange={() => setSelected("offensive")}
-                  className="w-5 h-5 mt-2 accent-[#0070f3] bg-transparent"
+                  className="w-5 h-5 self-center accent-[#0070f3] bg-transparent"
                 />
               </label>
 
-              <label className="flex justify-between items-start gap-4">
-                <div>
-                  <div className="font-medium text-white">
+              <label className="flex flex-row justify-between items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm md:text-lg font-medium text-white">
                     Violates platform terms
                   </div>
-                  <div className="text-sm text-slate-400 mt-1">
+                  <div className="text-xs md:text-sm text-slate-400 mt-1 whitespace-normal">
                     The campaign includes abusive, discriminatory, or unsafe
                     material
                   </div>
@@ -153,14 +153,16 @@ export default function ReportFlow({ open, onClose }: Props) {
                   value="terms"
                   checked={selected === "terms"}
                   onChange={() => setSelected("terms")}
-                  className="w-5 h-5 mt-2 accent-[#0070f3]"
+                  className="w-5 h-5 self-center accent-[#0070f3]"
                 />
               </label>
 
-              <label className="flex justify-between items-start gap-4">
-                <div>
-                  <div className="font-medium text-white">Other</div>
-                  <div className="text-sm text-slate-400 mt-1">
+              <label className="flex flex-row justify-between items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm md:text-lg font-medium text-white">
+                    Other
+                  </div>
+                  <div className="text-xs md:text-sm text-slate-400 mt-1 whitespace-normal">
                     Report an issue not listed above; please describe
                   </div>
                 </div>
@@ -170,7 +172,7 @@ export default function ReportFlow({ open, onClose }: Props) {
                   value="other"
                   checked={selected === "other"}
                   onChange={() => setSelected("other")}
-                  className="w-5 h-5 mt-2 accent-[#0070f3]"
+                  className="w-5 h-5 self-center accent-[#0070f3]"
                 />
               </label>
 
@@ -178,7 +180,7 @@ export default function ReportFlow({ open, onClose }: Props) {
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
                 placeholder="Describe the issue (optional)"
-                className="w-full mt-2 h-28 rounded-lg border border-[#2b2f33] p-4 bg-transparent text-white placeholder:text-slate-500 resize-vertical"
+                className="w-full mt-2 h-24 sm:h-28 rounded-lg border border-[#2b2f33] p-4 bg-transparent text-white placeholder:text-slate-500 resize-vertical text-sm"
               />
             </div>
           </div>
@@ -186,7 +188,7 @@ export default function ReportFlow({ open, onClose }: Props) {
           <div className="border-t border-[#1b2226] px-6 py-4 bg-[#071018]">
             <button
               onClick={() => setStep(3)}
-              className="w-full py-4 rounded-full bg-gradient-to-r from-[#003DEF] to-[#001F7A] text-white text-lg"
+              className="w-full py-4 rounded-full bg-gradient-to-r from-[#003DEF] to-[#001F7A] text-white text-sm md:text-lg"
             >
               Next
             </button>
@@ -212,8 +214,8 @@ export default function ReportFlow({ open, onClose }: Props) {
           </div>
         </div>
 
-        <h3 className="text-xl font-semibold mb-2">Thank you.</h3>
-        <p className="text-slate-300 mb-6">
+        <h3 className="text-sm md:text-lg font-semibold mb-2">Thank you.</h3>
+        <p className="text-sm text-slate-300 mb-6">
           Your report has been submitted and will be reviewed within a few days.
         </p>
 

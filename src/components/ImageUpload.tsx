@@ -28,6 +28,9 @@ export default function ImageUpload({
   const isBlobOrDataUrl = (u?: string) =>
     !!u && (u.startsWith("blob:") || u.startsWith("data:"));
 
+  // whether a cover image is present (used for conditional classes)
+  const coverImg = !!value?.url;
+
   // default asset paths
   const defaultCover = "/campaign/banner.png";
   // user provided 'campaign/c.ng' looked like a typo; using c.png as default avatar
@@ -196,7 +199,11 @@ export default function ImageUpload({
             sizes="100vw"
             unoptimized
           />
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div
+            className={`absolute w-full ${
+              coverImg && "neon-wrapper"
+            } h-full bg-[#2E2E2E]/70 rounded-[16px] flex items-center justify-center gap-2`}
+          >
             <label className="inline-flex items-center gap-2 cursor-pointer bg-black/20 px-3 py-2 rounded-md">
               <Image
                 src="/layout/camera.png"

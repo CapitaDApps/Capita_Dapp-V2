@@ -24,7 +24,7 @@ export default function FloatingReportButton({
       aria-label="Open report dialog"
       style={{ position: "fixed", top, right, zIndex: 9999 }}
       className={
-        "rounded-lg bg-[#0b0c0d] border border-[#1b2226] px-6 py-3 shadow-md flex items-center gap-4 " +
+        "rounded-lg bg-[#0b0c0d] border border-[#1b2226] px-3 md:px-6 py-1 md:py-3 shadow-md flex items-center gap-4 " +
         className
       }
     >
