@@ -50,10 +50,10 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
                 alt="verified"
                 width={20}
                 height={20}
-                className="hidden md:block"
+                className="block"
               />
             </div>
-            <p className="text-xs md:text-sm text-secondary-text leading-tight line-clamp-2 lg:line-clamp-3">
+            <p className="text-xs md:text-sm text-secondary-text">
               {campaign.excerpt}
             </p>
           </div>
