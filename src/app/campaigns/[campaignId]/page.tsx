@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import Comments from "@/components/campaigns/Comments";
 import ReportFlow from "@/components/campaigns/ReportFlow";
 import Avatar from "@/components/ui/Avatar";
@@ -72,8 +71,6 @@ export default function Page() {
               className="object-cover object-center"
               sizes="100vw"
             />
-
-            {/* overlay shown when no custom cover image is selected */}
             <div
               className={`absolute w-full ${
                 coverImg && "neon-wrapper"

@@ -1,9 +1,8 @@
 const mockCampaigns = [
   {
     id: "1",
-    title: "Long Campaign Name",
-    excerpt:
-      "I’m reaching out to share my story and ask for your support...",
+    title: "Campaign Name",
+    excerpt: "I’m reaching out to share my story and ask for your support...",
     image: "/campaign/card.svg",
     avatar: "/campaign/fish.svg",
     token: "BNB",
@@ -12,9 +11,8 @@ const mockCampaigns = [
   },
   {
     id: "2",
-    title: "Long Campaign Name",
-    excerpt:
-      "I’m reaching out to share my story and ask for your support...",
+    title: "Campaign Name",
+    excerpt: "I’m reaching out to share my story and ask for your support...",
     image: "/campaign/card.svg",
     avatar: "/campaign/fish.svg",
     token: "BNB",
@@ -23,9 +21,8 @@ const mockCampaigns = [
   },
   {
     id: "3",
-    title: "Long Campaign Name",
-    excerpt:
-      "I’m reaching out to share my story and ask for your support...",
+    title: "Campaign Name",
+    excerpt: "I’m reaching out to share my story and ask for your support...",
     image: "/campaign/card.svg",
     avatar: "/campaign/fish.svg",
     token: "BNB",
@@ -34,9 +31,8 @@ const mockCampaigns = [
   },
   {
     id: "4",
-    title: "Long Campaign Name",
-    excerpt:
-      "I’m reaching out to share my story and ask for your support...",
+    title: "Campaign Name",
+    excerpt: "I’m reaching out to share my story and ask for your support...",
     image: "/campaign/card.svg",
     avatar: "/campaign/fish.svg",
     token: "BNB",
@@ -45,9 +41,8 @@ const mockCampaigns = [
   },
   {
     id: "5",
-    title: "Long Campaign Name",
-    excerpt:
-      "I’m reaching out to share my story and ask for your support...",
+    title: "Campaign Name",
+    excerpt: "I’m reaching out to share my story and ask for your support...",
     image: "/campaign/card.svg",
     avatar: "/campaign/fish.svg",
     token: "BNB",
@@ -56,9 +51,8 @@ const mockCampaigns = [
   },
   {
     id: "6",
-    title: "Long Campaign Name",
-    excerpt:
-      "I’m reaching out to share my story and ask for your support...",
+    title: "Campaign Name",
+    excerpt: "I’m reaching out to share my story and ask for your support...",
     image: "/campaign/card.svg",
     avatar: "/campaign/fish.svg",
     tokenImage: "/campaign/BNB.svg",
