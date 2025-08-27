@@ -32,8 +32,8 @@ export default function ProfileTab() {
                 key={t.id}
                 role="tab"
                 aria-selected={active === t.id}
+                tabIndex={active === t.id ? 0 : -1}
                 onClick={() => setActive(t.id)}
-                aria-pressed={active === t.id}
                 className={`flex flex-col items-center justify-center text-sm focus:outline-none px-3 py-2 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/20 ${
                   active === t.id
                     ? "text-white"

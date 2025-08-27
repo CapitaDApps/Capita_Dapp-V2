@@ -123,7 +123,7 @@ export default function Page() {
           <p className="text-slate-300  text-sm leading-relaxed whitespace-pre-line">
             Our startup was born out of a passion for solving the specific pain
             point — for example, the challenges of renting affordable housing in
-            Nigeria. Since launching, we've reached important milestones,
+            Nigeria. Since launching, we&apos;ve reached important milestones,
             including developing a prototype and securing beta testers.
           </p>
 
