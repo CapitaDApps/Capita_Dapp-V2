@@ -20,7 +20,7 @@ export default function VideoHeader() {
           <h1 className="text-xl md:text-[40px] lg:text-[56px] font-semibold  leading-tight">
             Welcome to{" "}
           </h1>
-          <div className="relative aspect-auto w-[250px] h-[35px] md:h-[50px] md:w-[320px] lg:w-[380px] lg:h-[100px]">
+          <div className="relative aspect-auto w-[250px] h-[40px] md:h-[50px] md:w-[320px] lg:w-[380px] lg:h-[100px]">
             <Image src="/layout/wordmark.svg" alt="word" fill />
           </div>
         </div>
