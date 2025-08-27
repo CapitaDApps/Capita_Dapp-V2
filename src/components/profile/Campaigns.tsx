@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Avatar from "@/components/ui/Avatar";
-import TokensList from "@/components/ui/TokensList";
+// import Avatar from "@/components/ui/Avatar";
+// import TokensList from "@/components/ui/TokensList";
 import Image from "next/image";
 
 export default function Campaigns() {

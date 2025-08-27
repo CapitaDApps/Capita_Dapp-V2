@@ -56,7 +56,15 @@ export default function Page() {
 
       <div className="flex flex-col items-center justify-center gap-4 mt-12">
         <ProfileBio />
-        <ProfileTab />
+        <React.Suspense
+          fallback={
+            <div className="w-full py-8 text-center text-secondary-text">
+              Loading profile...
+            </div>
+          }
+        >
+          <ProfileTab />
+        </React.Suspense>
       </div>
     </div>
   );
