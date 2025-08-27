@@ -6,7 +6,7 @@ import Comments from "@/components/campaigns/Comments";
 import ReportFlow from "@/components/campaigns/ReportFlow";
 import Avatar from "@/components/ui/Avatar";
 import TokensList from "@/components/ui/TokensList";
-import PreviewImages from "@/components/campaigns/PreviewImages";
+// import PreviewImages from "@/components/campaigns/PreviewImages";
 import { TbFlag3 } from "react-icons/tb";
 
 const sampleComments = [
