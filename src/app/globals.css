@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 :root {
   --background: #0f1720;
@@ -13,13 +12,13 @@
   --font-sans: var(--font-sora);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0f1720;
     --sidebar-bg: #121212;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);

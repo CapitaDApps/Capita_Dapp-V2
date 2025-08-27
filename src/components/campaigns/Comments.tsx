@@ -130,7 +130,6 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
   function toggleReply(id: number) {
     setReplyOpen((s) => ({ ...s, [id]: !s[id] }));
     setReplyText((s) => ({ ...s, [id]: s[id] ?? "" }));
-    // ensure some replies are visible when opening
     setVisibleRepliesCount((s) => ({ ...s, [id]: s[id] ?? 3 }));
   }
 
@@ -267,13 +266,13 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                             onClick={() => startEdit(c.id, c.text)}
                             className="w-full text-left px-3 py-2 hover:bg-white/5 rounded-md"
                           >
-                            Edit comment
+                            Edit
                           </button>
                           <button
                             onClick={() => deleteComment(c.id)}
                             className="w-full text-left px-3 py-2 hover:bg-white/5 rounded-md"
                           >
-                            Delete comment
+                            Delete
                           </button>
                         </div>
                       )}

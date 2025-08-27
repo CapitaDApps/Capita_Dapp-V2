@@ -7,7 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 import { menuItems } from "@/lib/constants";
 import Image from "next/image";
@@ -29,20 +29,31 @@ export default function MobileSidebar() {
         side="left"
         className="w-[250px] border-none bg-[var(--sidebar-bg)] p-0 block lg:hidden"
       >
-        <SheetHeader>
-          <SheetTitle className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <div className="w-[200px] flex items-center flex-shrink-0">
-                <Image
-                  src={"/layout/logo.svg"}
-                  alt="capita_logo"
-                  width={180}
-                  height={40}
-                  className=" object-contain"
-                />
-              </div>
-            </Link>
-          </SheetTitle>
+        <SheetHeader className="px-4 pt-4">
+          <div className="flex items-center justify-between w-full">
+            <SheetTitle className="flex items-center">
+              <Link href="/" className="flex items-center">
+                <div className="w-[180px] flex items-center flex-shrink-0">
+                  <Image
+                    src={"/layout/logo.svg"}
+                    alt="capita_logo"
+                    width={180}
+                    height={40}
+                    className=" object-contain"
+                  />
+                </div>
+              </Link>
+            </SheetTitle>
+
+            <SheetClose asChild>
+              <button
+                aria-label="Close menu"
+                className="p-2 rounded-md text-foreground hover:bg-[rgba(255,255,255,0.04)] w-8 h-8 flex items-center justify-center ml-2"
+              >
+                <FaTimes className="w-4 h-4" />
+              </button>
+            </SheetClose>
+          </div>
 
           <div className="flex flex-col gap-2 mt-4 w-full px-2">
             {menuItems.map((item, index) => (

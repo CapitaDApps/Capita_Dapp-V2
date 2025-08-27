@@ -112,7 +112,7 @@ export default function Notifications() {
   }
 
   return (
-    <div className="p-6 sm:p-8">
+    <div className="p-6 sm:p-8 mt-12">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-[100px] md:mb-0">
           <div className="min-w-0">

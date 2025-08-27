@@ -5,16 +5,22 @@ import { z } from "zod";
 
 export const menuItems = [
   {
-    title: "My Campaigns",
-    icon: TbMoneybag,
-    route: "/my-campaigns",
-    slug: "campaigns",
-  },
-  {
     title: "Explore Campaigns",
     icon: CiSearch,
     route: "/explore-campaigns",
     slug: "explore-campaigns",
+  },
+  {
+    title: "My Donations",
+    icon: TbMoneybag,
+    route: "/my-donations",
+    slug: "donations",
+  },
+  {
+    title: "Profile",
+    icon: FaUser,
+    route: "/profile",
+    slug: "profile",
   },
   {
     title: "Notifications",
@@ -26,15 +32,7 @@ export const menuItems = [
     title: "Premium",
     icon: FaCrown,
     route: "/premium",
-
     slug: "premium",
-  },
-  {
-    title: "Profile",
-    icon: FaUser,
-    route: "/profile",
-
-    slug: "profile",
   },
   {
     title: "Help Center",

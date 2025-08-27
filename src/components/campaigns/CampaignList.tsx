@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import mockCampaigns from "@/lib/mockCampaigns";
 import CampaignCard from "./CampaignCard";
 
+
 export default function CampaignList() {
   const searchParams = useSearchParams();
   const filter = searchParams.get("filter") || "all-campaigns";
