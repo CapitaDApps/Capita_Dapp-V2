@@ -31,17 +31,19 @@ export default function MobileSidebar() {
       >
         <SheetHeader>
           <SheetTitle className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <div className="w-[200px] flex items-center flex-shrink-0">
-                <Image
-                  src={"/layout/logo.svg"}
-                  alt="capita_logo"
-                  width={180}
-                  height={40}
-                  className=" object-contain"
-                />
-              </div>
-            </Link>
+            <SheetClose asChild>
+              <Link href="/" className="flex items-center">
+                <div className="w-[200px] flex items-center flex-shrink-0">
+                  <Image
+                    src={"/layout/logo.svg"}
+                    alt="capita_logo"
+                    width={180}
+                    height={40}
+                    className=" object-contain"
+                  />
+                </div>
+              </Link>
+            </SheetClose>
           </SheetTitle>
 
           <div className="flex flex-col gap-2 mt-4 w-full px-2">
@@ -60,7 +62,7 @@ export default function MobileSidebar() {
 
             <SheetClose asChild className="mx-auto mt-4">
               <Link
-                href="/campaigns/create-campaigns"
+                href="/create-campaigns"
                 className="w-full px-8 inline-flex  py-3 bg-[var(--primary-blue)] text-white text-xs font-semibold rounded-full text-center cursor-pointer items-center justify-center"
               >
                 <GoPlus className="mr-2" />

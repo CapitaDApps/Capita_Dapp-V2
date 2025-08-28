@@ -35,7 +35,7 @@ export default function Page() {
   const progressPct = 12;
 
   return (
-    <div className="min-h-screen bg-[#071019] text-white py-8 px-4 md:px-8 lg:px-16">
+    <div className="min-h-screen  text-white py-8 px-4 md:px-8 lg:px-16">
       <div className="w-full mx-auto">
         <div className="mb-6 flex items-center justify-between">
           <a className="text-sm text-slate-300 hover:underline">&lt; Back</a>

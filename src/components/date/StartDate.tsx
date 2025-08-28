@@ -14,14 +14,14 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { DateOnlySchema } from "@/lib/constants";
+import { CampaignFormSchema } from "@/lib/constants";
 import { z } from "zod";
 import { Control } from "react-hook-form";
 import Image from "next/image";
 import { useScrollModal } from "@/components/hooks/useScrollModal";
 
 interface Props {
-  control: Control<z.infer<typeof DateOnlySchema>>;
+  control: Control<z.infer<typeof CampaignFormSchema>>;
 }
 
 export default function StartDate({ control }: Props) {
@@ -40,7 +40,7 @@ export default function StartDate({ control }: Props) {
                 <div className="neon-wrapper">
                   <div
                     className={cn(
-                      "space-y-1 cursor-pointer rounded-[8px] p-3",
+                      "space-y-1 cursor-pointer rounded-[8px] p-3 py-2",
                       "bg-[var(--form-blue)] border border-[var(--form-blue-border)]"
                     )}
                     role="button"
@@ -58,7 +58,7 @@ export default function StartDate({ control }: Props) {
                       {field.value ? (
                         format(new Date(field.value), "PPP")
                       ) : (
-                        <span className="text-primary-text">
+                        <span className="text-primary-text text-gray-500">
                           e.g 01/01/2025
                         </span>
                       )}
@@ -82,7 +82,10 @@ export default function StartDate({ control }: Props) {
               </FormControl>
             </PopoverTrigger>
 
-            <PopoverContent className="p-0 bg-primary-bg rounded-[16px] w-fit border-none mr-3" align="start">
+            <PopoverContent
+              className="p-0 bg-primary-bg rounded-[16px] w-fit border-none mr-3"
+              align="start"
+            >
               <Calendar
                 mode="single"
                 selected={field.value ? new Date(field.value) : undefined}

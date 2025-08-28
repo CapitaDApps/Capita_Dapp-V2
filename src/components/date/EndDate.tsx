@@ -14,7 +14,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { DateOnlySchema } from "@/lib/constants";
+import { CampaignFormSchema } from "@/lib/constants";
 import { z } from "zod";
 import { Control } from "react-hook-form";
 import Image from "next/image";
@@ -22,7 +22,7 @@ import { useOustsideClick } from "@/components/hooks/useOutsideClick";
 import { useScrollModal } from "@/components/hooks/useScrollModal";
 
 interface Props {
-  control: Control<z.infer<typeof DateOnlySchema>>;
+  control: Control<z.infer<typeof CampaignFormSchema>>;
   startDate: Date | null;
 }
 
@@ -42,7 +42,7 @@ export default function EndDate({ control, startDate }: Props) {
                 <div className="neon-wrapper">
                   <div
                     className={cn(
-                      "space-y-1 cursor-pointer rounded-[8px] p-3",
+                      "space-y-1 cursor-pointer rounded-[8px] p-3 py-2",
                       "bg-[var(--form-blue)] border border-[var(--form-blue-border)]"
                     )}
                   >
@@ -58,7 +58,7 @@ export default function EndDate({ control, startDate }: Props) {
                       {field.value ? (
                         format(new Date(field.value), "PPP")
                       ) : (
-                        <span className="text-primary-text">
+                        <span className="text-primary-text text-gray-500">
                           e.g 01/01/2025
                         </span>
                       )}

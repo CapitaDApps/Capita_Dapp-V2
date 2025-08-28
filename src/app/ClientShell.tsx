@@ -20,7 +20,16 @@ export default function ClientShell({
         <MobileSidebar />
       </div>
       <div />
-      <div className="min-h-screen flex flex-col ">
+      <div
+        style={{
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/layout/bg.jpg)",
+        }}
+        className="min-h-screen flex flex-col "
+      >
         <MobileHeader />
         <Header />
 
