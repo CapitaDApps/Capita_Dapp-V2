@@ -39,7 +39,7 @@ export default function Footer() {
   ];
   const date = new Date();
   return (
-    <div className="bg-primary-bg">
+    <div className="bg-[#121212]">
       <div className="flex md:flex-row gap-1 flex-col md:items-center justify-between border-b border-silver py-4 px-2.5 ">
         <div className="flex items-center text-start">
           <Image
@@ -48,7 +48,7 @@ export default function Footer() {
             alt="capita_logo"
             quality={100}
             src="/layout/logo.svg"
-            className="w-[100px] md:w-[150px] h-auto"
+            className="w-[150px] md:w-[150px] h-auto"
           />
           {/* <h2 className="font-bold text-xs text-primary-text pl-1">
             ChainFundMe

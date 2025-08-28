@@ -1,9 +1,16 @@
+import { usePathname } from "next/navigation";
 import React from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
 
 export default function MobileHeader() {
+  const pathname = usePathname();
+  const slug = pathname.split("/")[1] || "";
   return (
-    <header className="bg-[#121212]/40 backdrop-blur-sm fixed z-20 w-full py-8 px-4 h-12 flex items-center justify-between lg:hidden">
+    <header
+      className={` ${
+        slug ? "bg-[#121212]" : "bg-[#121212]/40 backdrop-blur-sm"
+      } top-0 left-0 w-full z-40 fixed  py-8 px-4 h-12 flex items-center justify-between lg:hidden`}
+    >
       <div />
       <div className="flex items-center gap-3">
         <div className="relative">

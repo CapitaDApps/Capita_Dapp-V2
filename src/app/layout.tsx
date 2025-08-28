@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sora.variable} bg antialiased relative min-h-screen  max-w-[144rem] mx-auto bg-[var(--background)`}
+        className={`${sora.variable}  antialiased relative min-h-screen  max-w-[144rem] mx-auto bg-[var(--background)`}
       >
         <NextTopLoader color="#003DEF" height={4} showSpinner={false} />
         <ClientShell>

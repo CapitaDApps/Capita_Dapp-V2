@@ -49,7 +49,7 @@ export default function Faq() {
             <AccordionContent className="text-xs md:text-sm  text-gray-300 leading-relaxed">
               {faq.answer}
             </AccordionContent>
-            <div className="h-[1px] w-full bg-[linear-gradient(270deg,#000000_38.41%,#277bee_46.67%)]" />
+            <div className="h-[1px] w-full bg-[linear-gradient(270deg,#277be.41%,#022557_46.67%)]" />
           </AccordionItem>
         ))}
       </Accordion>
