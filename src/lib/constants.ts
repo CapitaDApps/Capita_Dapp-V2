@@ -122,17 +122,14 @@ export const CampaignFormSchema = z.object({
     .min(1, { message: "Please select at least one token." })
     .max(5, { message: "You can select up to 5 tokens only." }),
 });
-
-// fundTarget: z.coerce
-//   .number()
-//   .gte(500, { message: "Minimum fund target is 500 USD" }),
-// website: z.string().optional(),
-// startDate: z.string().min(2, {
-//   message: "date must be at least 2 characters.",
-// }),
-// endDate: z.string().min(2, {
-//   message: "date must be at least 2 characters.",
-// }),
-// category: z.string().min(1, {
-//   message: "Please select a category.",
-// }),
+export const EditProfileFormSchema = z.object({
+  displayName: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
+  bio: z.string().min(20, {
+    message: "bio must be at least 20 characters.",
+  }),
+  email: z.string().email(),
+  xLink: z.string().optional(),
+  lnLink: z.string().optional(),
+});
