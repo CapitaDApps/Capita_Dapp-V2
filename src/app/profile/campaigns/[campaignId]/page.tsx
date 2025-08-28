@@ -6,7 +6,7 @@ import Comments from "@/components/campaigns/Comments";
 import ReportFlow from "@/components/campaigns/ReportFlow";
 import Avatar from "@/components/ui/Avatar";
 import TokensList from "@/components/ui/TokensList";
-import PreviewImages from "@/components/campaigns/PreviewImages";
+// import PreviewImages from "@/components/campaigns/PreviewImages";
 import { TbFlag3 } from "react-icons/tb";
 
 const sampleComments = [
@@ -29,21 +29,11 @@ const sampleComments = [
 ];
 
 export default function Page() {
-  const [selectedToken, setSelectedToken] = useState("CPT");
-  const [amount, setAmount] = useState("");
   const [reportOpen, setReportOpen] = useState(false);
 
   const coverImg = false;
 
   const progressPct = 12;
-
-  //dummy supporting images for PreviewImages comp
-  const supportImages = [
-    "/campaign/c.png",
-    "/campaign/banner.png",
-    "/campaign/c.png",
-    "/campaign/banner.png",
-  ];
 
   return (
     <div className="min-h-screen  text-white py-8 px-4 md:px-8 lg:px-16 mt-12">
@@ -108,7 +98,13 @@ export default function Page() {
           />
 
           <div className="flex items-center gap-3">
+            <div className="flex">
             <h1 className="text-sm md:text-2xl font-semibold">Campaign Name</h1>
+
+            <div>
+
+            </div>
+            </div>
             <Image
               src="/layout/checkmark.svg"
               alt="checkmark"
@@ -126,10 +122,6 @@ export default function Page() {
             Nigeria. Since launching, we&apos;ve reached important milestones,
             including developing a prototype and securing beta testers.
           </p>
-
-          <div>
-            <PreviewImages supportImages={supportImages} />
-          </div>
 
           {/* Progress */}
           <div className="rounded-md  bg-transparent">
@@ -152,61 +144,24 @@ export default function Page() {
             <TokensList />
           </div>
 
-          <div className="rounded-md p-4 bg-transparent border-t border-[#142129]">
-            <div className="flex  flex-wrap place-items-end gap-3 md:gap-6 mb-4">
-              <div className="w-[100%] py-2">
-                <label className="text-sm text-slate-400 block mb-2">
-                  Select Token
-                </label>
-                <div className="relative">
-                  <select
-                    value={selectedToken}
-                    onChange={(e) => setSelectedToken(e.target.value)}
-                    className="w-full rounded-md bg-[#0f1720] border border-[#20303a] px-3 py-2 h-12 text-white text-sm appearance-none pr-8"
-                  >
-                    <option value="CPT">CPT</option>
-                    <option value="ETH">ETH</option>
-                    <option value="USDC">USDC</option>
-                  </select>
-                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M6 9l6 6 6-6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </div>
+          <div className="mt-4 flex flex-col sm:flex-row items-center justify-center  gap-3">
+            <button
+              type="button"
+              aria-label="Withdraw funds"
+              className="w-full sm:w-auto bg-white text-black rounded-md px-6 py-2 text-sm md:text-lg font-medium shadow-sm"
+              onClick={() => {}}
+            >
+              Withdraw
+            </button>
 
-              <div className="w-[100%] py-2">
-                <label className="text-sm text-slate-400 block mb-2">
-                  Enter Amount
-                </label>
-                <input
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  placeholder="$0.00"
-                  className="w-full rounded-md bg-[#0f1720] border border-[#20303a] px-3 py-2 h-12 text-white text-sm"
-                />
-                <div className="text-xs text-slate-500 mt-2">0.000ETH</div>
-              </div>
-
-              <div className="w-[100%] py-2">
-                <button className="w-[100%] bg-gradient-to-r from-[#003DEF] to-[#001F7A] px-4 py-3 rounded-md text-white last:col-span-2 md:last:col-span-1">
-                  Fund Campaign
-                </button>
-              </div>
-            </div>
+            <button
+              type="button"
+              aria-label="End campaign"
+              className="w-full sm:w-auto border border-white/40 text-white rounded-md px-6 py-2 text-sm md:text-lg font-medium hover:bg-white/5"
+              onClick={() => {}}
+            >
+              End Campaign
+            </button>
           </div>
 
           <Comments initial={sampleComments} />

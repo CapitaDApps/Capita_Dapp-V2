@@ -1,22 +1,15 @@
 "use client";
 
 import { TbMoneybag } from "react-icons/tb";
-import { AiOutlineUser } from "react-icons/ai";
-import { FiLock } from "react-icons/fi";
-import { GiReceiveMoney } from "react-icons/gi";
-import CampaignList from "@/components/campaigns/CampaignList";
+import ProfileCampaignCard from "../campaigns/ProfileCampaignCard";
+import mockCampaigns from "@/lib/mockCampaigns";
 import React, { useState } from "react";
 import Image from "next/image";
 
 export default function ProfileTab() {
   const [active, setActive] = useState<string>("campaigns");
 
-  const tabs = [
-    { id: "campaigns", label: "Campaigns", icon: <TbMoneybag /> },
-    { id: "trust", label: "Trust Locks", icon: <AiOutlineUser /> },
-    { id: "stakes", label: "Stakes", icon: <FiLock /> },
-    { id: "lends", label: "Lends", icon: <GiReceiveMoney /> },
-  ];
+  const tabs = [{ id: "campaigns", label: "Campaigns", icon: <TbMoneybag /> }];
 
   return (
     <>
@@ -103,7 +96,15 @@ export default function ProfileTab() {
             </div>
           </div>
 
-          <CampaignList />
+          <div className="mt-6 w-full mx-auto px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 items-stretch justify-items-center sm:justify-items-stretch">
+              {mockCampaigns.map((c) => (
+                <div key={c.id} className="w-full max-w-[340px] mx-auto">
+                  <ProfileCampaignCard campaign={c} />
+                </div>
+              ))}
+            </div>
+          </div>
         </>
       ) : (
         <div className="w-full py-20 flex items-center justify-center">
