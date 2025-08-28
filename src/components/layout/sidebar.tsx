@@ -30,7 +30,11 @@ export default function Sidebar() {
             key={index}
             href={item.route}
             className={`
-            ${slug === item.slug ? "bg-[#000033] border-r-[4px] rounded-none border-[#0056CC]" : ""}
+            ${
+              slug === item.slug
+                ? "bg-[#000033] border-r-[4px] rounded-none border-[#0056CC]"
+                : ""
+            }
               flex items-center px-4 py-2 hover:bg-[var(--Shadow, #000033)] text-primary-text text-[12px] font-bold gap-3 cursor-pointer rounded-md
               `}
           >

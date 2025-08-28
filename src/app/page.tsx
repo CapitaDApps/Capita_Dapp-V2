@@ -19,7 +19,7 @@ const ChainFundMe = () => {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center md:justify-center gap-3 px-6 md:px-0">
+      <div className="flex flex-col md:flex-row items-center text-center md:justify-center gap-3 px-6 md:px-0">
         <Link
           href="/campaigns/create-campaigns"
           className="w-50 md:w-auto  items-center text-center justify-center bg-gradient-custom px-6  py-3  rounded-lg font-semibold text-xs  md:text-sm transition-colors"
@@ -36,7 +36,7 @@ const ChainFundMe = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap- mb-10">
           <div className="w-full relative aspect-auto size-[250px] md:size-[350px]  flex justify-center">
             <Image
-              src={"/layout/list2.svg"}
+              src={"/layout/list1.svg"}
               alt="List illustration"
               fill
               className="w-full object-center object-contain"

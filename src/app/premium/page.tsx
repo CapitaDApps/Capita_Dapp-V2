@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Premium() {
   return (
-    <div className="min-h-screen bg-[#121212]">
+    <div className="min-h-screen bg-[#121212] mt-12">
       {/* Hero */}
       <section
         className="py-14"

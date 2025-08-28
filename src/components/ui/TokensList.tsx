@@ -14,10 +14,9 @@ const DEFAULT_TOKENS = ["BNB", "Eth(Base)", "USDC(Base)"];
 function getTokenIconPath(token: string) {
   const s = token
     .toLowerCase()
-    .replace(/\(.*\)/, "") 
-    .replace(/[^a-z0-9]/g, "") 
+    .replace(/\(.*\)/, "")
+    .replace(/[^a-z0-9]/g, "")
     .trim();
-
 
   const map: Record<string, string> = {
     eth: "/tokens/eth.svg",
@@ -35,14 +34,25 @@ export default function TokensList({
 }: Props) {
   return (
     <div>
-      <div className="text-sm text-slate-400 mb-2">Tokens</div>
-      <div className={`flex gap-2 items-center ${className}`}>
+      <div className="text-sm mb-2">Accepted Tokens</div>
+      <div
+        className={`flex flex-wrap gap-2 items-center justify-start ${className}`}
+      >
         {tokens.map((t) => {
           const icon = showIcons ? getTokenIconPath(t) : null;
           return (
-            <div key={t} className="px-3 py-1 rounded-full bg-[#0f1720] text-sm flex items-center gap-2">
+            <div
+              key={t}
+              className="px-2 sm:px-3 py-1 rounded-full bg-[#0f1720] text-xs sm:text-sm flex items-center gap-2 min-w-[56px] justify-center"
+            >
               {icon && (
-                <Image src={icon} alt={`${t} icon`} width={18} height={18} className="object-contain" />
+                <Image
+                  src={icon}
+                  alt={`${t} icon`}
+                  width={18}
+                  height={18}
+                  className="object-contain"
+                />
               )}
               <span>{t}</span>
             </div>

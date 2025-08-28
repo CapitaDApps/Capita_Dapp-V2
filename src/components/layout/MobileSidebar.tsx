@@ -16,8 +16,8 @@ import { usePathname } from "next/navigation";
 import { GoPlus } from "react-icons/go";
 
 export default function MobileSidebar() {
-  const pathname = usePathname();
-  const slug = pathname.split("/").at(pathname.split("/").length >= 2 ? 1 : 1);
+  // const pathname = usePathname();
+  // const slug = pathname.split("/").at(pathname.split("/").length >= 2 ? 1 : 1);
 
   return (
     <Sheet>
