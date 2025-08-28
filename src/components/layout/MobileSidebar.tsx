@@ -16,8 +16,8 @@ import { usePathname } from "next/navigation";
 import { GoPlus } from "react-icons/go";
 
 export default function MobileSidebar() {
-  // const pathname = usePathname();
-  // const slug = pathname.split("/").at(pathname.split("/").length >= 2 ? 1 : 1);
+  const pathname = usePathname();
+  const slug = pathname.split("/").at(pathname.split("/").length >= 2 ? 1 : 1);
 
   return (
     <Sheet>
@@ -46,13 +46,20 @@ export default function MobileSidebar() {
             </SheetClose>
           </SheetTitle>
 
-          <div className="flex flex-col gap-2 mt-4 w-full px-2">
+          <div className="flex flex-col gap-2 mt-4 w-full px-">
             {menuItems.map((item, index) => (
               <SheetClose key={item.route} asChild>
                 <Link
                   key={index}
                   href={item.route}
-                  className="flex items-center  py-2 hover:bg-[var(--Shadow, #000033)] text-primary-text text-[12px] font-bold gap-3 cursor-pointer rounded-md"
+                  className={`
+            ${
+              slug === item.slug
+                ? "bg-[#000033] border-r-[4px] rounded-none border-[#0056CC]"
+                : ""
+            }
+              flex items-center px-4 py-2 hover:bg-[var(--Shadow, #000033)] text-primary-text text-[12px] font-bold gap-3 cursor-pointer rounded-md
+              `}
                 >
                   <span className="text-lg">{<item.icon />}</span>
                   <span className="truncate">{item.title}</span>
