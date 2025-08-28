@@ -24,14 +24,17 @@ export default function Verified() {
             />
           </div>
           <div className="flex items-baseline justify-center space-x-1">
-            <span className="text-2xl lg:text-3xl font-bold">$30</span>
-            <span className="text-gray-400 text-sm">/annum</span>
+            {/* <span className="text-2xl lg:text-3xl font-bold">$30</span>
+            <span className="text-gray-400 text-sm">/annum</span> */}
           </div>
         </div>
 
         <div className="space-y-3 mb-8">
           {verificationFeatures.map((feature, index) => (
-            <div key={index} className="flex items-start text-xs md:text-sm space-x-3">
+            <div
+              key={index}
+              className="flex items-start text-xs md:text-sm space-x-3"
+            >
               <GiCheckMark className=" flex-shrink-0 text-green-400" />
               <span className="text-gray-300">{feature}</span>
             </div>

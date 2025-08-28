@@ -35,33 +35,21 @@ export const menuItems = [
     slug: "premium",
   },
   {
-    title: "Help Center",
-    icon: FaQuestionCircle,
-    route: "/help-center",
-    slug: "help-center",
+    title: "RampCash",
+    icon: TbMoneybag,
+    route: "/ramp-cash",
+    slug: "ramp-cash",
   },
 ];
 
-export const filters = [
-  {
-    id: 1,
-    title: "All Campaigns",
-    svg: "/campaign/menu.png",
-    slug: "all-campaigns",
-  },
-  {
-    id: 2,
-    title: "My Contributions",
-    svg: "/campaign/money_bag.png",
-    slug: "my-contributions",
-  },
-  {
-    id: 3,
-    title: "Favorites",
-    svg: "/campaign/favourite.png",
-    slug: "favorites",
-  },
-];
+// export const filters = [
+//   {
+//     id: 1,
+//     title: "All Campaigns",
+//     svg: "/campaign/menu.png",
+//     slug: "all-campaigns",
+//   },
+// ];
 
 export const DateOnlySchema = z
   .object({

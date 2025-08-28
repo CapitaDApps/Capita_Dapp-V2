@@ -2,7 +2,8 @@ const mockCampaigns = [
   {
     id: "1",
     title: "Campaign Name",
-    excerpt: "I’m reaching out to share my story and ask for your support...",
+    excerpt:
+      "I’m reaching out to share my story and ask for your support I’m reaching out to share my story and ask for your support I’m reaching out to share my story and ask for your supportI’m reaching out to share my story and ask for your support",
     image: "/campaign/card.svg",
     avatar: "/campaign/fish.svg",
     token: "BNB",

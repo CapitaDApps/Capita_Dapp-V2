@@ -21,7 +21,7 @@ export default function ProfileCampaignCard({
 }) {
   const router = useRouter();
   return (
-    <article className="w-full h-auto md:h-[380px] lg:h-[400px] rounded-[16px] bg-[var(--Primary-Background,#121212)] border-2 border-transparent hover:border-[#6B4EFF] transition-colors duration-200 overflow-hidden flex flex-col">
+    <article className="w-full h-auto md:h-[380px] lg:h-[400px] rounded-[16px] bg-[var(--Primary-Background,#121212)] border-2 border-transparent hover:border-[#6B4EFF] transition-colors duration-200 overflow-hidden flex flex-col my-3">
       <div className="relative w-full h-44 md:h-[180px] lg:h-[220px]">
         <Image
           src={campaign.image}
@@ -79,7 +79,7 @@ export default function ProfileCampaignCard({
             </span>
           </div>
           <Button
-            className="w-auto md:w-[81px] h-9 md:h-[36px] px-3 md:px-[20px] py-[6px] md:py-[8px] text-sm bg-[var(--Primary,#1038A2)] rounded-md flex items-center justify-center"
+            className="w-auto md:w-[81px] h-9 md:h-[36px] px-3 md:px-[20px] py-[6px] md:py-[8px] text-sm bg-gradient-to-r from-[#003DEF] to-[#001F7A] rounded-md flex items-center justify-center"
             onClick={() => router.push(`/profile/campaigns/${campaign.id}`)}
           >
             View

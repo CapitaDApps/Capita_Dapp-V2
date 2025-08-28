@@ -22,12 +22,38 @@ export default function ReportFlow({ open, onClose }: Props) {
     }
   }, [open]);
 
+  // Prevent background scrolling while modal is open
+  useEffect(() => {
+    if (!open) return;
+
+    const originalOverflow = document.body.style.overflow;
+    const originalPosition = document.body.style.position;
+    const originalTop = document.body.style.top;
+    const originalWidth = document.body.style.width;
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+
+    // Lock body scroll and preserve position
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
+    return () => {
+      // Restore original styles and scroll position
+      document.body.style.overflow = originalOverflow || "";
+      document.body.style.position = originalPosition || "";
+      document.body.style.top = originalTop || "";
+      document.body.style.width = originalWidth || "";
+      window.scrollTo(0, scrollY);
+    };
+  }, [open]);
+
   if (!open) return null;
 
   // Compact preview card (first click)
   if (step === 1) {
     return (
-      <div className="fixed inset-0 z-50 flex items-start justify-center pt-24">
+      <div className="fixed inset-0 z-50 flex items-center md:items-start justify-center pt-24">
         <div className="absolute inset-0 bg-black/60" onClick={onClose} />
 
         <FloatingReportButton
@@ -35,7 +61,7 @@ export default function ReportFlow({ open, onClose }: Props) {
           right="9rem"
           onClick={() => setStep(2)}
         >
-          <div className="text-sm md:text-lg py-3 md:py-5">Report Campaign</div>
+          <div className="text-sm md:text-lg py-3">Report Campaign</div>
           <Image
             src={"/layout/flag.svg"}
             width={12}
@@ -55,7 +81,7 @@ export default function ReportFlow({ open, onClose }: Props) {
         <div
           role="dialog"
           aria-modal="true"
-          className="relative z-10 w-full max-w-md rounded-lg bg-[#071018] border border-[var(--form-blue-border)] shadow-lg overflow-hidden"
+          className="relative z-10 w-full h-full max-w-md rounded-lg bg-[#071018] border border-[var(--form-blue-border)] shadow-lg overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
@@ -188,7 +214,7 @@ export default function ReportFlow({ open, onClose }: Props) {
           <div className="border-t border-[#1b2226] px-6 py-4 bg-[#071018]">
             <button
               onClick={() => setStep(3)}
-              className="w-full py-4 rounded-full bg-gradient-to-r from-[#003DEF] to-[#001F7A] text-white text-sm md:text-lg"
+              className="w-full py-2 rounded-full bg-gradient-to-r from-[#003DEF] to-[#001F7A] text-white text-sm md:text-lg"
             >
               Next
             </button>

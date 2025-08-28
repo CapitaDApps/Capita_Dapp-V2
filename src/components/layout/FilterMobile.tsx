@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { filters } from "@/lib/constants";
+// import { filters } from "@/lib/constants";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { IoFilterOutline } from "react-icons/io5";
@@ -86,7 +86,7 @@ export default function FilterMobile() {
                   Filters
                 </div>
 
-                <div className="flex flex-col gap-2">
+                {/* <div className="flex flex-col gap-2">
                   {filters.map((fil) => {
                     const isActive = active === fil.slug;
                     return (
@@ -119,14 +119,14 @@ export default function FilterMobile() {
                       </DropdownMenuItem>
                     );
                   })}
-                </div>
+                </div> */}
               </DropdownMenuContent>
             </DropdownMenuPortal>
           </DropdownMenu>
         </div>
       </form>
 
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <div
           className="flex items-center gap-3 overflow-x-auto pb-1 hide-scrollbar"
           role="tablist"
@@ -153,7 +153,7 @@ export default function FilterMobile() {
             );
           })}
         </div>
-      </div>
+      </div> */}
 
       <style jsx>{`
         .hide-scrollbar {
