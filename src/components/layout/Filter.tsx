@@ -7,20 +7,20 @@ import Link from "next/link";
 import DropdownFilter from "@/components/campaigns/DropdownFilter";
 import DropdownCategory from "@/components/campaigns/DropdownCategory";
 
-import { filters } from "@/lib/constants";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+// import { filters } from "@/lib/constants";
+// import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function Filter() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  // const router = useRouter();
+  // const pathname = usePathname();
+  // const searchParams = useSearchParams();
 
-  function handleClick(par: string) {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("filter", par);
-    router.push(`${pathname}?${params.toString()}`);
-  }
-  const active = searchParams.get("filter") || "all-campaigns";
+  // function handleClick(par: string) {
+  //   const params = new URLSearchParams(searchParams.toString());
+  //   params.set("filter", par);
+  //   router.push(`${pathname}?${params.toString()}`);
+  // }
+  // const active = searchParams.get("filter") || "all-campaigns";
   return (
     <div className="hidden lg:flex flex-col gap-3">
       <div className="flex items-center justify-between">
@@ -37,7 +37,7 @@ export default function Filter() {
             className="text-sm font-normal text-text-gray pl-3 pr-4 py-1.5 focus-visible:outline-none focus-visible:ring-0"
           />
         </div>
-        <div className="flex items-center gap-5">
+        {/* <div className="flex items-center gap-5">
           <div className="flex items-center gap-4">
             {filters.map((fil) => (
               <button
@@ -54,9 +54,9 @@ export default function Filter() {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
 
-        <Link href={"/chainfundme/usertype"}>
+        <Link href={"/create-campaigns"}>
           <Button className="rounded-lg p-2 flex gap-2 text-[11px] hover:bg-transparent duration-500 transition-all hover:scale-[1.06] bg-transparent text-secondary-text items-center border border-secondary-text">
             <p>Create Campaign</p>
             <MdEdit />

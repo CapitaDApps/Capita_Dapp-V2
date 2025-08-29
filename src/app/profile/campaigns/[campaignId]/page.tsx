@@ -39,7 +39,12 @@ export default function Page() {
     <div className="min-h-screen  text-white py-8 px-4 md:px-8 lg:px-16 mt-12">
       <div className="w-full mx-auto">
         <div className="mb-6 flex items-center justify-between">
-          <a className="text-sm text-slate-300 hover:underline">&lt; Back</a>
+          <a
+            className="text-sm text-slate-300 hover:underline cursor-pointer"
+            onClick={() => window.history.back()}
+          >
+            &lt; Back
+          </a>
 
           <button
             onClick={() => setReportOpen(true)}
@@ -99,11 +104,11 @@ export default function Page() {
 
           <div className="flex items-center gap-3">
             <div className="flex">
-            <h1 className="text-sm md:text-2xl font-semibold">Campaign Name</h1>
+              <h1 className="text-sm md:text-2xl font-semibold">
+                Campaign Name
+              </h1>
 
-            <div>
-
-            </div>
+              <div></div>
             </div>
             <Image
               src="/layout/checkmark.svg"

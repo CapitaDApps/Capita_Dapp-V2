@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { filters } from "@/lib/constants";
+// import { filters } from "@/lib/constants";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { IoFilterOutline } from "react-icons/io5";
@@ -10,10 +10,10 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuPortal,
-  DropdownMenuItem,
+  // DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
+// import { Checkbox } from "@/components/ui/checkbox";
+// import { Label } from "@/components/ui/label";
 import { useOustsideClick } from "@/components/hooks/useOutsideClick";
 
 export default function FilterMobile() {
@@ -31,12 +31,13 @@ export default function FilterMobile() {
     router.push(`${pathname}?${params.toString()}`);
   }
 
-  function handleClick(par: string) {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("filter", par);
-    router.push(`${pathname}?${params.toString()}`);
-  }
-  const active = searchParams.get("filter") || "all-campaigns";
+  // function handleClick(par: string) {
+  //   const params = new URLSearchParams(searchParams.toString());
+  //   params.set("filter", par);
+  //   router.push(`${pathname}?${params.toString()}`);
+  // }
+  // const active = searchParams.get("filter") || "all-campaigns";
+  
   return (
     <div className="lg:hidden mt-4">
       <form onSubmit={handleSearch} className="flex items-center gap-3">
@@ -86,7 +87,7 @@ export default function FilterMobile() {
                   Filters
                 </div>
 
-                <div className="flex flex-col gap-2">
+                {/* <div className="flex flex-col gap-2">
                   {filters.map((fil) => {
                     const isActive = active === fil.slug;
                     return (
@@ -119,14 +120,14 @@ export default function FilterMobile() {
                       </DropdownMenuItem>
                     );
                   })}
-                </div>
+                </div> */}
               </DropdownMenuContent>
             </DropdownMenuPortal>
           </DropdownMenu>
         </div>
       </form>
 
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <div
           className="flex items-center gap-3 overflow-x-auto pb-1 hide-scrollbar"
           role="tablist"
@@ -153,7 +154,7 @@ export default function FilterMobile() {
             );
           })}
         </div>
-      </div>
+      </div> */}
 
       <style jsx>{`
         .hide-scrollbar {

@@ -8,6 +8,7 @@ import Avatar from "@/components/ui/Avatar";
 import TokensList from "@/components/ui/TokensList";
 import PreviewImages from "@/components/campaigns/PreviewImages";
 import { TbFlag3 } from "react-icons/tb";
+import { useRouter } from "next/navigation";
 
 const sampleComments = [
   {
@@ -32,6 +33,7 @@ export default function Page() {
   const [selectedToken, setSelectedToken] = useState("CPT");
   const [amount, setAmount] = useState("");
   const [reportOpen, setReportOpen] = useState(false);
+  const router = useRouter();
 
   const coverImg = false;
 
@@ -49,7 +51,13 @@ export default function Page() {
     <div className="min-h-screen  text-white py-8 px-4 md:px-8 lg:px-16 mt-12">
       <div className="w-full mx-auto">
         <div className="mb-6 flex items-center justify-between">
-          <a className="text-sm text-slate-300 hover:underline">&lt; Back</a>
+          <button
+            onClick={() => router.back()}
+            aria-label="Go back"
+            className="text-sm text-slate-300 hover:underline"
+          >
+            &lt; Back
+          </button>
 
           <button
             onClick={() => setReportOpen(true)}
@@ -153,7 +161,7 @@ export default function Page() {
           </div>
 
           <div className="rounded-md p-4 bg-transparent border-t border-[#142129]">
-            <div className="flex  flex-wrap place-items-end gap-3 md:gap-6 mb-4">
+            <div className="flex flex-row gap-3 md:gap-6 mb-4">
               <div className="w-[100%] py-2">
                 <label className="text-sm text-slate-400 block mb-2">
                   Select Token
@@ -200,12 +208,11 @@ export default function Page() {
                 />
                 <div className="text-xs text-slate-500 mt-2">0.000ETH</div>
               </div>
-
-              <div className="w-[100%] py-2">
-                <button className="w-[100%] bg-gradient-to-r from-[#003DEF] to-[#001F7A] px-4 py-3 rounded-md text-white last:col-span-2 md:last:col-span-1">
-                  Fund Campaign
-                </button>
-              </div>
+            </div>
+            <div className="w-[100%] py-2">
+              <button className="w-[100%] bg-gradient-to-r from-[#003DEF] to-[#001F7A] px-4 py-3 rounded-md text-white last:col-span-2 md:last:col-span-1">
+                Fund Campaign
+              </button>
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 import { TbMoneybag } from "react-icons/tb";
 import { CiSearch } from "react-icons/ci";
-import { FaBell, FaCrown, FaQuestionCircle, FaUser } from "react-icons/fa";
+import { FaBell, FaCrown, FaUser } from "react-icons/fa";
 import { z } from "zod";
 
 export const menuItems = [
@@ -35,33 +35,21 @@ export const menuItems = [
     slug: "premium",
   },
   {
-    title: "Help Center",
-    icon: FaQuestionCircle,
-    route: "/help-center",
-    slug: "help-center",
+    title: "RampCash",
+    icon: TbMoneybag,
+    route: "/ramp-cash",
+    slug: "ramp-cash",
   },
 ];
 
-export const filters = [
-  {
-    id: 1,
-    title: "All Campaigns",
-    svg: "/campaign/menu.png",
-    slug: "all-campaigns",
-  },
-  {
-    id: 2,
-    title: "My Contributions",
-    svg: "/campaign/money_bag.png",
-    slug: "my-contributions",
-  },
-  {
-    id: 3,
-    title: "Favorites",
-    svg: "/campaign/favourite.png",
-    slug: "favorites",
-  },
-];
+// export const filters = [
+//   {
+//     id: 1,
+//     title: "All Campaigns",
+//     svg: "/campaign/menu.png",
+//     slug: "all-campaigns",
+//   },
+// ];
 
 export const DateOnlySchema = z
   .object({
@@ -134,17 +122,14 @@ export const CampaignFormSchema = z.object({
     .min(1, { message: "Please select at least one token." })
     .max(5, { message: "You can select up to 5 tokens only." }),
 });
-
-// fundTarget: z.coerce
-//   .number()
-//   .gte(500, { message: "Minimum fund target is 500 USD" }),
-// website: z.string().optional(),
-// startDate: z.string().min(2, {
-//   message: "date must be at least 2 characters.",
-// }),
-// endDate: z.string().min(2, {
-//   message: "date must be at least 2 characters.",
-// }),
-// category: z.string().min(1, {
-//   message: "Please select a category.",
-// }),
+export const EditProfileFormSchema = z.object({
+  displayName: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
+  bio: z.string().min(20, {
+    message: "bio must be at least 20 characters.",
+  }),
+  email: z.string().email(),
+  xLink: z.string().optional(),
+  lnLink: z.string().optional(),
+});
