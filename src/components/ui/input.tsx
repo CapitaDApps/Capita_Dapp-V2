@@ -8,12 +8,12 @@ type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "value"> & {
   value?: InputValue;
 };
 
+type NonFileValue = Exclude<InputValue, File>;
+
 export function Input({ type, value, ...props }: InputProps) {
   if (type === "file") {
-    // ❌ Don't pass `value` to file inputs (browser blocks it anyway)
     return <input type="file" {...props} />;
   }
 
-  // ✅ Safe for other input types
-  return <input type={type} {...props} />;
+  return <input type={type} {...props} value={value as NonFileValue} />;
 }

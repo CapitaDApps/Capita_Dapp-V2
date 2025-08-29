@@ -1,9 +1,18 @@
 "use client";
 import React from "react";
 
+type Profile = {
+  displayName: string;
+  bio: string;
+  email: string;
+  xLink: string;
+  lnLink: string;
+  avatar: string;
+  coverAvatar: string;
+};
+
 export function useGetProfile() {
-  // Return mock profile for now. Replace with API hook when available.
-  const [profile, setProfile] = React.useState<any | null>(null);
+  const [profile, setProfile] = React.useState<Profile | null>(null);
   React.useEffect(() => {
     const stored = window.localStorage.getItem("mock_profile");
     if (stored) setProfile(JSON.parse(stored));

@@ -9,20 +9,25 @@ export default function useCreateProfile() {
     "idle"
   );
 
+  type CreateProfileResponse =
+    | { ok: true; data?: unknown }
+    | { ok: false; error?: string };
+
   async function createProfile(
     obj: Profile,
     opts?: { onSuccess?: () => void }
   ) {
     setStatus("pending");
     try {
-      const res = await createProfileApi(obj);
-      if (res && (res as any).ok) {
+      const res = (await createProfileApi(obj)) as CreateProfileResponse;
+      if (res && res.ok) {
         setStatus("done");
         opts?.onSuccess?.();
       } else {
         setStatus("idle");
       }
-    } catch (e) {
+    } catch (err) {
+      console.error(err);
       setStatus("idle");
     }
   }

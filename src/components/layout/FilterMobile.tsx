@@ -10,10 +10,10 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuPortal,
-  DropdownMenuItem,
+  // DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
+// import { Checkbox } from "@/components/ui/checkbox";
+// import { Label } from "@/components/ui/label";
 import { useOustsideClick } from "@/components/hooks/useOutsideClick";
 
 export default function FilterMobile() {
@@ -31,12 +31,13 @@ export default function FilterMobile() {
     router.push(`${pathname}?${params.toString()}`);
   }
 
-  function handleClick(par: string) {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("filter", par);
-    router.push(`${pathname}?${params.toString()}`);
-  }
-  const active = searchParams.get("filter") || "all-campaigns";
+  // function handleClick(par: string) {
+  //   const params = new URLSearchParams(searchParams.toString());
+  //   params.set("filter", par);
+  //   router.push(`${pathname}?${params.toString()}`);
+  // }
+  // const active = searchParams.get("filter") || "all-campaigns";
+  
   return (
     <div className="lg:hidden mt-4">
       <form onSubmit={handleSearch} className="flex items-center gap-3">

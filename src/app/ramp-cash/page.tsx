@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HelpCenter() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
@@ -43,12 +45,12 @@ export default function HelpCenter() {
         </p>
 
         <div className="flex items-center justify-center gap-3">
-          <a
+          <Link
             href="/"
             className="inline-block px-4 py-2 rounded-md bg-white text-black text-sm font-medium"
           >
             Back to Home
-          </a>
+          </Link>
           <button
             type="button"
             className="inline-block px-4 py-2 rounded-md border border-white/20 text-white text-sm hover:bg-white/5"

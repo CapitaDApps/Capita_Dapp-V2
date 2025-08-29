@@ -16,9 +16,9 @@ import { useRouter } from "next/navigation";
 import { useMultiStep } from "@/context/MultiFormContext";
 import { useAccount } from "@/components/hooks/useAccount";
 
+// Use the exported schema directly; if for some reason it is undefined, fall back to a compatible schema.
 const EditProfileFormSchema =
-  // fallback schema when original isn't exported from constants
-  (_EditProfileFormSchema as any) ||
+  _EditProfileFormSchema ??
   z.object({
     displayName: z.string().optional(),
     bio: z.string().optional(),

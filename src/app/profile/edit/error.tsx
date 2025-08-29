@@ -18,12 +18,8 @@ export default function EditError({
       {/* <div className="mb-4 w-full max-w-2xl">
         <details className="text-xs bg-[#0b0b0b] p-3 rounded text-left">
           <summary className="cursor-pointer">Show error details</summary>
-          <pre className="mt-2 whitespace-pre-wrap text-[12px]">
-            {error?.message}
-          </pre>
-          <pre className="mt-2 whitespace-pre-wrap text-[11px] text-secondary-text">
-            {(error as any)?.stack}
-          </pre>
+          <pre className="mt-2 whitespace-pre-wrap text-[12px]">{error?.message}</pre>
+          <pre className="mt-2 whitespace-pre-wrap text-[11px] text-secondary-text">{error?.stack}</pre>
         </details>
       </div> */}
       <div className="flex gap-2">

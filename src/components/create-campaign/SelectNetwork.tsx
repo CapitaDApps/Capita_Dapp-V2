@@ -1,9 +1,9 @@
+"use client";
 import React from "react";
 import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "../ui/form";
 import {
@@ -20,8 +20,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import z from "zod";
+import { z } from "zod";
 import Image from "next/image";
+
+interface NetworkOption {
+  name: string;
+  value: string;
+  image: string;
+  label?: string;
+}
+
 interface FormInput {
   control: Control<z.infer<typeof CampaignFormSchema>>;
   name: FieldPath<z.infer<typeof CampaignFormSchema>>;
@@ -29,16 +37,28 @@ interface FormInput {
   watch: UseFormWatch<z.infer<typeof CampaignFormSchema>>;
   label: string;
   placeholder: string;
-  array: { [key: string]: string }[];
+  array: NetworkOption[];
 }
+
 export default function SelectNetwork({
   control,
   name,
   placeholder,
-  watch,
   setValue,
   array,
 }: FormInput) {
+
+  const solanaTokens: z.infer<typeof CampaignFormSchema>["tokens"] = [
+    "usdc",
+    "usdt",
+  ];
+  const baseTokens: z.infer<typeof CampaignFormSchema>["tokens"] = [
+    "usdc",
+    "cngn",
+    "eth(base)",
+  ];
+  const bnbTokens: z.infer<typeof CampaignFormSchema>["tokens"] = ["usdt"];
+
   return (
     <FormField
       control={control}
@@ -49,13 +69,13 @@ export default function SelectNetwork({
             <Select
               onValueChange={(val) => {
                 if (val === "solana") {
-                  setValue("tokens", ["usdc", "usdt"]);
+                  setValue("tokens", solanaTokens);
                 }
                 if (val === "base") {
-                  setValue("tokens", ["usdc", "cngn", "eth(base)"]);
+                  setValue("tokens", baseTokens);
                 }
                 if (val === "bnb") {
-                  setValue("tokens", ["usdt"]);
+                  setValue("tokens", bnbTokens);
                 }
                 return field.onChange(val);
               }}
@@ -72,15 +92,16 @@ export default function SelectNetwork({
                 {array.map((select) => (
                   <SelectItem
                     className="cursor-pointer text-xs hover:bg-[#003DEF]"
-                    key={select.name}
+                    key={select.value}
                     value={select.value}
                   >
                     <Image
                       src={select.image}
-                      alt={`${select.label} icon`}
+                      alt={`${select.label ?? select.name} icon`}
                       width={20}
                       height={20}
-                    />{" "}
+                      className="inline-block mr-2"
+                    />
                     {select.name}
                   </SelectItem>
                 ))}

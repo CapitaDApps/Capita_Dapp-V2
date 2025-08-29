@@ -34,13 +34,14 @@ export function MultiStepProvider({ children }: { children: React.ReactNode }) {
 
 export function useMultiStep() {
   const ctx = React.useContext(MultiFormContext);
+
+  const fallbackRef = React.useRef<MultiFormState | null>(null);
+
   if (!ctx) {
-    // fallback lightweight implementation so components work without provider
-    const fallback = React.useRef<MultiFormState | null>(null);
-    if (!fallback.current) {
+    if (!fallbackRef.current) {
       let img: string | undefined = undefined;
       let cover: string | undefined = undefined;
-      fallback.current = {
+      fallbackRef.current = {
         profileImg: img,
         profileCoverImg: cover,
         setProfileImg: (v?: string) => {
@@ -51,7 +52,7 @@ export function useMultiStep() {
         },
       };
     }
-    return fallback.current;
+    return fallbackRef.current;
   }
   return ctx;
 }

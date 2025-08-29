@@ -9,10 +9,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Control, FieldPath } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
+import { z } from "zod";
+import { EditProfileFormSchema } from "@/lib/constants";
 
 interface FormInput {
-  control: Control<any>;
-  name: FieldPath<any>;
+  control: Control<z.infer<typeof EditProfileFormSchema>>;
+  name: FieldPath<z.infer<typeof EditProfileFormSchema>>;
   label: string;
   placeholder: string;
   type: "input" | "textarea";

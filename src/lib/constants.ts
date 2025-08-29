@@ -1,6 +1,6 @@
 import { TbMoneybag } from "react-icons/tb";
 import { CiSearch } from "react-icons/ci";
-import { FaBell, FaCrown, FaQuestionCircle, FaUser } from "react-icons/fa";
+import { FaBell, FaCrown, FaUser } from "react-icons/fa";
 import { z } from "zod";
 
 export const menuItems = [
