@@ -53,7 +53,7 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
                 className="block"
               />
             </div>
-            <p className="text-xs md:text-sm text-secondary-text">
+            <p className="text-xs md:text-sm text-secondary-text leading-relaxed tracking-wide">
               {campaign.excerpt}
             </p>
           </div>
