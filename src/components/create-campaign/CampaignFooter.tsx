@@ -77,7 +77,7 @@ export default function CampaignFooter({
   }
 
   return (
-    <div>
+    <div data-campaign-address={campaignAddress}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 md:grid-cols-3 items-center place-items-end gap-3 md:gap-6 ">
