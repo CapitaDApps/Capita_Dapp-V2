@@ -9,6 +9,7 @@ import TokensList from "@/components/ui/TokensList";
 import PreviewImages from "@/components/campaigns/PreviewImages";
 import { TbFlag3 } from "react-icons/tb";
 import { useRouter } from "next/navigation";
+import CampaignFooter from "@/components/create-campaign/CampaignFooter";
 
 const sampleComments = [
   {
@@ -36,6 +37,8 @@ export default function Page() {
   const router = useRouter();
 
   const coverImg = false;
+
+  const isEditable = false;
 
   const progressPct = 12;
 
@@ -71,7 +74,7 @@ export default function Page() {
         <ReportFlow open={reportOpen} onClose={() => setReportOpen(false)} />
 
         <div className="relative rounded-[16px] overflow-hidden shadow-md">
-          <div className="relative h-44 sm:h-56 md:h-64 bg-[#08121a]">
+          <div className="relative h-44 sm:h-56 md:h-64 bg-[#08121a] rounded-[16px] overflow-hidden">
             <Image
               src="/campaign/banner.png"
               alt="campaign banner"
@@ -79,20 +82,15 @@ export default function Page() {
               className="object-cover object-center"
               sizes="100vw"
             />
+
             <div
-              className={`absolute w-full ${
-                coverImg && "neon-wrapper"
-              } h-full bg-[#2E2E2E]/70  rounded-[16px] flex items-center justify-center gap-2`}
-            >
-              <label className="inline-flex items-center gap-2 cursor-pointer bg-black/20 px-3 py-2 rounded-md">
-                <Image
-                  src="/layout/camera.png"
-                  alt="camera"
-                  width={30}
-                  height={18}
-                />
-              </label>
-            </div>
+              className={`absolute inset-0 ${
+                coverImg ? "neon-wrapper" : ""
+              } h-full bg-[#2E2E2E]/70 rounded-[16px]`}
+            />
+            {isEditable && (
+              <div className="absolute inset-0 flex items-center justify-center"></div>
+            )}
           </div>
         </div>
 
@@ -139,7 +137,6 @@ export default function Page() {
             <PreviewImages supportImages={supportImages} />
           </div>
 
-          {/* Progress */}
           <div className="rounded-md  bg-transparent">
             <div className="flex items-center justify-between mb-2 text-sm ">
               <span>Progress</span>
@@ -160,61 +157,17 @@ export default function Page() {
             <TokensList />
           </div>
 
-          <div className="rounded-md p-4 bg-transparent border-t border-[#142129]">
-            <div className="flex flex-row gap-3 md:gap-6 mb-4">
-              <div className="w-[100%] py-2">
-                <label className="text-sm text-slate-400 block mb-2">
-                  Select Token
-                </label>
-                <div className="relative">
-                  <select
-                    value={selectedToken}
-                    onChange={(e) => setSelectedToken(e.target.value)}
-                    className="w-full rounded-md bg-[#0f1720] border border-[#20303a] px-3 py-2 h-12 text-white text-sm appearance-none pr-8"
-                  >
-                    <option value="CPT">CPT</option>
-                    <option value="ETH">ETH</option>
-                    <option value="USDC">USDC</option>
-                  </select>
-                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M6 9l6 6 6-6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </div>
-
-              <div className="w-[100%] py-2">
-                <label className="text-sm text-slate-400 block mb-2">
-                  Enter Amount
-                </label>
-                <input
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  placeholder="$0.00"
-                  className="w-full rounded-md bg-[#0f1720] border border-[#20303a] px-3 py-2 h-12 text-white text-sm"
-                />
-                <div className="text-xs text-slate-500 mt-2">0.000ETH</div>
-              </div>
-            </div>
-            <div className="w-[100%] py-2">
-              <button className="w-[100%] bg-gradient-to-r from-[#003DEF] to-[#001F7A] px-4 py-3 rounded-md text-white last:col-span-2 md:last:col-span-1">
-                Fund Campaign
-              </button>
-            </div>
-          </div>
+          <CampaignFooter
+            campaignAddress={undefined}
+            campaignName={"Campaign Name"}
+            status={"ongoing"}
+            ended={false}
+            options={[
+              { name: "CPT", src: "/tokens/cpt.svg" },
+              { name: "ETH", src: "/tokens/eth.svg" },
+              { name: "USDC", src: "/tokens/usdc.svg" },
+            ]}
+          />
 
           <Comments initial={sampleComments} />
         </div>
