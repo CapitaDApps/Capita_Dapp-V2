@@ -1,6 +1,21 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
 :root {
+  --background: #fcfcfc;
+  --sidebar-bg: #f6f6f6;
+  --foreground: #0f1720;
+  --primary-blue: #1038a2;
+  --secondary-purple: #694eff;
+  --form-blue: #ffffff;
+  --form-blue-border: #cbd5e1;
+  --form-label: #1f2937;
+  --font-sans: var(--font-sora);
+
+  --text-white: #383838;
+}
+
+.dark {
   --background: #0f1720;
   --sidebar-bg: #121212;
   --foreground: #ededed;
@@ -10,20 +25,14 @@
   --form-blue-border: #0056cc;
   --form-label: #c2d7ff;
   --font-sans: var(--font-sora);
+  --text-white: #ffffff;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f1720;
-    --sidebar-bg: #121212;
-    --foreground: #ededed;
-  }
-} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .sidebar {
@@ -50,7 +59,12 @@ body {
     height: 1px;
     background: linear-gradient(270deg, #000000 38.41%, #277bee 46.67%);
   }
+
+  .text-white {
+    color: var(--text-white) !important;
+  }
 }
+
 .no-scroll::-webkit-scrollbar {
   display: none;
 }

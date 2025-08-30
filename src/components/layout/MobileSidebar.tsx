@@ -14,10 +14,38 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GoPlus } from "react-icons/go";
+import React, { useEffect, useState } from "react";
 
 export default function MobileSidebar() {
   const pathname = usePathname();
   const slug = pathname.split("/").at(pathname.split("/").length >= 2 ? 1 : 1);
+
+  const [isDark, setIsDark] = useState<boolean>(false);
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const saved =
+      typeof window !== "undefined" ? localStorage.getItem("theme") : null;
+    if (saved) setIsDark(saved === "dark");
+    else setIsDark(document.documentElement.classList.contains("dark"));
+
+    const mo = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    mo.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    function onStorage(e: StorageEvent) {
+      if (e.key === "theme") setIsDark(e.newValue === "dark");
+    }
+    window.addEventListener("storage", onStorage);
+
+    return () => {
+      mo.disconnect();
+      window.removeEventListener("storage", onStorage);
+    };
+  }, []);
 
   return (
     <Sheet>
@@ -35,7 +63,7 @@ export default function MobileSidebar() {
               <Link href="/" className="flex items-center">
                 <div className="w-[200px] flex items-center flex-shrink-0">
                   <Image
-                    src={"/layout/logo.svg"}
+                    src={isDark ? "/layout/logo.svg" : "/layout/lightlogo.svg"}
                     alt="capita_logo"
                     width={180}
                     height={40}
