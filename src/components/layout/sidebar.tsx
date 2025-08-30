@@ -4,23 +4,52 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GoPlus } from "react-icons/go";
+import React, { useEffect, useState } from "react";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const slug = pathname.split("/").at(pathname.split("/").length >= 2 ? 1 : 1);
 
+  const [isDark, setIsDark] = useState<boolean>(false);
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const saved =
+      typeof window !== "undefined" ? localStorage.getItem("theme") : null;
+    if (saved) setIsDark(saved === "dark");
+    else setIsDark(document.documentElement.classList.contains("dark"));
+
+    const mo = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    mo.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    function onStorage(e: StorageEvent) {
+      if (e.key === "theme") setIsDark(e.newValue === "dark");
+    }
+    window.addEventListener("storage", onStorage);
+
+    return () => {
+      mo.disconnect();
+      window.removeEventListener("storage", onStorage);
+    };
+  }, []);
+
   return (
-    <div className="h-screen bg-[#121212] w-full ">
+    <div className="h-screen bg-[var(--sidebar-bg)] w-full ">
       <div className="flex items-center justify-center w-full">
         <Link href="/" className="flex items-center">
           <div className="w-full  flex items-center">
-            <Image
-              src={"/layout/logo.svg"}
-              alt="capita_logo"
-              width={273}
-              height={80}
-              className="w-full object-contain pr-1"
-            />
+            <div className="relative w-[200px] h-[80px] flex-shrink-0">
+              <Image
+                src={isDark ? "/layout/logo.svg" : "/layout/lightlogo.svg"}
+                alt="capita_logo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
         </Link>
       </div>
@@ -47,7 +76,7 @@ export default function Sidebar() {
           <Link
             href="/create-campaigns"
             // onClick={() => onClose && onClose()}
-            className="w-full px-8 inline-flex  py-3 bg-[var(--primary-blue)] text-white text-xs font-semibold rounded-full text-center cursor-pointer items-center justify-center"
+            className="w-full px-8 inline-flex  py-3 bg-[var(--primary-blue)] text-[383838] dark:text-white text-xs font-semibold rounded-full text-center cursor-pointer items-center justify-center"
           >
             <GoPlus className="mr-2" />
             <span>Create Campaign</span>

@@ -48,7 +48,7 @@ export default function CampaignFooter({
 }) {
   // UI-only: no wallet or contract interactions here. This renders the form and confirmation dialog.
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [isDonationShared, setIsDonationShared] = useState(false);
+  // const [isDonationShared, setIsDonationShared] = useState(false);
   const [fundDetails, setFundDetails] = useState({ amount: "", token: "" });
   const form = useForm<z.infer<typeof FundCampaignFormSchema>>({
     resolver: zodResolver(FundCampaignFormSchema),
@@ -70,7 +70,7 @@ export default function CampaignFooter({
   function handleConfirm() {
     // UI-only: simulate success
     setIsOpenModal(false);
-    setIsDonationShared(true);
+    // setIsDonationShared(true);
     toast.success("You've successfully funded the campaign (simulated)");
     // reset form
     form.reset();
@@ -80,7 +80,7 @@ export default function CampaignFooter({
     <div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-2 md:grid-cols-3 place-items-end gap-3 md:gap-6 ">
+          <div className="grid grid-cols-2 md:grid-cols-3 items-center place-items-end gap-3 md:gap-6 ">
             <div className="w-[100%]">
               <FundCampaignForm
                 name="amount"

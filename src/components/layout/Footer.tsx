@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaInstagram, FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -37,17 +39,43 @@ export default function Footer() {
       route: "https://www.instagram.com/chainfundme?igsh=MTlheTNxdjh4MHFkNA==",
     },
   ];
+
+  const [isDark, setIsDark] = useState<boolean>(false);
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const saved =
+      typeof window !== "undefined" ? localStorage.getItem("theme") : null;
+    if (saved) setIsDark(saved === "dark");
+    else setIsDark(document.documentElement.classList.contains("dark"));
+
+    const mo = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    mo.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    function onStorage(e: StorageEvent) {
+      if (e.key === "theme") setIsDark(e.newValue === "dark");
+    }
+    window.addEventListener("storage", onStorage);
+
+    return () => {
+      mo.disconnect();
+      window.removeEventListener("storage", onStorage);
+    };
+  }, []);
   const date = new Date();
   return (
-    <div className="bg-[#121212]">
+    <div className="bg-[var(--sidebar-bg)]">
       <div className="flex md:flex-row gap-1 flex-col md:items-center justify-between border-b border-silver py-4 px-2.5 ">
         <div className="flex items-center text-start">
           <Image
             width={100}
             height={50}
             alt="capita_logo"
-            quality={100}
-            src="/layout/logo.svg"
+            src={isDark ? "/layout/logo.svg" : "/layout/lightlogo.svg"}
             className="w-[150px] md:w-[150px] h-auto"
           />
           {/* <h2 className="font-bold text-xs text-primary-text pl-1">

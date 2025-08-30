@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import React, { useRef, useState, useEffect } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { FiSun, FiMoon } from "react-icons/fi";
 import { initialNotifications } from "@/lib/notifications";
 
 export default function MobileHeader() {
@@ -10,6 +11,24 @@ export default function MobileHeader() {
   const pathname = usePathname();
   const slug = pathname.split("/")[1] || "";
   const ref = useRef<HTMLDivElement | null>(null);
+
+  const [isLight, setIsLight] = useState(() => {
+    if (typeof window === "undefined") return true; // SSR default light
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "light";
+    return true;
+  });
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      if (!isLight) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    }
+  }, [isLight]);
 
   useEffect(() => {
     const originalOverflow = document.body.style.overflow;
@@ -66,6 +85,21 @@ export default function MobileHeader() {
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-3" ref={ref}>
           <div className="relative">
+            {/* Theme toggle for mobile */}
+            <button
+              aria-label={
+                isLight ? "Switch to dark mode" : "Switch to light mode"
+              }
+              title={isLight ? "Switch to dark mode" : "Switch to light mode"}
+              onClick={() => setIsLight((s) => !s)}
+              className="p-2 rounded-md hover:bg-white/5 mr-2"
+            >
+              {isLight ? (
+                <FiSun className="w-5 h-5 text-white" aria-hidden />
+              ) : (
+                <FiMoon className="w-5 h-5 text-white" aria-hidden />
+              )}
+            </button>
             <button
               aria-label="Notifications"
               aria-expanded={open}

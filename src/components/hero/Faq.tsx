@@ -46,7 +46,7 @@ export default function Faq() {
             <AccordionTrigger className="text-sm cursor-pointer md:text-base  font-medium">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="text-xs md:text-sm  text-gray-300 leading-relaxed">
+            <AccordionContent className="text-xs md:text-sm   leading-relaxed">
               {faq.answer}
             </AccordionContent>
             <div className="h-[1px] w-full bg-[linear-gradient(270deg,#277be.41%,#022557_46.67%)]" />
@@ -54,7 +54,7 @@ export default function Faq() {
         ))}
       </Accordion>
 
-      <div className="flex items-center justify-center mt-6 md:mt-8 gap-2 text-gray-400 text-sm md:text-base  whitespace-nowrap">
+      <div className="flex items-center justify-center mt-6 md:mt-8 gap-2  text-sm md:text-base  whitespace-nowrap">
         <Link
           href="https://t.me/CapitatokenHQ"
           target="_blank"

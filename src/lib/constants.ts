@@ -133,3 +133,13 @@ export const EditProfileFormSchema = z.object({
   xLink: z.string().optional(),
   lnLink: z.string().optional(),
 });
+
+
+export const PersonalProfileFormSchema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  bio: z.string().max(2000).optional(),
+  website: z.string().url().optional(),
+  email: z.string().email().optional(),
+});
+
+export type PersonalProfileForm = z.infer<typeof PersonalProfileFormSchema>;

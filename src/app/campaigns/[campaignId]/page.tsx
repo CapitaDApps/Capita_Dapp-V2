@@ -31,8 +31,8 @@ const sampleComments = [
 ];
 
 export default function Page() {
-  const [selectedToken, setSelectedToken] = useState("CPT");
-  const [amount, setAmount] = useState("");
+  // const [selectedToken, setSelectedToken] = useState("CPT");
+  // const [amount, setAmount] = useState("");
   const [reportOpen, setReportOpen] = useState(false);
   const router = useRouter();
 
@@ -158,7 +158,7 @@ export default function Page() {
           </div>
 
           <CampaignFooter
-            campaignAddress={undefined}
+            campaignAddress={"0x0000000000000000000000000000000000000000"}
             campaignName={"Campaign Name"}
             status={"ongoing"}
             ended={false}

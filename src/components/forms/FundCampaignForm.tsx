@@ -8,7 +8,6 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Control, FieldPath } from "react-hook-form";
-import { z } from "zod";
 import { Textarea } from "../ui/textarea";
 import {
   Select,
@@ -19,15 +18,15 @@ import {
 } from "@/components/ui/select";
 import Image from "next/image";
 
-// Local mocks
-const FundCampaignFormSchema = z.object({
-  amount: z.string().min(1, { message: "Amount is required" }),
-  token: z.string().min(1, { message: "Select a token" }),
-});
+// Local type for the form values (use a runtime schema elsewhere if needed)
+type FundCampaignFormValues = {
+  amount: string;
+  token: string;
+};
 
 interface FormInput {
-  control: Control<z.infer<typeof FundCampaignFormSchema>>;
-  name: FieldPath<z.infer<typeof FundCampaignFormSchema>>;
+  control: Control<FundCampaignFormValues>;
+  name: FieldPath<FundCampaignFormValues>;
   label: string;
   placeholder: string;
   options?: { value: string; option: string; svg: string }[];

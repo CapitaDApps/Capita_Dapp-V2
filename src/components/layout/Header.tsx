@@ -2,6 +2,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { FiSun, FiMoon } from "react-icons/fi";
 import { initialNotifications } from "@/lib/notifications";
 
 export default function Header() {
@@ -9,6 +10,14 @@ export default function Header() {
   const slug = pathname.split("/")[1] || "";
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+
+  // Default to light mode. Use localStorage if present; otherwise keep light as default.
+  const [isLight, setIsLight] = useState(() => {
+    if (typeof window === "undefined") return true; // SSR: default light
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "light";
+    return true; // default to light
+  });
 
   useEffect(() => {
     function onDoc(e: MouseEvent) {
@@ -19,6 +28,18 @@ export default function Header() {
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
   }, []);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      // Add or remove the dark class. Light is the default state (no class needed).
+      if (!isLight) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    }
+  }, [isLight]);
 
   return (
     <div className="fixed lg:block hidden top-0 right- z-40 w-full lg:w-[calc(100%-14rem)] max-w-[130rem] mx-auto ">
@@ -38,60 +59,84 @@ export default function Header() {
                 className="w-4 h-4 object-contain"
               />
             </div>
-            <span className="text-sm font-medium bg-clip-text">
+            <span className="text-md text-white font-bold bg-clip-text">
               Create your funding campaigns now!
             </span>
           </div>
 
           <div className="flex items-center gap-3" ref={ref}>
-            <div className="relative">
+            <div className="relative flex items-center gap-2">
+              {/* Theme toggle placed beside notifications */}
               <button
-                aria-label="Notifications"
-                className="p-2 text-white rounded-md"
-                onClick={() => setOpen((o) => !o)}
+                aria-label={
+                  isLight ? "Switch to dark mode" : "Switch to light mode"
+                }
+                title={isLight ? "Switch to dark mode" : "Switch to light mode"}
+                onClick={() => setIsLight((s) => !s)}
+                className="p-2 rounded-md hover:bg-white/5"
               >
-                <IoIosNotificationsOutline className="w-5 h-5" />
+                {isLight ? (
+                  <FiSun
+                    className="w-5 h-5 text-white dark:text-white"
+                    aria-hidden
+                  />
+                ) : (
+                  <FiMoon className="w-5 h-5 text-white" aria-hidden />
+                )}
               </button>
-              <span className="absolute -top-1 -right-1 bg-[#F4B400] text-black text-[10px] font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-                {initialNotifications.filter((n) => !n.read).length}
-              </span>
 
-              {open && (
-                <div className="absolute right-0 mt-2 w-[320px] bg-[#071018] border border-[#2d2f33] rounded-lg shadow-lg z-50">
-                  <div className="p-3">
-                    <h4 className="text-sm font-semibold text-white">
-                      Notifications
-                    </h4>
-                    <div className="mt-2 max-h-56 overflow-y-auto divide-y divide-[#2c2f33]">
-                      {initialNotifications.slice(0, 5).map((n) => (
-                        <div key={n.id} className="py-2 flex items-start gap-2">
+              <div className="relative">
+                <button
+                  aria-label="Notifications"
+                  className="p-2 text-white rounded-md"
+                  onClick={() => setOpen((o) => !o)}
+                >
+                  <IoIosNotificationsOutline className="w-5 h-5" />
+                </button>
+                <span className="absolute -top-1 -right-1 bg-[#F4B400] text-black text-[10px] font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                  {initialNotifications.filter((n) => !n.read).length}
+                </span>
+
+                {open && (
+                  <div className="absolute right-0 mt-2 w-[320px] bg-[#071018] border border-[#2d2f33] rounded-lg shadow-lg z-50">
+                    <div className="p-3">
+                      <h4 className="text-sm font-semibold text-white">
+                        Notifications
+                      </h4>
+                      <div className="mt-2 max-h-56 overflow-y-auto divide-y divide-[#2c2f33]">
+                        {initialNotifications.slice(0, 5).map((n) => (
                           <div
-                            className={`h-8 w-8 rounded-full flex items-center justify-center text-white ${n.iconBg}`}
+                            key={n.id}
+                            className="py-2 flex items-start gap-2"
                           >
-                            {n.iconEmoji}
-                          </div>
-                          <div className="flex-1">
-                            <div className="text-sm text-white font-medium truncate">
-                              {n.title}
+                            <div
+                              className={`h-8 w-8 rounded-full flex items-center justify-center text-white ${n.iconBg}`}
+                            >
+                              {n.iconEmoji}
                             </div>
-                            <div className="text-xs text-slate-400">
-                              {n.time}
+                            <div className="flex-1">
+                              <div className="text-sm text-white font-medium truncate">
+                                {n.title}
+                              </div>
+                              <div className="text-xs text-slate-400">
+                                {n.time}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 text-right">
-                      <a
-                        href="/notifications"
-                        className="text-sm underline text-slate-300"
-                      >
-                        View all
-                      </a>
+                        ))}
+                      </div>
+                      <div className="mt-3 text-right">
+                        <a
+                          href="/notifications"
+                          className="text-sm underline text-slate-300"
+                        >
+                          View all
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
 
             <button className="bg-white text-black px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200">
