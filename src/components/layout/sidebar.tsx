@@ -10,7 +10,7 @@ export default function Sidebar() {
   const slug = pathname.split("/").at(pathname.split("/").length >= 2 ? 1 : 1);
 
   return (
-    <div className="h-screen bg-[#121212] w-full ">
+    <div className="h-screen bg-sidebar w-full ">
       <div className="flex items-center justify-center w-full">
         <Link href="/" className="flex items-center">
           <div className="w-full  flex items-center">
@@ -32,10 +32,10 @@ export default function Sidebar() {
             className={`
             ${
               slug === item.slug
-                ? "bg-[#000033] border-r-[4px] rounded-none border-[#0056CC]"
+                ? "bg-primary/10 py-3 border-r-[4px] !text-primary rounded-none border-primary"
                 : ""
             }
-              flex items-center px-4 py-2 hover:bg-[var(--Shadow, #000033)] text-primary-text text-[12px] font-bold gap-3 cursor-pointer rounded-md
+              flex items-center px-4 py-2 hover:text-primary text-sidebar-content text-[12px] font-semibold gap-3 cursor-pointer rounded-md
               `}
           >
             <span className="text-lg">{<item.icon />}</span>
@@ -47,7 +47,7 @@ export default function Sidebar() {
           <Link
             href="/create-campaigns"
             // onClick={() => onClose && onClose()}
-            className="w-full px-8 inline-flex  py-3 bg-[var(--primary-blue)] text-white text-xs font-semibold rounded-full text-center cursor-pointer items-center justify-center"
+            className="w-full px-8 inline-flex  py-3 bg-primary text-white text-xs font-semibold rounded-full text-center cursor-pointer items-center justify-center"
           >
             <GoPlus className="mr-2" />
             <span>Create Campaign</span>

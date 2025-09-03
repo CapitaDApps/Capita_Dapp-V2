@@ -17,18 +17,24 @@ type Campaign = {
 export default function CampaignCard({ campaign }: { campaign: Campaign }) {
   const router = useRouter();
   return (
-    <article className="w-full h-auto md:h-[380px] lg:h-[400px] rounded-[16px] bg-[var(--Primary-Background,#121212)] border-2 border-transparent hover:border-[#6B4EFF] transition-colors duration-200 overflow-hidden flex flex-col">
-      <div className="relative w-full h-40 md:h-[180px] lg:h-[220px]">
+    <article
+      style={{
+        boxShadow:
+          "0px 110px 44px rgba(179, 201, 255, 0.02), 0px 62px 37px rgba(179, 201, 255, 0.08), 0px 28px 28px rgba(179, 201, 255, 0.13), 0px 7px 15px rgba(179, 201, 255, 0.15)",
+      }}
+      className="w-full mx-auto max-w-[320px] h-[300px] rounded-[16px] bg-sidebar border-2 border-primary/20 hover:border-primary transition-colors duration-500 overflow-hidden flex flex-col"
+    >
+      <div className="relative w-full h-[40%]">
         <Image
           src={campaign.image}
           alt={campaign.title}
           fill
-          className="object-cover"
+          className="object-cover object-center"
         />
       </div>
 
       <div className="p-3 md:p-4 flex flex-col gap-2 flex-1">
-        <div className="flex items-start gap-3">
+        <div className="flex items-center justify-center gap-3">
           {campaign.avatar ? (
             <Image
               src={campaign.avatar}
@@ -41,23 +47,25 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
             <div className="w-8 h-8 rounded-full bg-zinc-700 md:w-9 md:h-9" />
           )}
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <h3 className="text-sm md:text-base lg:text-lg font-semibold truncate">
+            <div className="flex items-center gap-2.5">
+              <h3 className="text-sm text-surface font-semibold truncate">
                 {campaign.title}
               </h3>
               <Image
                 src={"/layout/checkmark.svg"}
                 alt="verified"
-                width={20}
-                height={20}
+                width={16}
+                height={16}
                 className="block"
               />
             </div>
-            <p className="text-xs md:text-sm text-secondary-text">
-              {campaign.excerpt}
-            </p>
           </div>
         </div>
+        <p className="text-xs text-disabled-text">
+          {campaign.excerpt.split(" ").length > 20
+            ? campaign.excerpt.split(" ").slice(0, 20).join(" ") + "..."
+            : campaign.excerpt}
+        </p>
 
         <div className="mt-auto flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs text-secondary-text">
@@ -70,12 +78,12 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
                 className="rounded-full"
               />
             )}
-            <span className="text-[12px] md:text-sm truncate">
+            <span className="text-[12px] text-surface md:text-sm truncate">
               {campaign.token ?? ""}
             </span>
           </div>
           <Button
-            className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-gradient-to-r from-[#003DEF] to-[#001F7A] rounded-md flex items-center justify-center"
+            className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-primary text-white rounded-md flex items-center justify-center"
             onClick={() => router.push(`/campaigns/${campaign.id}`)}
           >
             Fund

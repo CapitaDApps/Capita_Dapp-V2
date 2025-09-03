@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoIosNotifications,  } from "react-icons/io";
 import { initialNotifications } from "@/lib/notifications";
 
 export default function Header() {
@@ -24,7 +24,9 @@ export default function Header() {
     <div className="fixed lg:block hidden top-0 right- z-40 w-full lg:w-[calc(100%-14rem)] max-w-[130rem] mx-auto ">
       <div
         className={`${
-          slug ? "bg-[#121212]" : "bg-[#121212]/40 backdrop-blur-sm"
+          slug
+            ? "bg-background border-b border-primary/30 shadow shadow-zinc-200"
+            : "bg-[#121212]/40 backdrop-blur-sm"
         } top-0 left-0 w-full z-40`}
       >
         <div className="w-full  px-5 flex items-center justify-between py-[14px]">
@@ -47,12 +49,12 @@ export default function Header() {
             <div className="relative">
               <button
                 aria-label="Notifications"
-                className="p-2 text-white rounded-md"
+                className="p-2 text-sidebar-content rounded-md"
                 onClick={() => setOpen((o) => !o)}
               >
-                <IoIosNotificationsOutline className="w-5 h-5" />
+                <IoIosNotifications className="w-5 h-5" />
               </button>
-              <span className="absolute -top-1 -right-1 bg-[#F4B400] text-black text-[10px] font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-0.5 right-1 bg-[#F4B400] text-black text-[10px] font-semibold rounded-full w-4 h-4 flex items-center justify-center">
                 {initialNotifications.filter((n) => !n.read).length}
               </span>
 
@@ -94,7 +96,7 @@ export default function Header() {
               )}
             </div>
 
-            <button className="bg-white text-black px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200">
+            <button className="bg-primary text-white px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200">
               Connect Wallet
             </button>
           </div>

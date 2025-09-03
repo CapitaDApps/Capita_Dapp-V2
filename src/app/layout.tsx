@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={`${sora.variable}  antialiased relative min-h-screen  max-w-[144rem] mx-auto bg-[var(--background)`}
       >
-        <NextTopLoader color="#003DEF" height={4} showSpinner={false} />
+        <NextTopLoader color="#00b875" height={4} showSpinner={false} />
         <ClientShell>
           {children}
           <Footer />
@@ -36,9 +36,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// style={{
-//   backgroundImage:
-//     "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)",
-//   backgroundSize: "20px 20px",
-// }}

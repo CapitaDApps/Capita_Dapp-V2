@@ -12,15 +12,15 @@ export default function Verified() {
   ];
   return (
     <div className="flex justify-center mb-20 ">
-      <div className="border-2 border-[#0056CC] bg-[#000E29] rounded-2xl p-5 md:p-8 max-w-md w-full">
+      <div className=" bg-verify rounded-2xl p-5 md:p-8 max-w-md w-full">
         <div className="items-start mb-6">
-          <div className="flex items-center justify-center space-x-2 mb-2">
-            <h3 className="text-2xl font-bold">Get Verified</h3>
+          <div className="flex items-center justify-center space-x-2.5 mb-2">
+            <h3 className="text-2xl font-bold text-sidebar-content">Get Verified</h3>
             <Image
               src={"/layout/checkmark.svg"}
               alt="checkmark"
-              width={35}
-              height={35}
+              width={25}
+              height={25}
             />
           </div>
           <div className="flex items-baseline justify-center space-x-1">
@@ -35,13 +35,13 @@ export default function Verified() {
               key={index}
               className="flex items-start text-xs md:text-sm space-x-3"
             >
-              <GiCheckMark className=" flex-shrink-0 text-green-400" />
-              <span className="text-gray-300">{feature}</span>
+              <GiCheckMark className=" flex-shrink-0 text-sidebar-content" />
+              <span className="text-disabled-text">{feature}</span>
             </div>
           ))}
         </div>
 
-        <button className="w-full bg-[#0056CC] text-xs text-white font-semibold py-3 rounded-full transition-colors">
+        <button className="w-full bg-primary text-xs text-white font-semibold py-3 rounded-full transition-colors">
           Subscribe
         </button>
       </div>
