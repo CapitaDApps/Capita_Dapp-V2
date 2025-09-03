@@ -31,7 +31,7 @@ export default function CampaignList() {
     });
 
   return (
-    <div className="mt-6 w-full  mx-auto px-8">
+    <div className="mt-6 w-full  mx-auto lg:px-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 items-stretch">
         {filtered.map((c) => (
           <div key={c.id} className="w-full">

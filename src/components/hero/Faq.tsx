@@ -28,7 +28,7 @@ export default function Faq() {
 
   return (
     <div className="mb-20 max-w-6xl mx-auto">
-      <h2 className="text-2xl md:text-3xl  font-bold text-center mb-6 md:mb-12">
+      <h2 className="text-2xl md:text-3xl  text-sidebar-content font-bold text-center mb-6 md:mb-12">
         FAQs
       </h2>
 
@@ -43,13 +43,13 @@ export default function Faq() {
             value={`item-${index + 1}`}
             className="border-none"
           >
-            <AccordionTrigger className="text-sm cursor-pointer md:text-base  font-medium">
+            <AccordionTrigger className="text-sm text-sidebar-content cursor-pointer md:text-base  font-medium">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="text-xs md:text-sm  text-gray-300 leading-relaxed">
+            <AccordionContent className="text-xs md:text-sm  text-disabled-text leading-relaxed">
               {faq.answer}
             </AccordionContent>
-            <div className="h-[1px] w-full bg-[linear-gradient(270deg,#277be.41%,#022557_46.67%)]" />
+            <div className="h-[1px] w-full bg-[linear-gradient(270deg,#2ed396.41%,#00b875_46.67%)]" />
           </AccordionItem>
         ))}
       </Accordion>

@@ -21,14 +21,8 @@ export default function ClientShell({
       </div>
       <div />
       <div
-        style={{
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/layout/bg.jpg)",
-        }}
-        className="min-h-screen flex flex-col "
+ 
+        className="min-h-screen flex bg-background flex-col "
       >
         <MobileHeader />
         <Header />

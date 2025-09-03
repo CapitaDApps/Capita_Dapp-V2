@@ -43,7 +43,7 @@ export default function CampaignInput({
             <FormControl>
               {type === "input" ? (
                 <Input
-                  className=" border w-[98%] md:w-[92%] lg:w-full !bg-[var(--form-blue)] border-[var(--form-blue-border)] focus:ring-[var(--form-blue-border)] focus:ring-2 
+                  className=" border w-[98%] md:w-[92%] lg:w-full !bg-[var(--form-blue)] border-[var(--form-blue-border)] focus:ring-primary focus:ring-2 
    focus:outline-none focus:border-none rounded-[8px] p-3 text-xs text-secondary-text"
                   placeholder={placeholder}
                   {...field}
@@ -54,7 +54,7 @@ export default function CampaignInput({
                   <Textarea
                     placeholder={placeholder}
                     maxLength={2000}
-                    className="resize-none h-[130px] w-[98%] md:w-[92%] lg:w-full border bg-[var(--form-blue)] border-[var(--form-blue-border)] focus:ring-[var(--form-blue-border)] focus:ring 
+                    className="resize-none h-[130px] w-[98%] md:w-[92%] lg:w-full border bg-[var(--form-blue)] border-[var(--form-blue-border)] focus:ring-primary focus:ring 
     focus:outline-none focus:border-none rounded-[8px] p-3 text-xs text-secondary-text"
                     {...field}
                     onChange={(e) => field.onChange(e.target.value)}
