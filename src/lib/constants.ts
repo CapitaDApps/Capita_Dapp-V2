@@ -1,6 +1,8 @@
 import { TbMoneybag } from "react-icons/tb";
 import { CiSearch } from "react-icons/ci";
-import { FaBell, FaCrown, FaUser } from "react-icons/fa";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
+import { LuCrown } from "react-icons/lu";
 import { z } from "zod";
 
 export const menuItems = [
@@ -18,19 +20,19 @@ export const menuItems = [
   },
   {
     title: "Profile",
-    icon: FaUser,
+    icon: CgProfile,
     route: "/profile",
     slug: "profile",
   },
   {
     title: "Notifications",
-    icon: FaBell,
+    icon: IoMdNotificationsOutline,
     route: "/notifications",
     slug: "notifications",
   },
   {
     title: "Premium",
-    icon: FaCrown,
+    icon: LuCrown,
     route: "/premium",
     slug: "premium",
   },

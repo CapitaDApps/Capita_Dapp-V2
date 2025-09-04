@@ -25,7 +25,7 @@ const initialNotifications: Notification[] = [
       '"Medical Expenses Support campaign" received a 0.5 ETH contribution',
     amount: "0.5 ETH",
     currency: "ETH",
-    destination: "Anonymous",
+    destination: "from anonymous",
     iconEmoji: "💚",
     iconBg: "bg-emerald-500",
     read: false,
@@ -96,7 +96,6 @@ const initialNotifications: Notification[] = [
     description: "You received 15 contributions totaling $1,000 this week",
     amount: "0.5 ETH",
     currency: "ETH",
-    destination: "Anonymous",
     iconEmoji: "📊",
     iconBg: "bg-indigo-500",
     read: false,
@@ -116,7 +115,7 @@ export default function Notifications() {
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-[100px] md:mb-0">
           <div className="min-w-0">
-            <h1 className="text-2xl sm:text-3xl font-bold text-white">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#111]">
               Notifications
             </h1>
             <p className="mt-1 text-sm text-slate-400">
@@ -127,19 +126,19 @@ export default function Notifications() {
           <div className=" md:ml-4  md:w-auto">
             <button
               onClick={markAllAsRead}
-              className=" inline-flex text-base justify-center items-center gap-2 bg-white text-black px-4 py-2 rounded-md shadow-sm hover:shadow-md transition"
+              className=" inline-flex text-base justify-center items-center gap-2 bg-[#00b875] text-white px-4 py-2 rounded-md shadow-sm hover:shadow-md transition"
             >
               Mark all as read
             </button>
           </div>
         </div>
 
-        <div className="mt-6  border border-[#383838] rounded-2xl p-4 sm:p-6">
-          <div className="divide-y divide-[#383838]">
+        <div className="mt-6  border border-[#b3b3b3] rounded-2xl p-4 sm:p-6">
+          <div className="divide-y divide-[#b3b3b3]">
             {notifications.map((n) => (
               <div
                 key={n.id}
-                className={`flex gap-4 items-start py-4 sm:py-5 ${
+                className={`flex gap-4 items-start py-3 sm:py-4 ${
                   n.read ? "opacity-80" : ""
                 }`}
               >
@@ -156,21 +155,20 @@ export default function Notifications() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                       <div className="flex flex-col items-start gap-1">
-                        <h3 className="text-sm sm:text-base font-semibold text-white truncate">
+                        <h3 className="text-sm sm:text-base font-medium text-black truncate">
                           {n.title}
                         </h3>
                         <span className="text-xs text-slate-400">{n.time}</span>
                       </div>
-                      <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+                      <p className="mt-2 text-sm text-[#666666] leading-relaxed">
                         {n.description}
                       </p>
                       {n.amount && (
                         <div className="flex-shrink-0 gap-4 mt-3">
-                          <span className="inline-flex items-center px-3 py-1 border border-slate-600 rounded-full text-xs font-medium text-white">
+                          <span className="inline-flex items-center px-4 py-2 border border-slate-600 rounded-full text-xs font-bold text-[#666666]">
                             {n.amount}
                           </span>
-                          <span className="text-base ml-3">
-                            From {""}
+                          <span className=" ml-3 text-xs text-[#666666]">
                             {n.destination}
                           </span>
                         </div>
@@ -184,7 +182,7 @@ export default function Notifications() {
 
           <div className="mt-6 text-center">
             <button
-              className="text-sm text-slate-400 hover:text-white transition"
+              className="text-sm text-slate-400 hover:text-black transition"
               onClick={() => alert("Load more (mock)")}
             >
               Load more

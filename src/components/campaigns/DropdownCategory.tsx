@@ -71,9 +71,9 @@ export default function DropdownCategory() {
     <DropdownMenu open={isOpen}>
       <DropdownMenuTrigger
         onClick={() => setIsOpen(true)}
-        className="cursor-pointer border-none"
+        className="cursor-pointer border-none "
       >
-        <div className="flex items-center gap-1 cursor-pointer text-white text-xs">
+        <div className="flex items-center gap-1 cursor-pointer text-disabled-text text-xs">
           <BiCategory />
           <p>Category</p>
         </div>
@@ -81,7 +81,7 @@ export default function DropdownCategory() {
       <DropdownMenuPortal>
         <DropdownMenuContent
           ref={ref}
-          className="mr-2 mt-2 shadow-sm shadow-zinc-950 bg-primary-bg w-[180px] border-none flex flex-col gap-1 p-3.5 py-2.5 rounded-none"
+          className="mr-2 mt-2 shadow-sm shadow-zinc-950 bg-sidebar-content text-background w-[180px] border-none flex flex-col gap-1 p-3.5 py-2.5 rounded-sm"
         >
           <DropdownMenuLabel className="text-xs text-secondary-text font-normal ">
             SORT BY
@@ -94,7 +94,7 @@ export default function DropdownCategory() {
                   key={sot.value}
                   className={`flex items-center text-primary-text text-xs cursor-pointer rounded-sm px-2 py-1 transition-colors duration-150 ${
                     isChecked
-                      ? "bg-[var(--background)] text-white"
+                      ? "bg-[var(--sidebar-content)] text-white"
                       : "hover:bg-[rgba(255,255,255,0.04)]"
                   }`}
                 >

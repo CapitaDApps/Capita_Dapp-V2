@@ -73,7 +73,7 @@ export function CampaignTokens({
               </FormControl>
             </PopoverTrigger>
 
-            <PopoverContent className="w-[180px] md:w-72 !bg-[var(--form-blue)] border-[var(--form-blue-border)] focus:ring-[var(--form-blue-border)] p-0">
+            <PopoverContent className="w-[180px] md:w-72 !bg-[#fff] border-[var(--form-blue-border)] focus:ring-[var(--form-blue-border)] p-0">
               <Command>
                 <CommandInput placeholder="Search tokens..." className="h-9" />
                 <CommandList>
@@ -85,7 +85,7 @@ export function CampaignTokens({
                         disabled={dis.includes(chain.value)}
                         value={chain.label}
                         key={chain.value}
-                        className="hover:bg-[#003DEF] cursor-pointer text-xs"
+                        className="hover:bg-[#00b875] cursor-pointer text-xs"
                         onSelect={() => {
                           const current = getValues("tokens") || [];
                           if (current.includes(chain.value)) {

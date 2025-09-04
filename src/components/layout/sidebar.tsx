@@ -15,11 +15,11 @@ export default function Sidebar() {
         <Link href="/" className="flex items-center">
           <div className="w-full  flex items-center">
             <Image
-              src={"/layout/logo.svg"}
+              src={"/layout/logolight.png"}
               alt="capita_logo"
-              width={273}
+              width={260}
               height={80}
-              className="w-full object-contain pr-1"
+              className="w-full object-contain pt-5 px-4 pb-6"
             />
           </div>
         </Link>
@@ -35,7 +35,7 @@ export default function Sidebar() {
                 ? "bg-primary/10 py-3 border-r-[4px] !text-primary rounded-none border-primary"
                 : ""
             }
-              flex items-center px-4 py-2 hover:text-primary text-sidebar-content text-[12px] font-semibold gap-3 cursor-pointer rounded-md
+              flex items-center px-4 py-2 hover:text-primary text-sidebar-content text-[12px] gap-3 cursor-pointer rounded-md
               `}
           >
             <span className="text-lg">{<item.icon />}</span>

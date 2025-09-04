@@ -36,16 +36,16 @@ const ChainFundMe = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap- mb-10">
           <div className="w-full relative aspect-auto size-[250px] md:size-[350px]  flex justify-center">
             <Image
-              src={"/layout/list3.svg"}
+              src={"/layout/list1.svg"}
               alt="List illustration"
               fill
               className="w-full object-center object-contain"
             />
           </div>
 
-          <div className="w-full relative aspect-auto size-[250px] md:size-[350px]   flex justify-center">
+          <div className="w-full relative aspect-auto size-[250px] md:size-[380px] flex justify-center">
             <Image
-              src={"/layout/list3.svg"}
+              src={"/layout/lightlist2.png"}
               alt="List illustration"
               fill
               className="w-full object-center object-contain"

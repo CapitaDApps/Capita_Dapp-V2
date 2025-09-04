@@ -11,17 +11,17 @@ export default function Page() {
   const coverImg = false;
   return (
     <div className="lg:w-[90%] w-[98%] mx-auto mt-20">
-      <div className="relative h-44 sm:h-56 md:h-64 bg-[#08121a]">
+      <div className="relative h-44 sm:h-56 md:h-64 shadow-lg bg-[#fff] ">
         <Image
-          src="/campaign/banner.png"
+          src="/campaign/white.jpg"
           alt="campaign banner"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center rounded-md"
         />
         <div
           className={`absolute w-full ${
             coverImg && "neon-wrapper"
-          } h-full bg-[#2E2E2E]/70  rounded-[16px] flex items-center justify-center gap-2`}
+          } h-full  rounded-[16px] flex items-center justify-center gap-2`}
         >
           <label className="inline-flex items-center gap-2 cursor-pointer bg-black/20 px-3 py-2 rounded-md">
             <Image
@@ -33,12 +33,12 @@ export default function Page() {
           </label>
         </div>
 
-        <div className="absolute left-1/2 -bottom-10 transform -translate-x-1/2 z-10">
+        <div className="absolute left-1/2 -bottom-20 transform -translate-x-1/2 z-10">
           <Avatar
-            src="/campaign/c.png"
+            src="/layout/Frame.png"
             alt="avatar"
             size={80}
-            className="border-2 border-[var(--form-blue-border)] bg-[#0f1720] w-13 h-13 md:w-20 md:h-20"
+            className="border-none bg-[#0f1720] w-16 h-16 md:w-40 md:h-40 shadow-lg"
           />
         </div>
       </div>
@@ -47,7 +47,7 @@ export default function Page() {
         <div />
         <div className="flex gap-2 mt-1.5 ">
           <Link href="/profile/edit">
-            <button className="rounded-[6px] bg-gray-700 border-none  text-primary-text hover:bg-gray-700/80 !py-1.5 px-2  text-[10px]">
+            <button className="rounded-[6px] bg-[#00b875] border-none  text-primary-text hover:bg-[#00b875]/80 !py-1.5 px-2  text-[10px]">
               Edit Profile
             </button>
           </Link>

@@ -36,7 +36,7 @@ export default function CampaignInput({
       name={name}
       render={({ field }) => (
         <FormItem className="space-y-2">
-          <FormLabel className="text-xs text-[var(--form-label)] font-normal">
+          <FormLabel className="text-xs text-sidebar-content font-normal">
             {label}
           </FormLabel>
           <div className="w-full flex justify-center items-center">
@@ -44,7 +44,7 @@ export default function CampaignInput({
               {type === "input" ? (
                 <Input
                   className=" border w-[98%] md:w-[92%] lg:w-full !bg-[var(--form-blue)] border-[var(--form-blue-border)] focus:ring-primary focus:ring-2 
-   focus:outline-none focus:border-none rounded-[8px] p-3 text-xs text-secondary-text"
+   focus:outline-none focus:border-none rounded-[8px] p-3 text-xs text-sidebar-content"
                   placeholder={placeholder}
                   {...field}
                   type={textType}

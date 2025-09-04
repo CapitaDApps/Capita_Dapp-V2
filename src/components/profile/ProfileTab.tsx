@@ -29,8 +29,8 @@ export default function ProfileTab() {
                 onClick={() => setActive(t.id)}
                 className={`flex flex-col items-center justify-center text-sm focus:outline-none px-3 py-2 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white/20 ${
                   active === t.id
-                    ? "text-white"
-                    : "text-secondary-text hover:text-white/80"
+                    ? "text-[#111]"
+                    : "text-[#111] hover:text-[#111]/80"
                 }`}
               >
                 <div className="flex gap-3">
@@ -52,7 +52,7 @@ export default function ProfileTab() {
       {active === "campaigns" ? (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-[43px] mb-6 justify-center">
-            <div className="bg-transparent border border-[#383838] rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
+            <div className="bg-transparent border-none shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
               <div className="flex items-center justify-center gap-2">
                 <Image
                   src="/layout/heart.svg"
@@ -60,14 +60,14 @@ export default function ProfileTab() {
                   width={20}
                   height={20}
                 />
-                <div className="text-sm text-secondary-text">
+                <div className="text-sm text-[#111]">
                   Total Amount Raised
                 </div>
               </div>
-              <div className="mt-4 text-white text-3xl font-semibold">$500</div>
+              <div className="mt-10 text-[#666666] text-3xl font-semibold">$500</div>
             </div>
 
-            <div className="bg-transparent border border-[#383838] rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
+            <div className="bg-transparent border border-none shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
               <div className="flex items-center justify-center gap-2">
                 <Image
                   src="/layout/heart.svg"
@@ -75,14 +75,14 @@ export default function ProfileTab() {
                   width={20}
                   height={20}
                 />
-                <div className="text-sm text-secondary-text">
+                <div className="text-sm text-[#111]">
                   Total Campaigns Created
                 </div>
               </div>
-              <div className="mt-4 text-white text-3xl font-semibold">3</div>
+              <div className="mt-10 text-[#666666] text-3xl font-semibold">3</div>
             </div>
 
-            <div className="bg-transparent border border-[#383838] rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
+            <div className="bg-transparent border border-none shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
               <div className="flex items-center justify-center gap-2">
                 <Image
                   src="/layout/heart.svg"
@@ -90,9 +90,9 @@ export default function ProfileTab() {
                   width={20}
                   height={20}
                 />
-                <div className="text-sm text-secondary-text">Total Likes</div>
+                <div className="text-sm text-[#111]">Total Likes</div>
               </div>
-              <div className="mt-4 text-white text-3xl font-semibold">100k</div>
+              <div className="mt-10 text-[#666666] text-3xl font-semibold">100k</div>
             </div>
           </div>
 

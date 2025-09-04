@@ -39,15 +39,15 @@ export default function Footer() {
   ];
   const date = new Date();
   return (
-    <div className="bg-[#121212]">
-      <div className="flex md:flex-row gap-1 flex-col md:items-center justify-between border-b border-silver py-4 px-2.5 ">
+    <div className="bg-sidebar shadow-lg">
+      <div className="flex md:flex-row gap-1 flex-col md:items-center justify-between border-b border-disable-text py-4 px-2.5 ">
         <div className="flex items-center text-start">
           <Image
             width={100}
             height={50}
             alt="capita_logo"
             quality={100}
-            src="/layout/logo.svg"
+            src="/layout/logolight.png"
             className="w-[150px] md:w-[150px] h-auto"
           />
           {/* <h2 className="font-bold text-xs text-primary-text pl-1">
@@ -59,7 +59,7 @@ export default function Footer() {
           {links.map((link) => (
             <Link
               href={link.route}
-              className="font-normal text-[11px] text-white"
+              className="font-normal text-[11px] text-sidebar-content"
               key={link.name}
             >
               {link.name}
@@ -70,7 +70,7 @@ export default function Footer() {
         <div className="flex gap-2 justify-end items-center">
           {socials.map((social, i) => (
             <Link
-              className="text-white text-base cursor-pointer"
+              className="text-sidebar-content text-base cursor-pointer"
               href={social.route}
               target="_blank"
               key={i}
@@ -80,7 +80,7 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      <div className="flex items-center py-3 justify-center text-white text-[11px] font-[400]">
+      <div className="flex items-center py-3 justify-center text-sidebar-content text-[11px] font-[400]">
         <p>Copyright © {date.getFullYear()}, ChainFundMe</p>
       </div>
     </div>
