@@ -22,9 +22,9 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
         boxShadow:
           "0px 110px 44px rgba(179, 201, 255, 0.02), 0px 62px 37px rgba(179, 201, 255, 0.08), 0px 28px 28px rgba(179, 201, 255, 0.13), 0px 7px 15px rgba(179, 201, 255, 0.15)",
       }}
-      className="w-full mx-auto max-w-[320px] h-[300px] rounded-[16px] bg-sidebar border-2 border-primary/20 hover:border-primary transition-colors duration-500 overflow-hidden flex flex-col"
+      className="w-full mx-auto max-w-[320px] h-[400px] rounded-[16px] bg-sidebar border-2 border-primary/20 hover:border-primary transition-colors duration-500 overflow-hidden flex flex-col"
     >
-      <div className="relative w-full h-[40%]">
+      <div className="relative w-full h-[60%]">
         <Image
           src={campaign.image}
           alt={campaign.title}

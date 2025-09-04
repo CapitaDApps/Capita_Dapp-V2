@@ -111,11 +111,11 @@ export default function Notifications() {
   }
 
   return (
-    <div className="p-6 sm:p-8 mt-12">
+    <div className="p-6 sm:p-8 mt-16">
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-[100px] md:mb-0">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-[40px] md:mb-[50px]">
           <div className="min-w-0">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#111]">
+            <h1 className="text-2xl sm:text-3xl font-bold text-sidebar-content">
               Notifications
             </h1>
             <p className="mt-1 text-sm text-slate-400">
@@ -126,14 +126,14 @@ export default function Notifications() {
           <div className=" md:ml-4  md:w-auto">
             <button
               onClick={markAllAsRead}
-              className=" inline-flex text-base justify-center items-center gap-2 bg-[#00b875] text-white px-4 py-2 rounded-md shadow-sm hover:shadow-md transition"
+              className=" inline-flex text-base justify-center items-center gap-2 bg-primary text-white px-4 py-2 rounded-md shadow-sm hover:shadow-md transition"
             >
               Mark all as read
             </button>
           </div>
         </div>
 
-        <div className="mt-6  border border-[#b3b3b3] rounded-2xl p-4 sm:p-6">
+        <div className=" border border-[#b3b3b3] rounded-2xl p-4 sm:p-6">
           <div className="divide-y divide-[#b3b3b3]">
             {notifications.map((n) => (
               <div
@@ -160,7 +160,7 @@ export default function Notifications() {
                         </h3>
                         <span className="text-xs text-slate-400">{n.time}</span>
                       </div>
-                      <p className="mt-2 text-sm text-[#666666] leading-relaxed">
+                      <p className="mt-2 text-sm text-disabled-text leading-relaxed">
                         {n.description}
                       </p>
                       {n.amount && (
@@ -168,7 +168,7 @@ export default function Notifications() {
                           <span className="inline-flex items-center px-4 py-2 border border-slate-600 rounded-full text-xs font-bold text-[#666666]">
                             {n.amount}
                           </span>
-                          <span className=" ml-3 text-xs text-[#666666]">
+                          <span className=" ml-3 text-xs text-disabled-text">
                             {n.destination}
                           </span>
                         </div>
