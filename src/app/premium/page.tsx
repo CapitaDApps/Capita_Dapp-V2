@@ -7,7 +7,7 @@ export default function Premium() {
       <section
         className="py-14"
         style={{
-           background: "linear-gradient(180deg, #92C2FF 0%, #F3F8FF 100%)",
+           background: "linear-gradient(180deg, #92ffbfff 0%, #F3F8FF 100%)",
         }}
        
 
