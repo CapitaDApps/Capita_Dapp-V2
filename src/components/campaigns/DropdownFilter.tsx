@@ -47,7 +47,7 @@ export default function DropdownFilter() {
         onClick={() => setIsOpen(true)}
         className="cursor-pointer border-none"
       >
-        <div className="flex items-center gap-1 cursor-pointer text-white text-xs">
+        <div className="flex items-center gap-1 cursor-pointer text-disabled-text text-xs">
           <IoFilterOutline />
           <p>Filters</p>
         </div>
@@ -55,7 +55,7 @@ export default function DropdownFilter() {
       <DropdownMenuPortal>
         <DropdownMenuContent
           ref={ref}
-          className="mr-2 mt-2 shadow-sm shadow-zinc-950 bg-primary-bg w-[180px] border-none flex flex-col gap-1 p-6 py-4 rounded-none"
+          className="mr-2 mt-2 shadow-sm shadow-zinc-950 bg-sidebar-content text-background w-[180px] border-none flex flex-col gap-1 p-6 py-4 rounded-sm"
         >
           <DropdownMenuLabel className="text-sm text-secondary-text font-normal ">
             SORT BY
@@ -68,7 +68,7 @@ export default function DropdownFilter() {
                   key={sot.value}
                   className={`flex items-center text-primary-text text-sm cursor-pointer rounded-sm px-2 py-1 transition-colors duration-150 ${
                     isChecked
-                      ? "bg-[var(--background)] text-white"
+                      ? "bg-[var(--sidebar-content)] text-white"
                       : "hover:bg-[rgba(255,255,255,0.04)]"
                   }`}
                 >

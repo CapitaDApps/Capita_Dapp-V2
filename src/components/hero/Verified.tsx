@@ -17,7 +17,7 @@ export default function Verified() {
           <div className="flex items-center justify-center space-x-2.5 mb-2">
             <h3 className="text-2xl font-bold text-sidebar-content">Get Verified</h3>
             <Image
-              src={"/layout/checkmark.svg"}
+              src={"/layout/checkmarklight.png"}
               alt="checkmark"
               width={25}
               height={25}

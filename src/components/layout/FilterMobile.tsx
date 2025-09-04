@@ -58,7 +58,7 @@ export default function FilterMobile() {
               name="q"
               type="text"
               placeholder="Search campaigns"
-              className="bg-transparent text-sm font-normal text-text-gray placeholder:text-zinc-500 pl-0 pr-2 py-0 focus-visible:outline-none focus-visible:ring-0 w-full"
+              className="bg-sidebar text-sm font-normal text-sidebar-content placeholder:text-zinc-500 pl-0 pr-2 py-0 focus-visible:outline-none focus-visible:ring-0 w-full"
             />
           </div>
         </div>
@@ -81,9 +81,9 @@ export default function FilterMobile() {
             <DropdownMenuPortal>
               <DropdownMenuContent
                 ref={ref}
-                className="absolute right-0 mt-2 w-56 bg-primary-bg border border-zinc-800 rounded-md p-3 shadow-lg z-50"
+                className="absolute right-0 mt-2 w-56 bg-sidebar-content border border-zinc-800 rounded-md p-3 shadow-lg z-50"
               >
-                <div className="text-xs text-secondary-text mb-2 font-medium">
+                <div className="text-xs text-background mb-2 font-medium">
                   Filters
                 </div>
 

@@ -59,8 +59,8 @@ export default function MobileHeader() {
   return (
     <header
       className={` ${
-        slug ? "bg-[#121212]" : "bg-[#121212]/40 backdrop-blur-sm"
-      } top-0 left-0 w-full z-40 fixed  py-8 px-4 h-12 flex items-center justify-between lg:hidden`}
+        slug ? "bg-background" : "bg-background/40 backdrop-blur-sm "
+      } top-0 left-0 w-full z-40 shadow-lg fixed  py-8 px-4 h-12 flex items-center justify-between lg:hidden`}
     >
       <div />
       <div className="flex items-center gap-3">
@@ -69,7 +69,7 @@ export default function MobileHeader() {
             <button
               aria-label="Notifications"
               aria-expanded={open}
-              className="p-2 text-white rounded-md"
+              className="p-2 text-sidebar-content cursor-pointer   rounded-md"
               onClick={() => setOpen((o) => !o)}
             >
               <IoIosNotificationsOutline className="w-5 h-5" />
@@ -114,7 +114,7 @@ export default function MobileHeader() {
             )}
           </div>
 
-          <button className="bg-white text-black px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200">
+          <button className="bg-primary text-black px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200">
             Connect Wallet
           </button>
         </div>

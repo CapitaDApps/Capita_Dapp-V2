@@ -29,7 +29,7 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
           src={campaign.image}
           alt={campaign.title}
           fill
-          className="object-cover object-center"
+          className="object-cover w-full h-full"
         />
       </div>
 
@@ -52,7 +52,7 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
                 {campaign.title}
               </h3>
               <Image
-                src={"/layout/checkmark.svg"}
+                src={"/layout/checkmarklight.png"}
                 alt="verified"
                 width={16}
                 height={16}

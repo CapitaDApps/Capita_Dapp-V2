@@ -2,19 +2,21 @@ import Image from "next/image";
 
 export default function Premium() {
   return (
-    <div className="min-h-screen bg-[#121212] mt-12">
+    <div className="min-h-screen bg-background mt-12">
       {/* Hero */}
       <section
         className="py-14"
         style={{
-          background: "linear-gradient(180deg, #0C1219 0%, #293B51 100%)",
+           background: "linear-gradient(180deg, #92C2FF 0%, #F3F8FF 100%)",
         }}
+       
+
       >
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-sidebar-content">
             Upgrade to Premium
           </h1>
-          <p className="mt-4 text-sm md:text-base text-slate-300 max-w-2xl mx-auto">
+          <p className="mt-4 text-sm md:text-base text-disabled-text max-w-2xl mx-auto">
             Access powerful features, priority visibility, and unlimited
             campaign slots—built for serious changemakers.
           </p>
@@ -34,14 +36,14 @@ export default function Premium() {
                 }}
               />
 
-              <div className="relative z-10 bg-[#1E1E1E] border border-zinc-800 rounded-2xl px-4 py-6 sm:px-6 sm:py-8 w-full sm:w-[443px] sm:h-[450px] flex flex-col justify-between">
+              <div className="relative z-10 bg-background shadow-lg rounded-2xl px-4 py-6 sm:px-6 sm:py-8 w-full sm:w-[443px] sm:h-[450px] flex flex-col justify-between">
                 <div className="space-y-6">
                   <div>
-                    <h2 className="text-xl md:text-2xl font-semibold text-white flex items-center gap-2">
+                    <h2 className="text-xl md:text-2xl font-semibold text-sidebar-contentflex items-center gap-2">
                       Get Verified
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-[#0b2b4a] rounded-full">
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full">
                         <Image
-                          src={"/layout/checkmark.svg"}
+                          src={"/layout/checkmarklight.png"}
                           alt="checkmark"
                           width={20}
                           height={20}
@@ -50,10 +52,10 @@ export default function Premium() {
                     </h2>
 
                     <div className="mt-3 flex items-baseline gap-2">
-                      <span className="text-3xl md:text-4xl font-extrabold text-white">
+                      <span className="text-3xl md:text-4xl font-extrabold text-sidebar-content">
                         $30
                       </span>
-                      <span className="text-sm text-slate-400 mt-1">
+                      <span className="text-sm text-sidebar-content mt-1">
                         /annum
                       </span>
                     </div>
@@ -61,39 +63,39 @@ export default function Premium() {
 
                   <ul className="space-y-3 text-sm text-slate-300">
                     <li className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-zinc-900 text-white">
+                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span>Establish trust with potential backers.</span>
+                      <span className="text-disabled-text">Establish trust with potential backers.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-zinc-900 text-white">
+                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span>Increases campaign visibility</span>
+                      <span className="text-disabled-text">Increases campaign visibility</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-zinc-900 text-white">
+                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span>Demonstrates transparency and accountability.</span>
+                      <span className="text-disabled-text">Demonstrates transparency and accountability.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-zinc-900 text-white">
+                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span>Grants access to exclusive features</span>
+                      <span className="text-disabled-text">Grants access to exclusive features</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-zinc-900 text-white">
+                      <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span>Attracts higher funding amounts</span>
+                      <span className="text-disabled-text">Attracts higher funding amounts</span>
                     </li>
                   </ul>
                   <div className="py-2">
                     <button
-                      className="w-full bg-[#0b66ff] hover:bg-[#095be6] text-white rounded-full py-1 text-base font-semibold shadow-lg transition"
+                      className="w-full bg-primary hover:bg-primary/90 cursor-pointer text-background rounded-full py-1 text-base font-semibold shadow-lg transition"
                       aria-label="Subscribe"
                     >
                       Subscribe
@@ -104,7 +106,7 @@ export default function Premium() {
             </div>
 
             {/* subtle footer note aligned under the card */}
-            <p className="mt-4 text-center text-sm text-slate-400">
+            <p className="mt-4 text-center text-sm text-sidebar-content">
               Cancel anytime. Payments handled securely.
             </p>
           </div>

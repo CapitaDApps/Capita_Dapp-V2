@@ -32,11 +32,11 @@ export default function ProfileBio() {
       <div className="flex flex-col items-center md:flex-row md:items-center md:justify-center gap-3 mt-5 w-full">
         <div className="flex flex-col items-center md:items-center">
           <div className="flex items-center gap-3">
-            <h1 className="text-white font-medium text-2xl">
+            <h1 className="text-[#111] font-medium text-2xl">
               {profile?.displayName || "Anon"}
             </h1>
 
-            <div className="hidden md:inline-flex items-center gap-2 text-sm border border-[#383838] rounded-md font-semibold cursor-pointer px-3 py-1 text-blue-600">
+            <div className="hidden md:inline-flex items-center gap-2 text-sm border border-[#383838] rounded-md font-semibold cursor-pointer px-3 py-1 text-[#00b875]">
               <Image
                 src={"/layout/checkmark.svg"}
                 alt="checkmark"
@@ -47,7 +47,7 @@ export default function ProfileBio() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-text-gray text-sm mt-3 md:mt-2">
+          <div className="flex items-center gap-2 text-[#111] text-sm mt-3 md:mt-2">
             <Link
               href={profile?.tgLink || "#"}
               className="text-white text-center bg-blue-950 rounded-md p-[6px] border border-zinc-900"

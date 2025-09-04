@@ -49,10 +49,10 @@ export default function CampaignSelect({
                   <SelectValue placeholder={placeholder} className="" />
                 </SelectTrigger>
               </FormControl>
-              <SelectContent className="max-h-[160px] bg-[#071015] border border-[var(--form-blue-border)]">
+              <SelectContent className="max-h-[160px] bg-[#fff] border border-[var(--primary)] text-[var(--sidebar-content)]">
                 {array.map((select) => (
                   <SelectItem
-                    className="cursor-pointer text-xs hover:bg-[#003DEF]"
+                    className="cursor-pointer text-xs hover:bg-[#00b875]"
                     key={select.name}
                     value={select.value}
                   >
