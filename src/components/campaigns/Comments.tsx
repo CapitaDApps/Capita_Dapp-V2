@@ -217,13 +217,13 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                   value={newText}
                   onChange={(e) => setNewText(e.target.value)}
                   placeholder="Add a comment"
-                  className="w-full rounded-full bg-[#071016] border border-[#17303d] px-4 py-3 text-white placeholder:text-slate-400 pr-28"
+                  className="w-full rounded-full bg-background border border-sidebar-content px-4 py-3 text-sidebar-content placeholder:text-disabled-text focus:outline-disabled-text/30 pr-28"
                   aria-label="Add a comment"
                 />
 
                 <button
                   onClick={addComment}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-1.5 rounded-full bg-gradient-to-b from-[#2b6fff] to-[#153bd6] text-white text-sm shadow"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 rounded-full bg-primary text-background cursor-pointer hover:text-sidebar-content text-sm shadow"
                 >
                   Comment
                 </button>
@@ -232,16 +232,16 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-2">
           {visibleComments.map((c) => (
-            <div key={c.id} className="pt-4">
+            <div key={c.id} className="pt-1">
               <div className="flex items-start gap-4">
                 <Avatar src="/layout/avatarboy.svg" alt="you" size={32} />
 
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-sm font-semibold text-white">
+                      <div className="text-sm font-semibold text-sidebar-content">
                         {c.name}
                       </div>
                       <div className="text-xs text-slate-400">{c.date}</div>
@@ -252,25 +252,25 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                         onClick={() =>
                           setMenuOpenId(menuOpenId === c.id ? null : c.id)
                         }
-                        className="p-2 rounded-full hover:bg-white/5"
+                        className="p-2 rounded-full hover:bg-sidebar-content/5"
                         aria-haspopup="true"
                         aria-expanded={menuOpenId === c.id}
                         aria-label="Open comment actions"
                       >
-                        <HiOutlineDotsHorizontal className="text-slate-300" />
+                        <HiOutlineDotsHorizontal className="text-sidebar-content" />
                       </button>
 
                       {menuOpenId === c.id && (
-                        <div className="absolute right-0 top-8 w-44 bg-[#0b1116] border border-[var(--form-blue-border)] rounded-md p-2 shadow-lg">
+                        <div className="absolute right-0 top-8 w-44 bg-sidebar border border-disabled-text/30 text-sidebar-content rounded-md p-2 shadow-lg">
                           <button
                             onClick={() => startEdit(c.id, c.text)}
-                            className="w-full text-left px-3 py-2 hover:bg-white/5 rounded-md"
+                            className="w-full text-left px-3 py-2 bg-background hover:bg-sidebar-content/5 rounded-md cursor-pointer"
                           >
                             Edit
                           </button>
                           <button
                             onClick={() => deleteComment(c.id)}
-                            className="w-full text-left px-3 py-2 hover:bg-white/5 rounded-md"
+                            className="w-full text-left px-3 py-2 hover:bg-sidebar-content/5 rounded-md cursor-pointer text-rose-400"
                           >
                             Delete
                           </button>
@@ -285,30 +285,30 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                         <textarea
                           value={editingText}
                           onChange={(e) => setEditingText(e.target.value)}
-                          className="w-full rounded-md bg-[#071016] border border-[#17303d] p-3 text-white resize-vertical"
+                          className="w-full rounded-md bg-background border border-disabled-text/30 p-3 text-sidebar-content shadow-sm resize-vertical"
                         />
 
                         <div className="mt-2 flex gap-2">
                           <button
                             onClick={() => saveEdit(c.id)}
-                            className="px-3 py-1 rounded-md bg-[#003DEF] text-white"
+                            className="px-3 py-1 rounded-md bg-primary text-white"
                           >
                             Save
                           </button>
                           <button
                             onClick={() => setEditingId(null)}
-                            className="px-3 py-1 rounded-md bg-[#22334d]"
+                            className="px-3 py-1 rounded-md border border-primary text-primary"
                           >
                             Cancel
                           </button>
                         </div>
                       </div>
                     ) : (
-                      <div className="whitespace-pre-wrap">{c.text}</div>
+                      <div className="whitespace-pre-wrap text-sidebar-content text-sm">{c.text}</div>
                     )}
                   </div>
 
-                  <div className="flex items-center gap-6 mt-3 text-sm text-slate-400">
+                  <div className="flex items-center gap-6 mt-3 text-sm text-sidebar-content">
                     <div className="flex items-center gap-3">
                       <button
                         onClick={(e) => {
@@ -321,20 +321,20 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                         className={`flex items-center gap-1 ${
                           likedComments[c.id]
                             ? "text-rose-400"
-                            : "text-slate-300"
+                            : "text-sidebar-content"
                         }`}
                       >
                         <AiOutlineHeart />
-                        <span className="ml-1 text-slate-200">{c.likes}</span>
+                        <span className="ml-1 text-sidebar-content">{c.likes}</span>
                       </button>
 
                       <button
                         onClick={() => toggleReply(c.id)}
                         aria-label="Toggle replies"
-                        className="flex items-center gap-1 text-slate-300"
+                        className="flex items-center gap-1 text-sidebar-content"
                       >
                         <FiMessageCircle />
-                        <span className="ml-1 text-slate-200">
+                        <span className="ml-1 text-sidebar-content">
                           {c.replies.length}
                         </span>
                       </button>
@@ -342,7 +342,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
 
                     <button
                       onClick={() => toggleReply(c.id)}
-                      className="text-slate-300 underline text-sm"
+                      className="text-sidebar-content underline text-sm"
                     >
                       {c.replies.length > 0
                         ? `Replies (${c.replies.length})`
@@ -362,15 +362,15 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                               <div className="flex-1">
                                 <div className="flex items-center justify-between">
                                   <div>
-                                    <div className="text-sm font-semibold text-white">
+                                    <div className="text-sm font-semibold text-sidebar-content">
                                       {r.name}
                                     </div>
-                                    <div className="text-xs text-slate-400">
+                                    <div className="text-xs text-disabled-text">
                                       {r.date}
                                     </div>
                                   </div>
 
-                                  <div className="text-sm text-slate-400">
+                                  <div className="text-sm text-sidebar-content">
                                     <button
                                       onClick={(e) => {
                                         e.stopPropagation();
@@ -385,8 +385,8 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                                       }
                                       className={`flex items-center gap-1 ${
                                         likedReplies[r.id]
-                                          ? "text-rose-400"
-                                          : "text-slate-300"
+                                          ? "text-rose-500"
+                                          : "text-sidebar-content"
                                       }`}
                                     >
                                       <AiOutlineHeart />
@@ -395,7 +395,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                                   </div>
                                 </div>
 
-                                <div className="mt-2 text-slate-300">
+                                <div className="mt-2 text-sidebar-content whitespace-pre-wrap">
                                   {r.text}
                                 </div>
                               </div>
@@ -407,7 +407,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                         <div className="mt-2">
                           <button
                             onClick={() => loadMoreReplies(c.id)}
-                            className="text-sm text-slate-400 underline"
+                            className="text-sm text-sidebar-content underline"
                           >
                             Load more replies (+3)
                           </button>
@@ -417,7 +417,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                       <div className="mt-3">
                         <button
                           onClick={() => toggleReply(c.id)}
-                          className="text-sm text-slate-400 underline"
+                          className="text-sm text-sidebar-content underline"
                         >
                           Add a reply
                         </button>
@@ -440,20 +440,20 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                               }))
                             }
                             placeholder="Write a reply"
-                            className="w-full rounded-full bg-[#071016] border border-[#17303d] px-4 py-2 text-white placeholder:text-slate-400 pr-24"
+                            className="w-full rounded-full bg-background border border-sidebar-content px-4 py-3 text-sidebar-content placeholder:text-disabled-text focus:outline-disabled-text/30 pr-28"
                             aria-label="Write a reply"
                           />
 
                           <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-2">
                             <button
                               onClick={() => addReply(c.id)}
-                              className="px-3 py-1 rounded-full bg-[#1f6fff] text-white text-sm"
+                              className="px-4 py-2 rounded-full bg-primary text-white text-sm cursor-pointer hover:text-background shadow"
                             >
                               Reply
                             </button>
                             <button
                               onClick={() => toggleReply(c.id)}
-                              className="px-3 py-1 rounded-full bg-[#22334d] text-sm"
+                              className="px-4 py-2 rounded-full border border-primary text-primary text-sm cursor-pointer hover:bg-white/5 shadow"
                             >
                               Cancel
                             </button>
@@ -465,7 +465,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                 </div>
               </div>
 
-              <div className="border-t border-slate-800 mt-4 pt-4" />
+              <div className="border-t border-disabled-text/50 mt-4 pt-4" />
             </div>
           ))}
 
@@ -473,7 +473,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
             <div className="pt-4">
               <button
                 onClick={loadMoreComments}
-                className="text-sm text-slate-400 underline"
+                className="text-sm text-sidebar-content underline"
               >
                 Load more comments (+5)
               </button>

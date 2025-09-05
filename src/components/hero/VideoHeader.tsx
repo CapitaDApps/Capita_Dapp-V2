@@ -26,7 +26,7 @@ export default function VideoHeader() {
           <h1 className="text-3xl md:text-[40px] lg:text-[56px] font-semibold text-background leading-tight">
             Welcome to{" "}
           </h1>
-          <div className="relative aspect-auto w-[250px] h-[40px] md:h-[50px] md:w-[320px] lg:w-[400px]">
+          <div className="relative aspect-auto w-[200px] h-[30px] md:h-[50px] md:w-[320px] lg:w-[400px]">
             <Image src="/layout/wordmarklight.png" alt="word" fill />
           </div>
         </div>

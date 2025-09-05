@@ -33,8 +33,8 @@ export default function TokensList({
   showIcons = true,
 }: Props) {
   return (
-    <div>
-      <div className="text-sm mb-2">Accepted Tokens</div>
+    <div className="w-full pt-2">
+      <div className="text-sm mb-2 text-sidebar-content">Accepted Tokens</div>
       <div
         className={`flex flex-wrap gap-2 items-center justify-start ${className}`}
       >
@@ -43,7 +43,7 @@ export default function TokensList({
           return (
             <div
               key={t}
-              className="px-2 sm:px-3 py-1 rounded-full bg-[#0f1720] text-xs sm:text-sm flex items-center gap-2 min-w-[56px] justify-center"
+              className="px-2 sm:px-3 py-1 rounded-full bg-secondary-text/50 font-medium text-sidebar-content text-xs sm:text-sm flex items-center gap-2 min-w-[56px] justify-center"
             >
               {icon && (
                 <Image

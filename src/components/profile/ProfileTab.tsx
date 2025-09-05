@@ -52,7 +52,7 @@ export default function ProfileTab() {
       {active === "campaigns" ? (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-[43px] mb-6 justify-center">
-            <div className="bg-transparent border-none shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
+            <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
               <div className="flex items-center justify-center gap-2">
                 <Image
                   src="/layout/heart.svg"
@@ -60,14 +60,14 @@ export default function ProfileTab() {
                   width={20}
                   height={20}
                 />
-                <div className="text-sm text-[#111]">
+                <div className="text-sm text-sidebar-content">
                   Total Amount Raised
                 </div>
               </div>
-              <div className="mt-10 text-[#666666] text-3xl font-semibold">$500</div>
+              <div className="mt-10 text-disabled-text text-3xl font-semibold">$500</div>
             </div>
 
-            <div className="bg-transparent border border-none shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
+            <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
               <div className="flex items-center justify-center gap-2">
                 <Image
                   src="/layout/heart.svg"
@@ -75,14 +75,14 @@ export default function ProfileTab() {
                   width={20}
                   height={20}
                 />
-                <div className="text-sm text-[#111]">
+                <div className="text-sm text-sidebar-content">
                   Total Campaigns Created
                 </div>
               </div>
-              <div className="mt-10 text-[#666666] text-3xl font-semibold">3</div>
+              <div className="mt-10 text-disabled-text text-3xl font-semibold">3</div>
             </div>
 
-            <div className="bg-transparent border border-none shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
+            <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
               <div className="flex items-center justify-center gap-2">
                 <Image
                   src="/layout/heart.svg"
@@ -90,9 +90,9 @@ export default function ProfileTab() {
                   width={20}
                   height={20}
                 />
-                <div className="text-sm text-[#111]">Total Likes</div>
+                <div className="text-sm text-sidebar-content">Total Likes</div>
               </div>
-              <div className="mt-10 text-[#666666] text-3xl font-semibold">100k</div>
+              <div className="mt-10 text-disabled-text text-3xl font-semibold">100k</div>
             </div>
           </div>
 
