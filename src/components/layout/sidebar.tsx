@@ -32,7 +32,7 @@ export default function Sidebar() {
             className={`
             ${
               slug === item.slug
-                ? "bg-primary/25 py-3 border-r-[4px] !text-primary rounded-none border-primary"
+                ? "bg-primary/30 py-3 border-r-[4px] !text-primary rounded-none border-primary"
                 : ""
             }
               flex items-center px-4 py-2 hover:text-primary text-sidebar-content text-[12px] gap-3 cursor-pointer rounded-md

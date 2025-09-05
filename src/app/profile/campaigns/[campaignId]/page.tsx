@@ -40,7 +40,7 @@ export default function Page() {
       <div className="w-full mx-auto">
         <div className="mb-6 flex items-center justify-between">
           <a
-            className="text-sm text-slate-300 hover:underline cursor-pointer"
+            className="text-sm text-sidebar-content hover:underline cursor-pointer"
             onClick={() => window.history.back()}
           >
             &lt; Back
@@ -83,7 +83,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="text-sm text-slate-400 mt-3 flex items-center gap-2">
+        <div className="text-sm text-disabled-text mt-3 flex items-center gap-2">
           <Image
             src="/layout/dot.svg"
             alt="Logo"
@@ -104,14 +104,14 @@ export default function Page() {
 
           <div className="flex items-center gap-3">
             <div className="flex">
-              <h1 className="text-sm md:text-2xl font-semibold">
+              <h1 className="text-sm md:text-2xl font-semibold text-sidebar-content">
                 Campaign Name
               </h1>
 
               <div></div>
             </div>
             <Image
-              src="/layout/checkmark.svg"
+              src="/layout/checkmarklight.png"
               alt="checkmark"
               width={35}
               height={35}
@@ -121,7 +121,7 @@ export default function Page() {
         </div>
 
         <div className="space-y-4">
-          <p className="text-slate-300  text-sm leading-relaxed whitespace-pre-line">
+          <p className="text-disabled-text  text-sm leading-relaxed whitespace-pre-line">
             Our startup was born out of a passion for solving the specific pain
             point — for example, the challenges of renting affordable housing in
             Nigeria. Since launching, we&apos;ve reached important milestones,
@@ -129,18 +129,18 @@ export default function Page() {
           </p>
 
           {/* Progress */}
-          <div className="rounded-md  bg-transparent">
-            <div className="flex items-center justify-between mb-2 text-sm ">
+          <div className="rounded-md  bg-transparent pt-2">
+            <div className="flex items-center justify-between mb-2 text-sm text-sidebar-content">
               <span>Progress</span>
               <span>Target Amount: 20eth</span>
             </div>
-            <div className="w-full bg-[#0c1720] rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-secondary-text rounded-full h-3 overflow-hidden">
               <div
-                className="h-3 bg-gradient-to-r from-[#0048ff] to-[#0026b3]"
+                className="h-3 bg-primary rounded-full transition-all duration-500 ease-in-out"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
-            <div className="mt-2 text-sm text-slate-300">
+            <div className="mt-2 text-sm text-sidebar-content">
               Amount raised: 1.05eth
             </div>
           </div>
@@ -149,11 +149,11 @@ export default function Page() {
             <TokensList />
           </div>
 
-          <div className="mt-4 flex flex-col sm:flex-row items-center justify-center  gap-3">
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-center  gap-3">
             <button
               type="button"
               aria-label="Withdraw funds"
-              className="w-full sm:w-auto bg-white text-black rounded-md px-6 py-2 text-sm md:text-lg font-medium shadow-sm"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/80 cursor-pointer text-background rounded-md px-6 py-2 text-sm md:text-lg font-medium shadow-sm"
               onClick={() => {}}
             >
               Withdraw
@@ -162,7 +162,7 @@ export default function Page() {
             <button
               type="button"
               aria-label="End campaign"
-              className="w-full sm:w-auto border border-white/40 text-white rounded-md px-6 py-2 text-sm md:text-lg font-medium hover:bg-white/5"
+              className="w-full sm:w-auto border border-primary text-primary cursor-pointer hover:text-primary/80 rounded-md px-6 py-2 text-sm md:text-lg font-medium hover:bg-white/5"
               onClick={() => {}}
             >
               End Campaign

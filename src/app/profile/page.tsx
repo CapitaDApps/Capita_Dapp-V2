@@ -45,9 +45,9 @@ export default function Page() {
 
       <div className="flex justify-between items-center mt-4">
         <div />
-        <div className="flex gap-2 mt-1.5 ">
+        <div className="flex gap-2 mt-1.5 pr-2">
           <Link href="/profile/edit">
-            <button className="rounded-[6px] bg-[#00b875] border-none  text-primary-text hover:bg-[#00b875]/80 !py-1.5 px-2  text-[10px]">
+            <button className="rounded-[6px] bg-primary border-none text-background hover:bg-[#00b875]/80 !py-1.5 px-2  text-[10px]">
               Edit Profile
             </button>
           </Link>

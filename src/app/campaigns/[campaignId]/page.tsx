@@ -48,13 +48,13 @@ export default function Page() {
   ];
 
   return (
-    <div className="min-h-screen  text-white py-8 px-4 md:px-8 lg:px-16 mt-12">
+    <div className="min-h-screen  text-white py-8 px-2 md:px-8 lg:px-16 mt-12">
       <div className="w-full mx-auto">
         <div className="mb-6 flex items-center justify-between">
           <button
             onClick={() => router.back()}
             aria-label="Go back"
-            className="text-sm text-slate-300 hover:underline"
+            className="text-sm text-sidebar-content hover:underline"
           >
             &lt; Back
           </button>
@@ -96,7 +96,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="text-sm text-slate-400 mt-3 flex items-center gap-2">
+        <div className="text-sm text-disabled-text mt-3 flex items-center gap-2">
           <Image
             src="/layout/dot.svg"
             alt="Logo"
@@ -116,9 +116,11 @@ export default function Page() {
           />
 
           <div className="flex items-center gap-3">
-            <h1 className="text-sm md:text-2xl font-semibold">Campaign Name</h1>
+            <h1 className="text-sm md:text-2xl text-sidebar-content font-semibold">
+              Campaign Name
+            </h1>
             <Image
-              src="/layout/checkmark.svg"
+              src="/layout/checkmarklight.png"
               alt="checkmark"
               width={35}
               height={35}
@@ -128,7 +130,7 @@ export default function Page() {
         </div>
 
         <div className="space-y-4">
-          <p className="text-slate-300  text-sm leading-relaxed whitespace-pre-line">
+          <p className="text-sidebar-content  text-sm leading-relaxed whitespace-pre-line">
             Our startup was born out of a passion for solving the specific pain
             point — for example, the challenges of renting affordable housing in
             Nigeria. Since launching, we&apos;ve reached important milestones,
@@ -141,17 +143,17 @@ export default function Page() {
 
           {/* Progress */}
           <div className="rounded-md  bg-transparent">
-            <div className="flex items-center justify-between mb-2 text-sm ">
+            <div className="flex items-center justify-between mb-2 text-sm text-sidebar-content">
               <span>Progress</span>
               <span>Target Amount: 20eth</span>
             </div>
-            <div className="w-full bg-[#0c1720] rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-disabled-text/30 rounded-full h-3 overflow-hidden">
               <div
-                className="h-3 bg-gradient-to-r from-[#0048ff] to-[#0026b3]"
+                className="h-3 bg-primary transition-all duration-500"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
-            <div className="mt-2 text-sm text-slate-300">
+            <div className="mt-2 text-sm text-sidebar-content">
               Amount raised: 1.05eth
             </div>
           </div>
@@ -160,23 +162,23 @@ export default function Page() {
             <TokensList />
           </div>
 
-          <div className="rounded-md p-4 bg-transparent border-t border-[#142129]">
+          <div className="rounded-md md:p-4 bg-transparent">
             <div className="flex flex-row gap-3 md:gap-6 mb-4">
-              <div className="w-[100%] py-2">
-                <label className="text-sm text-slate-400 block mb-2">
+              <div className="w-[70%] py-3">
+                <label className="md:text-sm text-[10px] text-sidebar-content mb-2">
                   Select Token
                 </label>
                 <div className="relative">
                   <select
                     value={selectedToken}
                     onChange={(e) => setSelectedToken(e.target.value)}
-                    className="w-full rounded-md bg-[#0f1720] border border-[#20303a] px-3 py-2 h-12 text-white text-sm appearance-none pr-8"
+                    className="w-full rounded-md bg-background border border-disabled-text px-3 py-2 h-10 text-sidebar-content md:text-sm  text-[12px] appearance-none pr-8 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   >
                     <option value="CPT">CPT</option>
                     <option value="ETH">ETH</option>
                     <option value="USDC">USDC</option>
                   </select>
-                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sidebar-content">
                     <svg
                       width="14"
                       height="14"
@@ -196,23 +198,27 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className="w-[100%] py-2">
-                <label className="text-sm text-slate-400 block mb-2">
+              <div className="w-[100%] md:py-2 py-4">
+                <label className="md:text-sm text-[10px] text-sidebar-content block mb-1">
                   Enter Amount
                 </label>
                 <input
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   placeholder="$0.00"
-                  className="w-full rounded-md bg-[#0f1720] border border-[#20303a] px-3 py-2 h-12 text-white text-sm"
+                  className="w-full rounded-md bg-background border border-disabled-text px-3 py-2 h-10 text-sidebar-content focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent md:text-sm  text-[12px]"
                 />
-                <div className="text-xs text-slate-500 mt-2">0.000ETH</div>
+                <div className="text-xs text-sidebar-content mt-2">0.000ETH</div>
               </div>
-            </div>
-            <div className="w-[100%] py-2">
-              <button className="w-[100%] bg-gradient-to-r from-[#003DEF] to-[#001F7A] px-4 py-3 rounded-md text-white last:col-span-2 md:last:col-span-1">
-                Fund Campaign
-              </button>
+
+              <div className="w-[100%] py-2">
+                <label className="text-sm block mb-2">
+                 fund campaign
+                </label>
+                <button className="w-[100%] bg-primary md:px-4 py-2.5 rounded-md text-white last:col-span-2 md:last:col-span-1 md:text-sm  text-[12px]">
+                  Fund Campaign
+                </button>
+              </div>
             </div>
           </div>
 
