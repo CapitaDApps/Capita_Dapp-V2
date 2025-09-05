@@ -198,7 +198,7 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className="w-[100%] md:py-2 py-4">
+              <div className="w-[100%] md:py-3 py-4">
                 <label className="md:text-sm text-[10px] text-sidebar-content block mb-1">
                   Enter Amount
                 </label>
