@@ -52,7 +52,7 @@ export default function Header() {
               >
                 <IoIosNotifications className="w-5 h-5" />
               </button>
-              <span className="absolute -top-0.5 right-1 bg-primary text-black text-[10px] font-semibold rounded-full w-4 h-4 flex items-center justify-center">
+              <span className="absolute -top-0.5 right-1 bg-primary text-background text-[10px] font-semibold rounded-full w-4 h-4 flex items-center justify-center">
                 {initialNotifications.filter((n) => !n.read).length}
               </span>
 
