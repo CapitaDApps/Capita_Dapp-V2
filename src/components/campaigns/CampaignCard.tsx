@@ -52,7 +52,7 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
                 {campaign.title}
               </h3>
               <Image
-                src={"/layout/checkmarklight.png"}
+                src={"/layout/checkmark.svg"}
                 alt="verified"
                 width={16}
                 height={16}

@@ -126,6 +126,10 @@ export default function Notifications() {
           <div className=" md:ml-4  md:w-auto">
             <button
               onClick={markAllAsRead}
+              style={{
+                background:
+                  "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+              }}
               className=" inline-flex text-base justify-center items-center gap-2 bg-primary text-white px-4 py-2 rounded-md shadow-sm hover:shadow-md transition"
             >
               Mark all as read
