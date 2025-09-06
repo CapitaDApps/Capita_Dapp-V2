@@ -74,26 +74,32 @@ export default function MobileHeader() {
             >
               <IoIosNotificationsOutline className="w-5 h-5" />
             </button>
-            <span className="absolute -top-1 -right-1 bg-primary text-black text-[10px] font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+            <span
+              style={{
+                background:
+                  "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+              }}
+              className="absolute -top-1 -right-1 bg-primary text-background text-[10px] font-semibold rounded-full w-5 h-5 flex items-center justify-center"
+            >
               {initialNotifications.filter((n) => !n.read).length}
             </span>
 
             {open && (
-              <div className="absolute left-1/2 top-full transform -translate-x-1/2 mt-2 w-[320px] max-w-[90vw] bg-[#071018] border border-[#2d2f33] rounded-lg shadow-lg z-50">
+              <div className="absolute left-1/2 top-full transform -translate-x-1/2 mt-2 w-[320px] max-w-[90vw] bg-sidebar border border-disabled-text/50 rounded-lg shadow-lg z-50">
                 <div className="p-3">
-                  <h4 className="text-sm font-semibold text-white">
+                  <h4 className="text-sm font-semibold text-sidebar-content">
                     Notifications
                   </h4>
-                  <div className="mt-2 max-h-56 overflow-y-auto divide-y divide-[#2c2f33]">
+                  <div className="mt-2 max-h-56 overflow-y-auto divide-y divide-disabled-text/30">
                     {initialNotifications.slice(0, 5).map((n) => (
                       <div key={n.id} className="py-2 flex items-start gap-2">
                         <div
-                          className={`h-8 w-8 rounded-full flex items-center justify-center text-white ${n.iconBg}`}
+                          className={`h-8 w-8 rounded-full flex items-center justify-center text-sidebar-content ${n.iconBg}`}
                         >
                           {n.iconEmoji}
                         </div>
                         <div className="flex-1">
-                          <div className="text-sm text-white font-medium truncate">
+                          <div className="text-sm text-sidebar-content font-medium truncate">
                             {n.title}
                           </div>
                           <div className="text-xs text-slate-400">{n.time}</div>
@@ -104,7 +110,7 @@ export default function MobileHeader() {
                   <div className="mt-3 text-right">
                     <a
                       href="/notifications"
-                      className="text-sm underline text-slate-300"
+                      className="text-sm underline text-sidebar-content hover:text-disabled-text"
                     >
                       View all
                     </a>
@@ -114,7 +120,13 @@ export default function MobileHeader() {
             )}
           </div>
 
-          <button className="bg-primary text-black px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200">
+          <button
+            style={{
+              background:
+                "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+            }}
+            className="bg-primary text-background px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200"
+          >
             Connect Wallet
           </button>
         </div>

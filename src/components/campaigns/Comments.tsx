@@ -2,10 +2,16 @@
 
 import React, { useState } from "react";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
 import Avatar from "@/components/ui/Avatar";
+import PopupProfile from "./PopupProfile";
 
 type Reply = {
   id: number;
@@ -209,7 +215,18 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
 
         <div className="mb-6">
           <div className="flex items-center gap-3">
-            <Avatar src="/layout/avatarboy.svg" alt="you" size={40} />
+            <Popover>
+              <PopoverTrigger>
+                <Avatar src="/layout/avatarboy.svg" alt="you" size={45} />
+              </PopoverTrigger>
+              <PopoverContent
+                side="top"
+                align="center"
+                className="border border-disabled-text/20 bg-background rounded-xl text-sm shadow-md text-sidebar-content p-6 w-[300px]"
+              >
+                <PopupProfile />
+              </PopoverContent>
+            </Popover>
 
             <div className="flex-1">
               <div className="relative">
@@ -240,7 +257,18 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
           {visibleComments.map((c) => (
             <div key={c.id} className="pt-1">
               <div className="flex items-start gap-4">
-                <Avatar src="/layout/avatarboy.svg" alt="you" size={32} />
+                <Popover>
+                  <PopoverTrigger>
+                    <Avatar src="/layout/avatarboy.svg" alt="you" size={32} />
+                  </PopoverTrigger>
+                  <PopoverContent
+                    side="top"
+                    align="center"
+                    className="border border-disabled-text/20 bg-background rounded-xl text-sm shadow-md text-sidebar-content p-6 w-[300px]"
+                  >
+                    <PopupProfile />
+                  </PopoverContent>
+                </Popover>
 
                 <div className="flex-1">
                   <div className="flex items-center justify-between">

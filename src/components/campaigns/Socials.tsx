@@ -4,7 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 function Socials() {
   return (
-    <div className="flex flex-row justify-between items-center gap-6 md:gap-12 px-4 pr-80">
+    <div className="flex flex-row justify-between items-center gap-16 md:gap-12 px-4 pr-80">
       <div>
         <hr className="h-96 bg-[#666666]/30 border-0 my-4" />
       </div>

@@ -10,7 +10,7 @@ import Avatar from "@/components/ui/Avatar";
 export default function Page() {
   const coverImg = false;
   return (
-    <div className="lg:w-[90%] w-[98%] mx-auto mt-20">
+    <div className="lg:w-[90%] w-[90%] mx-auto mt-20">
       <div className="relative h-44 sm:h-56 md:h-64 shadow-lg bg-background ">
         <Image
           src="/campaign/white.jpg"
@@ -33,7 +33,7 @@ export default function Page() {
           </label>
         </div>
 
-        <div className="absolute left-1/2 -bottom-20 transform -translate-x-1/2 z-10">
+        <div className="absolute left-1/2 md:-bottom-20 -bottom-10 transform -translate-x-1/2 z-10">
           <Avatar
             src="/layout/Frame.png"
             alt="avatar"

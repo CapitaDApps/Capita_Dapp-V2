@@ -6,7 +6,7 @@ import mockCampaigns from "@/lib/mockCampaigns";
 import React, { useState } from "react";
 import Image from "next/image";
 import Supporters from "../campaigns/Supporters";
-import Socials from "../campaigns/Socials";
+// import Socials from "../campaigns/Socials";
 
 export default function ProfileTab() {
   const [active, setActive] = useState<string>("campaigns");
@@ -54,7 +54,7 @@ export default function ProfileTab() {
       {active === "campaigns" ? (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-[43px] mb-6 justify-center">
-            <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
+            <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full md:max-w-[324px] max-w-[360px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
               <div className="flex items-center justify-center gap-2">
                 <Image
                   src="/layout/heart.svg"
@@ -88,7 +88,7 @@ export default function ProfileTab() {
               </div>
             </div>
 
-            <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
+            <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full md:max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
               <div className="flex items-center justify-center gap-2">
                 <Image
                   src="/layout/heart.svg"
@@ -114,13 +114,13 @@ export default function ProfileTab() {
             </div>
           </div>
 
-          <div className="w-full flex items-center justify-between px-8 mt-12 mb-6">
-            <div className="border border-disabled-text/20 w-[400px] rounded-xl text-sm shadow-md text-sidebar-content p-6">
+          <div className="w-full flex flex-col px-4 items-center md:justify-between md:px-8 mt-12 md:mb-6">
+            <div className="border border-disabled-text/20 md:w-[400px] w-[350px] rounded-xl text-sm shadow-md text-sidebar-content p-6">
               <Supporters />
             </div>
-            <div>
+            {/* <div>
               <Socials />
-            </div>
+            </div> */}
           </div>
         </>
       ) : (
