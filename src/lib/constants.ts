@@ -36,12 +36,12 @@ export const menuItems = [
     route: "/premium",
     slug: "premium",
   },
-  {
-    title: "RampCash",
-    icon: TbMoneybag,
-    route: "/ramp-cash",
-    slug: "ramp-cash",
-  },
+  // {
+  //   title: "RampCash",
+  //   icon: TbMoneybag,
+  //   route: "/ramp-cash",
+  //   slug: "ramp-cash",
+  // },
 ];
 
 // export const filters = [
