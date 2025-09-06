@@ -150,7 +150,11 @@ export default function Page() {
             <div className="w-full bg-disabled-text/30 rounded-full h-3 overflow-hidden">
               <div
                 className="h-3 bg-primary transition-all duration-500"
-                style={{ width: `${progressPct}%` }}
+                style={{
+                  background:
+                    "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+                  width: `${progressPct}%`,
+                }}
               />
             </div>
             <div className="mt-2 text-sm text-sidebar-content">
@@ -208,14 +212,20 @@ export default function Page() {
                   placeholder="$0.00"
                   className="w-full rounded-md bg-background border border-disabled-text px-3 py-2 h-10 text-sidebar-content focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent md:text-sm  text-[12px]"
                 />
-                <div className="text-xs text-sidebar-content mt-2">0.000ETH</div>
+                <div className="text-xs text-sidebar-content mt-2">
+                  0.000ETH
+                </div>
               </div>
 
               <div className="w-[100%] py-2">
-                <label className="text-sm block mb-2">
-                 fund campaign
-                </label>
-                <button className="w-[100%] bg-primary md:px-4 py-2.5 rounded-md text-white last:col-span-2 md:last:col-span-1 md:text-sm  text-[12px]">
+                <label className="text-sm block mb-2">fund campaign</label>
+                <button
+                  style={{
+                    background:
+                      "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+                  }}
+                  className="w-[100%] bg-primary md:px-4 py-2.5 rounded-md text-white last:col-span-2 md:last:col-span-1 md:text-sm  text-[12px]"
+                >
                   Fund Campaign
                 </button>
               </div>

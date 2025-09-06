@@ -16,7 +16,6 @@ export default function VideoHeader() {
       </video> */}
       <Image
         src="/layout/Headerimage.png"
-        quality={100}
         alt="Hero Background"
         fill
       />
@@ -27,7 +26,7 @@ export default function VideoHeader() {
             Welcome to{" "}
           </h1>
           <div className="relative aspect-auto w-[200px] h-[30px] md:h-[50px] md:w-[320px] lg:w-[400px]">
-            <Image src="/layout/wordmarklight.png" alt="word" fill />
+            <Image src="/layout/wordmark.svg" alt="word" fill />
           </div>
         </div>
       </div>

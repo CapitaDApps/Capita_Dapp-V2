@@ -111,7 +111,7 @@ export default function Page() {
               <div></div>
             </div>
             <Image
-              src="/layout/checkmarklight.png"
+              src="/layout/checkmark.svg"
               alt="checkmark"
               width={35}
               height={35}
@@ -137,7 +137,8 @@ export default function Page() {
             <div className="w-full bg-secondary-text rounded-full h-3 overflow-hidden">
               <div
                 className="h-3 bg-primary rounded-full transition-all duration-500 ease-in-out"
-                style={{ width: `${progressPct}%` }}
+                style={{ background:
+                  "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",width: `${progressPct}%` }}
               />
             </div>
             <div className="mt-2 text-sm text-sidebar-content">
@@ -153,7 +154,11 @@ export default function Page() {
             <button
               type="button"
               aria-label="Withdraw funds"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/80 cursor-pointer text-background rounded-md px-6 py-2 text-sm md:text-lg font-medium shadow-sm"
+              style={{
+                background:
+                  "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+              }}
+              className="w-full sm:w-auto bg-primary hover:bg-[#003def]/80 cursor-pointer text-background rounded-md px-6 py-2 text-sm md:text-lg font-medium shadow-sm"
               onClick={() => {}}
             >
               Withdraw
@@ -162,7 +167,7 @@ export default function Page() {
             <button
               type="button"
               aria-label="End campaign"
-              className="w-full sm:w-auto border border-primary text-primary cursor-pointer hover:text-primary/80 rounded-md px-6 py-2 text-sm md:text-lg font-medium hover:bg-white/5"
+              className="w-full sm:w-auto border border-[#003def] text-[#003def] cursor-pointer hover:text-[#003def]/80 rounded-md px-6 py-2 text-sm md:text-lg font-medium hover:bg-white/5"
               onClick={() => {}}
             >
               End Campaign

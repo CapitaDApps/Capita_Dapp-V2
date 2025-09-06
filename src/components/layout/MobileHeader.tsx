@@ -60,7 +60,7 @@ export default function MobileHeader() {
     <header
       className={` ${
         slug ? "bg-background" : "bg-background/40 backdrop-blur-sm "
-      } top-0 left-0 w-full z-40 shadow-lg fixed  py-8 px-4 h-12 flex items-center justify-between lg:hidden`}
+      } top-0 left-0 w-full z-40 fixed  py-8 px-4 h-12 flex items-center justify-between lg:hidden`}
     >
       <div />
       <div className="flex items-center gap-3">
@@ -74,7 +74,7 @@ export default function MobileHeader() {
             >
               <IoIosNotificationsOutline className="w-5 h-5" />
             </button>
-            <span className="absolute -top-1 -right-1 bg-[#F4B400] text-black text-[10px] font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 bg-primary text-black text-[10px] font-semibold rounded-full w-5 h-5 flex items-center justify-center">
               {initialNotifications.filter((n) => !n.read).length}
             </span>
 

@@ -7,10 +7,8 @@ export default function Premium() {
       <section
         className="py-14"
         style={{
-           background: "linear-gradient(180deg, #92ffbfff 0%, #F3F8FF 100%)",
+          background: "linear-gradient(180deg, #92ffbfff 0%, #F3F8FF 100%)",
         }}
-       
-
       >
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-sidebar-content">
@@ -43,7 +41,7 @@ export default function Premium() {
                       Get Verified
                       <span className="inline-flex items-center justify-center w-6 h-6 rounded-full">
                         <Image
-                          src={"/layout/checkmarklight.png"}
+                          src={"/layout/checkmark.svg"}
                           alt="checkmark"
                           width={20}
                           height={20}
@@ -66,35 +64,49 @@ export default function Premium() {
                       <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span className="text-disabled-text">Establish trust with potential backers.</span>
+                      <span className="text-disabled-text">
+                        Establish trust with potential backers.
+                      </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span className="text-disabled-text">Increases campaign visibility</span>
+                      <span className="text-disabled-text">
+                        Increases campaign visibility
+                      </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span className="text-disabled-text">Demonstrates transparency and accountability.</span>
+                      <span className="text-disabled-text">
+                        Demonstrates transparency and accountability.
+                      </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span className="text-disabled-text">Grants access to exclusive features</span>
+                      <span className="text-disabled-text">
+                        Grants access to exclusive features
+                      </span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full text-sidebar-content">
                         ✓
                       </span>
-                      <span className="text-disabled-text">Attracts higher funding amounts</span>
+                      <span className="text-disabled-text">
+                        Attracts higher funding amounts
+                      </span>
                     </li>
                   </ul>
                   <div className="py-2">
                     <button
+                      style={{
+                        background:
+                          "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+                      }}
                       className="w-full bg-primary hover:bg-primary/90 cursor-pointer text-background rounded-full py-1 text-base font-semibold shadow-lg transition"
                       aria-label="Subscribe"
                     >

@@ -22,9 +22,9 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
         boxShadow:
           "0px 110px 44px rgba(179, 201, 255, 0.02), 0px 62px 37px rgba(179, 201, 255, 0.08), 0px 28px 28px rgba(179, 201, 255, 0.13), 0px 7px 15px rgba(179, 201, 255, 0.15)",
       }}
-      className="w-full mx-auto max-w-[320px] h-[400px] rounded-[16px] bg-sidebar border-2 border-primary/20 hover:border-primary transition-colors duration-500 overflow-hidden flex flex-col"
+      className="w-full mx-auto max-w-[320px] h-[300px] rounded-[16px] bg-sidebar border-2 border-[#003def]/20 hover:border-[#003def] transition-colors duration-500 overflow-hidden flex flex-col"
     >
-      <div className="relative w-full h-[60%]">
+      <div className="relative w-full h-[80%]">
         <Image
           src={campaign.image}
           alt={campaign.title}
@@ -33,7 +33,7 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
         />
       </div>
 
-      <div className="p-3 md:p-4 flex flex-col gap-2 flex-1">
+      <div className="p-3 md:p-3 flex flex-col gap-2 flex-1">
         <div className="flex items-center justify-center gap-3">
           {campaign.avatar ? (
             <Image
@@ -61,7 +61,7 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
             </div>
           </div>
         </div>
-        <p className="text-xs text-disabled-text">
+        <p className="text-xs text-disabled-text line-clamp-1">
           {campaign.excerpt.split(" ").length > 20
             ? campaign.excerpt.split(" ").slice(0, 20).join(" ") + "..."
             : campaign.excerpt}
@@ -82,7 +82,7 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
               {campaign.token ?? ""}
             </span>
           </div>
-          <Button
+          <Button  style={{background: "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)"}}
             className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-primary text-white rounded-md flex items-center justify-center"
             onClick={() => router.push(`/campaigns/${campaign.id}`)}
           >
