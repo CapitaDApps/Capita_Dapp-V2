@@ -11,7 +11,7 @@ export default function Page() {
   const coverImg = false;
   return (
     <div className="lg:w-[90%] w-[98%] mx-auto mt-20">
-      <div className="relative h-44 sm:h-56 md:h-64 shadow-lg bg-[#fff] ">
+      <div className="relative h-44 sm:h-56 md:h-64 shadow-lg bg-background ">
         <Image
           src="/campaign/white.jpg"
           alt="campaign banner"
@@ -23,7 +23,7 @@ export default function Page() {
             coverImg && "neon-wrapper"
           } h-full  rounded-[16px] flex items-center justify-center gap-2`}
         >
-          <label className="inline-flex items-center gap-2 cursor-pointer bg-black/20 px-3 py-2 rounded-md">
+          <label className="inline-flex items-center gap-2 cursor-pointer bg-sidebar-content/20 px-3 py-2 rounded-md">
             <Image
               src="/layout/camera.png"
               alt="camera"
@@ -47,7 +47,13 @@ export default function Page() {
         <div />
         <div className="flex gap-2 mt-1.5 pr-2">
           <Link href="/profile/edit">
-            <button className="rounded-[6px] bg-primary border-none text-background hover:bg-[#00b875]/80 !py-1.5 px-2  text-[10px]">
+            <button
+              style={{
+                background:
+                  "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+              }}
+              className="rounded-[6px] bg-primary border-none text-background hover:bg-primary/80 !py-1.5 px-2  text-[10px]"
+            >
               Edit Profile
             </button>
           </Link>

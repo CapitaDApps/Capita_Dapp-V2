@@ -4,7 +4,7 @@ export default function HelpCenter() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full bg-[rgba(255,255,255,0.02)]  rounded-2xl p-8 text-center">
-        <div className="mx-auto mb-6 w-24 h-24 rounded-full bg-primary flex items-center justify-center">
+        <div className="mx-auto mb-6 w-24 h-24 rounded-full bg-[linear-gradient(270.05deg,#003def_68.33%,#001f7a_114.25%)] flex items-center justify-center">
           <svg
             width="36"
             height="36"
@@ -47,13 +47,17 @@ export default function HelpCenter() {
         <div className="flex items-center justify-center gap-3">
           <Link
             href="/"
+            style={{
+              background:
+                "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+            }}
             className="inline-block px-4 py-2 rounded-md bg-primary hover:bg-primary/80 text-background text-sm font-medium"
           >
             Back to Home
           </Link>
           <button
             type="button"
-            className="inline-block px-4 py-2 rounded-md border border-primary text-primary text-sm hover:bg-white/5"
+            className="inline-block px-4 py-2 rounded-md border border-[#003def] text-[#003def] text-sm hover:bg-white/5"
             disabled
             aria-disabled
           >

@@ -32,10 +32,10 @@ export default function Sidebar() {
             className={`
             ${
               slug === item.slug
-                ? "bg-primary/30 py-3 border-r-[4px] !text-primary rounded-none border-primary"
+                ? "bg-[#003def]/30 py-3 border-r-[4px] !text-primary rounded-none border-[#003def]"
                 : ""
             }
-              flex items-center px-4 py-2 hover:text-primary text-sidebar-content text-[12px] gap-3 cursor-pointer rounded-md
+              flex items-center px-4 py-2 hover:text-[#003def] text-sidebar-content text-[12px] gap-3 cursor-pointer rounded-md
               `}
           >
             <span className="text-lg">{<item.icon />}</span>
@@ -47,6 +47,7 @@ export default function Sidebar() {
           <Link
             href="/create-campaigns"
             // onClick={() => onClose && onClose()}
+            style={{background: "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)"}}
             className="w-full px-8 inline-flex  py-3 bg-primary text-white text-xs font-semibold rounded-full text-center cursor-pointer items-center justify-center"
           >
             <GoPlus className="mr-2" />

@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import { MdEdit } from "react-icons/md";
-import { Button } from "@/components/ui/button";
+// import { MdEdit } from "react-icons/md";
+// import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
+// import Link from "next/link";
 import DropdownFilter from "@/components/campaigns/DropdownFilter";
 import DropdownCategory from "@/components/campaigns/DropdownCategory";
 
@@ -23,7 +23,7 @@ export default function Filter() {
   // const active = searchParams.get("filter") || "all-campaigns";
   return (
     <div className="hidden lg:flex flex-col gap-3">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-2">
         <div className="rounded-lg border border-disabled-text px-3 py-1 flex items-center gap-3">
           <Image
             height={16}
@@ -34,7 +34,7 @@ export default function Filter() {
           <Input
             type="text"
             placeholder="Search"
-            className="text-sm font-normal text-secondary-text pl-3 pr-4 py-1.5 focus-visible:outline-none focus-visible:ring-0"
+            className="text-sm font-normal text-sidebar-content pl-3 pr-4 py-1.5 focus-visible:outline-none focus-visible:ring-0"
           />
         </div>
         {/* <div className="flex items-center gap-5">
@@ -56,18 +56,18 @@ export default function Filter() {
           </div>
         </div> */}
 
-        <Link href={"/create-campaigns"}>
+        {/* <Link href={"/create-campaigns"}>
           <Button className="rounded-lg p-2 flex gap-2 text-[11px] hover:bg-transparent duration-500 transition-all hover:scale-[1.06] bg-transparent text-secondary-text items-center border border-disabled-text">
             <p>Create Campaign</p>
             <MdEdit />
           </Button>
-        </Link>
-      </div>
-      <div className="flex justify-between font-normal text-xs text-white">
-        <div />
-        <div className="space-x-4">
-          <DropdownFilter />
-          <DropdownCategory />
+        </Link> */}
+        <div className="flex justify-between font-normal text-xs text-white">
+          <div />
+          <div className="space-x-4">
+            <DropdownFilter />
+            <DropdownCategory />
+          </div>
         </div>
       </div>
     </div>

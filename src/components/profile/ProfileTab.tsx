@@ -5,6 +5,8 @@ import ProfileCampaignCard from "../campaigns/ProfileCampaignCard";
 import mockCampaigns from "@/lib/mockCampaigns";
 import React, { useState } from "react";
 import Image from "next/image";
+import Supporters from "../campaigns/Supporters";
+import Socials from "../campaigns/Socials";
 
 export default function ProfileTab() {
   const [active, setActive] = useState<string>("campaigns");
@@ -64,7 +66,9 @@ export default function ProfileTab() {
                   Total Amount Raised
                 </div>
               </div>
-              <div className="mt-10 text-disabled-text text-3xl font-semibold">$500</div>
+              <div className="mt-10 text-disabled-text text-3xl font-semibold">
+                $500
+              </div>
             </div>
 
             <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
@@ -79,7 +83,9 @@ export default function ProfileTab() {
                   Total Campaigns Created
                 </div>
               </div>
-              <div className="mt-10 text-disabled-text text-3xl font-semibold">3</div>
+              <div className="mt-10 text-disabled-text text-3xl font-semibold">
+                3
+              </div>
             </div>
 
             <div className="bg-transparent border border-disabled-text/30 shadow-lg rounded-[24px] w-full max-w-[324px] md:h-[225px] h-auto opacity-100 pt-12 pb-12 px-6 text-center mx-auto">
@@ -92,7 +98,9 @@ export default function ProfileTab() {
                 />
                 <div className="text-sm text-sidebar-content">Total Likes</div>
               </div>
-              <div className="mt-10 text-disabled-text text-3xl font-semibold">100k</div>
+              <div className="mt-10 text-disabled-text text-3xl font-semibold">
+                100k
+              </div>
             </div>
           </div>
 
@@ -103,6 +111,15 @@ export default function ProfileTab() {
                   <ProfileCampaignCard campaign={c} />
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="w-full flex items-center justify-between px-8 mt-12 mb-6">
+            <div className="border border-disabled-text/20 w-[400px] rounded-xl text-sm shadow-md text-sidebar-content p-6">
+              <Supporters />
+            </div>
+            <div>
+              <Socials />
             </div>
           </div>
         </>

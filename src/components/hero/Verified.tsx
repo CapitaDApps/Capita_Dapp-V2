@@ -15,9 +15,11 @@ export default function Verified() {
       <div className=" bg-verify rounded-2xl p-5 md:p-8 max-w-md w-full">
         <div className="items-start mb-6">
           <div className="flex items-center justify-center space-x-2.5 mb-2">
-            <h3 className="text-2xl font-bold text-sidebar-content">Get Verified</h3>
+            <h3 className="text-2xl font-bold text-sidebar-content">
+              Get Verified
+            </h3>
             <Image
-              src={"/layout/checkmarklight.png"}
+              src={"/layout/checkmark.svg"}
               alt="checkmark"
               width={25}
               height={25}
@@ -41,7 +43,13 @@ export default function Verified() {
           ))}
         </div>
 
-        <button className="w-full bg-primary text-xs text-white font-semibold py-3 rounded-full transition-colors">
+        <button
+          style={{
+            background:
+              "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+          }}
+          className="w-full bg-primary text-xs text-white font-semibold py-3 rounded-full transition-colors"
+        >
           Subscribe
         </button>
       </div>

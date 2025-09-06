@@ -25,9 +25,9 @@ export default function Header() {
       <div
         className={`${
           slug ? "bg-background" : "bg-background/40 backdrop-blur-sm "
-        } top-0 left-0 w-full z-40 shadow-lg`}
+        } top-0 left-0 w-full z-40`}
       >
-        <div className="w-full  px-5 flex items-center justify-between py-[14px]">
+        <div className="w-full  px-9 flex items-center justify-between py-[14px]">
           <div className="hidden md:flex items-center space-x-2">
             <div className="bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
               <Image
@@ -52,7 +52,13 @@ export default function Header() {
               >
                 <IoIosNotifications className="w-5 h-5" />
               </button>
-              <span className="absolute -top-0.5 right-1 bg-primary text-background text-[10px] font-semibold rounded-full w-4 h-4 flex items-center justify-center">
+              <span
+                style={{
+                  background:
+                    "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+                }}
+                className="absolute -top-0.5 right-1 bg-primary text-background text-[10px] font-semibold rounded-full w-4 h-4 flex items-center justify-center"
+              >
                 {initialNotifications.filter((n) => !n.read).length}
               </span>
 
@@ -94,7 +100,13 @@ export default function Header() {
               )}
             </div>
 
-            <button className="bg-primary text-background px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200">
+            <button
+              style={{
+                background:
+                  "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+              }}
+              className="bg-primary text-background px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200"
+            >
               Connect Wallet
             </button>
           </div>

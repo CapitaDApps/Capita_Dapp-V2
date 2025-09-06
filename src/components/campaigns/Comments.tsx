@@ -223,6 +223,10 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
 
                 <button
                   onClick={addComment}
+                  style={{
+                    background:
+                      "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+                  }}
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 rounded-full bg-primary text-background cursor-pointer hover:text-sidebar-content text-sm shadow"
                 >
                   Comment
@@ -291,20 +295,26 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                         <div className="mt-2 flex gap-2">
                           <button
                             onClick={() => saveEdit(c.id)}
+                            style={{
+                              background:
+                                "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+                            }}
                             className="px-3 py-1 rounded-md bg-primary text-white"
                           >
                             Save
                           </button>
                           <button
                             onClick={() => setEditingId(null)}
-                            className="px-3 py-1 rounded-md border border-primary text-primary"
+                            className="px-3 py-1 rounded-md border border-[#003def] text-[#003def]"
                           >
                             Cancel
                           </button>
                         </div>
                       </div>
                     ) : (
-                      <div className="whitespace-pre-wrap text-sidebar-content text-sm">{c.text}</div>
+                      <div className="whitespace-pre-wrap text-sidebar-content text-sm">
+                        {c.text}
+                      </div>
                     )}
                   </div>
 
@@ -325,7 +335,9 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                         }`}
                       >
                         <AiOutlineHeart />
-                        <span className="ml-1 text-sidebar-content">{c.likes}</span>
+                        <span className="ml-1 text-sidebar-content">
+                          {c.likes}
+                        </span>
                       </button>
 
                       <button
@@ -446,6 +458,10 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
 
                           <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-2">
                             <button
+                              style={{
+                                background:
+                                  "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+                              }}
                               onClick={() => addReply(c.id)}
                               className="px-4 py-2 rounded-full bg-primary text-white text-sm cursor-pointer hover:text-background shadow"
                             >
@@ -453,7 +469,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                             </button>
                             <button
                               onClick={() => toggleReply(c.id)}
-                              className="px-4 py-2 rounded-full border border-primary text-primary text-sm cursor-pointer hover:bg-white/5 shadow"
+                              className="px-4 py-2 rounded-full border border-[#003def ] text-[#003def ] text-sm cursor-pointer hover:bg-white/5 shadow"
                             >
                               Cancel
                             </button>
