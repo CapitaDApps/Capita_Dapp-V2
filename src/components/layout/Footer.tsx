@@ -39,7 +39,7 @@ export default function Footer() {
   ];
   const date = new Date();
   return (
-    <div className="bg-sidebar shadow-lg">
+    <div className="bg-zinc-200/70 shadow-lg">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-1 flex-col md:items-center justify-between border-b border-primary/30 py-4 px-2.5 ">
         <div className="flex items-center text-start">
           <Image

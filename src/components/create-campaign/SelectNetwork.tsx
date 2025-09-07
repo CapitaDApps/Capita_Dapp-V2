@@ -87,7 +87,7 @@ export default function SelectNetwork({
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
               </FormControl>
-              <SelectContent className="max-h-[160px] bg-[#fff] border border-[var(--form-blue-border)]">
+              <SelectContent className="max-h-[160px] bg-[#fff] border border-primary/30">
                 {array.map((select) => (
                   <SelectItem
                     className="cursor-pointer text-xs hover:bg-primary hover:text-white"
