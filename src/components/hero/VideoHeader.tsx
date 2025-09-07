@@ -26,7 +26,7 @@ export default function VideoHeader() {
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-black/5 z-[1]" />
+      <div className="absolute inset-0 bg-primary/10 z-[1]" />
     </div>
   );
 }
