@@ -63,8 +63,8 @@ export function CampaignTokens({
                   variant="outline"
                   role="combobox"
                   className={cn(
-                    "!w-full !bg-[var(--form-blue)] !py-5 rounded-r-[6px] rounded-l-none border border-[var(--form-blue-border)]  cursor-pointer focus:ring-[var(--form-blue-border)] focus:outline-none focus:border-none rounded-[8px text-xs",
-                    !field.value && "text-gray-500"
+                    "!w-full  !py-5  rounded-r-[6px] rounded-l-none bg-primary/5 border-none outline-primary/30 outline focus-visible:outline-primary  cursor-pointer  rounded-[8px text-xs",
+                    !field.value && "text-gray-500 font-normal"
                   )}
                 >
                   Select Token
@@ -73,9 +73,9 @@ export function CampaignTokens({
               </FormControl>
             </PopoverTrigger>
 
-            <PopoverContent className="w-[180px] md:w-72 !bg-[#fff] border-[var(--form-blue-border)] focus:ring-[var(--form-blue-border)] p-0">
+            <PopoverContent className="w-[180px] md:w-72 !bg-[#fff] border-primary/50 focus:ring-primary/50 p-0">
               <Command>
-                <CommandInput placeholder="Search tokens..." className="h-9" />
+                <CommandInput placeholder="Search tokens..." className="h-9 " />
                 <CommandList>
                   <CommandEmpty>No token found.</CommandEmpty>
 
@@ -85,7 +85,7 @@ export function CampaignTokens({
                         disabled={dis.includes(chain.value)}
                         value={chain.label}
                         key={chain.value}
-                        className="hover:bg-[#00b875] cursor-pointer text-xs"
+                        className="hover:bg-primary hover:text-white cursor-pointer text-xs"
                         onSelect={() => {
                           const current = getValues("tokens") || [];
                           if (current.includes(chain.value)) {

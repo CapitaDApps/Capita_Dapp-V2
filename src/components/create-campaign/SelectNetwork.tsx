@@ -82,8 +82,7 @@ export default function SelectNetwork({
             >
               <FormControl>
                 <SelectTrigger
-                  className=" !py-5 rounded-l-[6px] rounded-r-none cursor-pointer border  w-full lg:w-full !bg-[var(--form-blue)] border-[var(--form-blue-border)] focus:ring-[var(--form-blue-border)] 
-   focus:outline-none focus:border-none  p-3 text-xs text-secondary-text focus:ring data-[placeholder]:text-gray-500"
+                  className=" !py-5 rounded-l-[6px] rounded-r-none cursor-pointer   w-full lg:w-full bg-primary/5 outline-primary/30 outline focus-visible:outline-primary  p-3 text-xs text-black  data-[placeholder]:text-gray-500"
                 >
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
@@ -91,7 +90,7 @@ export default function SelectNetwork({
               <SelectContent className="max-h-[160px] bg-[#fff] border border-[var(--form-blue-border)]">
                 {array.map((select) => (
                   <SelectItem
-                    className="cursor-pointer text-xs hover:bg-[#00b875]"
+                    className="cursor-pointer text-xs hover:bg-primary hover:text-white"
                     key={select.value}
                     value={select.value}
                   >
