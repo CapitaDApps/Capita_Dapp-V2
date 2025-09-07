@@ -20,6 +20,7 @@ import { Control } from "react-hook-form";
 import Image from "next/image";
 import { useOustsideClick } from "@/components/hooks/useOutsideClick";
 import { useScrollModal } from "@/components/hooks/useScrollModal";
+import { CgCalendarDates } from "react-icons/cg";
 
 interface Props {
   control: Control<z.infer<typeof CampaignFormSchema>>;
@@ -43,10 +44,10 @@ export default function EndDate({ control, startDate }: Props) {
                   <div
                     className={cn(
                       "space-y-1 cursor-pointer rounded-[8px] p-3 py-2",
-                      "bg-[var(--form-blue)] border border-[var(--form-blue-border)]"
+                      " bg-primary/5 outline-primary/30 outline focus-visible:outline-primary"
                     )}
                   >
-                    <p className="text-[11px] text-[var(--form-label)]">
+                    <p className="text-[11px] text-sidebar-content/70">
                       End Date
                     </p>
                     <div
@@ -69,12 +70,7 @@ export default function EndDate({ control, startDate }: Props) {
                         }
                         aria-hidden
                       >
-                        <Image
-                          src="/campaign/calendar.png"
-                          width={18}
-                          height={18}
-                          alt="calendar"
-                        />
+                      <CgCalendarDates className="text-sidebar-content/70 text-lg" />
                       </span>
                     </div>
                   </div>

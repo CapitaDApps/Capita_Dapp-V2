@@ -24,7 +24,7 @@ export default function Header() {
     <div className="fixed lg:block hidden top-0 right- z-40 w-full lg:w-[calc(100%-14rem)] max-w-[130rem] mx-auto ">
       <div
         className={`${
-          slug ? "bg-background" : "bg-background/40 backdrop-blur-sm "
+          slug ? "bg-blue-50" : "bg-background/40  backdrop-blur-sm "
         } top-0 left-0 w-full z-40`}
       >
         <div className="w-full  px-9 flex items-center justify-between py-[14px]">

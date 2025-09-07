@@ -18,23 +18,23 @@ interface FormInput {
 }
 
 const baseToks = [
-  { label: "Eth(base)", value: "eth(base)", image: "/tokens/eth.svg" },
-  { label: "USDC", value: "usdc", image: "/tokens/usdc.svg" },
-  { label: "CNGN", value: "cngn", image: "/tokens/cngn.svg" },
   { label: "FRENCHIE", value: "frenchie", image: "/tokens/frenchie.svg" },
   { label: "ENB", value: "enb", image: "/tokens/enb.svg" },
   { label: "Bhusky", value: "bhusky", image: "/tokens/bhusky.svg" },
+  { label: "Eth(base)", value: "eth(base)", image: "/tokens/eth.svg" },
+  { label: "USDC", value: "usdc", image: "/tokens/usdc.svg" },
+  { label: "CNGN", value: "cngn", image: "/tokens/cngn.svg" },
 ];
 const solToks = [
-  { label: "USDC", value: "usdc", image: "/tokens/cngn.svg" },
-  { label: "USDT", value: "usdt", image: "/tokens/usdt.svg" },
   { label: "UNICOIN", value: "unicoin", image: "/tokens/unicorn.svg" },
   { label: "CNGN", value: "cngn", image: "/tokens/cngn.svg" },
+  { label: "USDC", value: "usdc", image: "/tokens/usdc.svg" },
+  { label: "USDT", value: "usdt", image: "/tokens/usdt.svg" },
 ];
 const bnbToks = [
   { label: "BNB", value: "bnb", image: "/tokens/binance.svg" },
-  { label: "USDT", value: "usdt", image: "/tokens/usdt.svg" },
   { label: "ETH", value: "eth", image: "/tokens/eth.svg" },
+  { label: "USDT", value: "usdt", image: "/tokens/usdt.svg" },
 ];
 export default function ChainSelect({
   control,
@@ -100,7 +100,7 @@ export default function ChainSelect({
       <div className="flex flex-wrap items-center gap-2 mt-2">
         {findToken?.map((token) => (
           <div
-            className="flex items-center gap-1 text-xs rounded-full bg-[#021754] border border-[#003DEF] px-2 py-1"
+            className="flex items-center gap-1 text-xs rounded-full bg-primary/10 border border-primary/50 font-medium px-2 py-1"
             key={token?.label}
           >
             <Image

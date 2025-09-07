@@ -59,7 +59,7 @@ export default function MobileHeader() {
   return (
     <header
       className={` ${
-        slug ? "bg-background" : "bg-background/40 backdrop-blur-sm "
+        slug ? "bg-blue-50" : "bg-background/40 backdrop-blur-sm "
       } top-0 left-0 w-full z-40 fixed  py-8 px-4 h-12 flex items-center justify-between lg:hidden`}
     >
       <div />
