@@ -48,7 +48,7 @@ export default function Page() {
   ];
 
   return (
-    <div className="min-h-screen  text-white py-8 px-2 md:px-8 lg:px-16 mt-12">
+    <div className="min-h-screen  text-white py-8 px-6 md:px-8 lg:px-16 mt-12">
       <div className="w-full mx-auto">
         <div className="mb-6 flex items-center justify-between">
           <button
@@ -120,7 +120,7 @@ export default function Page() {
               Campaign Name
             </h1>
             <Image
-              src="/layout/checkmarklight.png"
+              src="/layout/checkmark.svg"
               alt="checkmark"
               width={35}
               height={35}

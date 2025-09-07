@@ -10,6 +10,7 @@ import BackgroundWithOverlay from "@/components/hero/BackgroundWithOverlay";
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
+  fallback: ['system-ui', 'arial'],
   weight: ["300", "400", "600", "700"],
 });
 

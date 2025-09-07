@@ -85,7 +85,7 @@ export default function MobileHeader() {
             </span>
 
             {open && (
-              <div className="absolute left-0.7 md:left-1/2 top-full transform -translate-x-1/2 mt-2 w-[320px] max-w-[90vw] bg-sidebar border border-disabled-text/50 rounded-lg shadow-lg z-50">
+              <div className="absolute left-0.2 md:left-1/2 top-full transform -translate-x-1/2 mt-2 w-[320px] max-w-[90vw] bg-sidebar border border-disabled-text/50 rounded-lg shadow-lg z-50">
                 <div className="p-3">
                   <h4 className="text-sm font-semibold text-sidebar-content">
                     Notifications
