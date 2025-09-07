@@ -87,7 +87,7 @@ function Calendar({
   return (
     <div
       className={cn(
-        "bg-[#0f1724] text-white rounded-md shadow-md",
+        "bg-white text-white border border-primary/30 rounded-md shadow-md",
         pad,
         containerW,
         className
@@ -100,7 +100,7 @@ function Calendar({
           onClick={prevMonth}
           className="p-1 rounded hover:bg-white/5"
         >
-          <ChevronLeft className={cn(iconSize, "text-zinc-300")} />
+          <ChevronLeft className={cn(iconSize, "text-zinc-800")} />
         </button>
 
         <div className={cn(headText, "font-semibold text-[#F4A261]")}>
@@ -113,7 +113,7 @@ function Calendar({
           onClick={nextMonth}
           className="p-1 rounded hover:bg-white/5"
         >
-          <ChevronRight className={cn(iconSize, "text-zinc-300")} />
+          <ChevronRight className={cn(iconSize, "text-zinc-800")} />
         </button>
       </div>
 
@@ -123,7 +123,7 @@ function Calendar({
             key={d}
             className={cn(
               weekdaySize,
-              "flex items-center justify-center text-zinc-400"
+              "flex items-center justify-center text-zinc-700"
             )}
           >
             {d}
@@ -146,11 +146,11 @@ function Calendar({
               disabled={disabledDay}
               className={cn(
                 daySize,
-                "rounded-md flex items-center justify-center",
-                !inMonth && "text-zinc-500",
+                "rounded-md flex text-zinc-600 items-center cursor-pointer justify-center",
+                !inMonth && "text-zinc-600",
                 disabledDay && "opacity-40 cursor-not-allowed",
-                selectedDay && "bg-[#F4A261] text-black font-semibold",
-                today && !selectedDay && "ring-1 ring-[#F4A261]",
+                selectedDay && "bg-primary text-white  font-semibold",
+                today && !selectedDay && "ring-1 ring-primary/50 bg-primary/20 text-black",
                 dayText
               )}
             >

@@ -17,7 +17,7 @@ export default function CampaignAvatar({ control }: FormInput) {
       name="avatar"
       render={({ field }) => (
         <FormItem>
-          <div className="relative w-[70px] z-[4] h-[70px] lg:h-[80px] lg:w-[80px] mx-auto -mt-12 rounded-full border border-[var(--form-blue-border)] bg-[var(--form-blue)] overflow-hidden flex items-center justify-center">
+          <div className="relative w-[70px] z-[4] h-[70px] lg:h-[80px] lg:w-[80px] mx-auto -mt-12 rounded-full border border-primary/30 bg-primary/50 overflow-hidden flex items-center justify-center">
             {field.value ? (
               <Image
                 fill

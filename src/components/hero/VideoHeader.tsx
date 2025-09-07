@@ -4,19 +4,10 @@ import React from "react";
 export default function VideoHeader() {
   return (
     <div className="relative w-full h-[260px] md:h-[320px] lg:h-[380px] overflow-hidden">
-      {/* <video
-        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src="/layout/mp.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
       <Image
         src="/layout/Headerimage.png"
         alt="Hero Background"
+        className="object-bottom object-cover"
         fill
       />
 
@@ -26,11 +17,16 @@ export default function VideoHeader() {
             Welcome to{" "}
           </h1>
           <div className="relative aspect-auto w-[200px] h-[30px] md:h-[50px] md:w-[320px] lg:w-[400px]">
-            <Image src="/layout/wordmark.svg" alt="word" fill />
+            <Image
+              src="/layout/wordmark.svg"
+              alt="word"
+              fill
+              className="object-center"
+            />
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-black/40 z-[1]" />
+      <div className="absolute inset-0 bg-black/5 z-[1]" />
     </div>
   );
 }

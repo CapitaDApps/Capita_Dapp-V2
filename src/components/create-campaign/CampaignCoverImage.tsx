@@ -19,7 +19,7 @@ export default function CampaignCoverImage({ control }: FormInput) {
       render={({ field }) => (
         <FormItem>
           <FormMessage />
-          <div className="relative border bg-[var(--form-blue)] border-[var(--form-blue-border)] w-full  h-[150px] lg:h-[200px] rounded-2xl overflow-hidden bg-muted flex items-center justify-center">
+          <div className="relative border bg-primary/50 border-primary/30 w-full  h-[150px] lg:h-[200px] rounded-2xl overflow-hidden bg-muted flex items-center justify-center">
             {field.value ? (
               <Image
                 fill
@@ -29,7 +29,7 @@ export default function CampaignCoverImage({ control }: FormInput) {
               />
             ) : (
               <div className={`relative w-full h-full`}>
-                <div className="absolute w-full z-[1] h-full bg-[#2E2E2E]/50  rounded-[16px] flex items-center justify-center gap-2" />
+                <div className="absolute w-full z-[1] h-full bg-[#2E2E2E]/15  rounded-[16px] flex items-center justify-center gap-2" />
                 <Image
                   src={defaultCover}
                   alt="default cover"

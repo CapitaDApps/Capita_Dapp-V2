@@ -43,16 +43,15 @@ export default function CampaignSelect({
             <Select onValueChange={field.onChange}>
               <FormControl>
                 <SelectTrigger
-                  className=" cursor-pointer border w-[98%]  md:w-[92%] lg:w-full !bg-[var(--form-blue)] border-[var(--form-blue-border)] focus:ring-[var(--form-blue-border)] 
-   focus:outline-none focus:border-none rounded-[8px] p-3 text-xs text-secondary-text focus:ring data-[placeholder]:text-gray-500"
+                  className=" cursor-pointer  w-[98%]  md:w-[92%] lg:w-full  bg-primary/5 outline-primary/30 outline focus-visible:outline-primary rounded-[8px] p-3 text-xs  focus:ring text-black ring-primary/40  data-[placeholder]:text-gray-500"
                 >
                   <SelectValue placeholder={placeholder} className="" />
                 </SelectTrigger>
               </FormControl>
-              <SelectContent className="max-h-[160px] bg-[#fff] border border-[var(--primary)] text-[var(--sidebar-content)]">
+              <SelectContent className="max-h-[160px] bg-[#fff] border border-primary/30 text-[var(--sidebar-content)]">
                 {array.map((select) => (
                   <SelectItem
-                    className="cursor-pointer text-xs hover:bg-[#00b875]"
+                    className="cursor-pointer text-xs hover:bg-primary hover:text-white"
                     key={select.name}
                     value={select.value}
                   >

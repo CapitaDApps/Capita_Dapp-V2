@@ -5,7 +5,7 @@
   --color-background: var(--background);
   --color-sidebar: var(--sidebar);
   --color-sidebar-content: var(--sidebar-content);
-  /* --color-primary: var(--primary); */
+  --color-primary: var(--primary);
   --color-disabled-text: var(--disabled-text);
   --color-surface: var(--surface);
   --color-secondary-text: var(--secondary-text);
@@ -17,7 +17,7 @@
   --background: #fcfcfc;
   --sidebar: #f6f6f6;
   --sidebar-content: #111111;
-  /* --primary: #00B875; */
+  --primary: #003def;
   --disabled-text: #666666;
   --surface: #2a2a2a;
   --secondary-text: #b3b3b3;
