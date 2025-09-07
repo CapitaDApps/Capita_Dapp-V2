@@ -70,7 +70,7 @@ export default function Footer() {
         <div className="flex gap-2 justify-end items-center">
           {socials.map((social, i) => (
             <Link
-              className="text-sidebar-content text-base cursor-pointer"
+              className="text-sidebar-content hover:text-primary text-base cursor-pointer"
               href={social.route}
               target="_blank"
               key={i}
