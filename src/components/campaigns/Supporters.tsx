@@ -26,7 +26,7 @@ function Supporters() {
         {SupportersData.map((supporter: Supporter) => (
           <li key={supporter.id}>
             <div className="flex items-center pt-4 gap-x-2">
-              <div>
+              <div className="shrink-0">
                 <Popover>
                   <PopoverTrigger>
                     <Image
@@ -40,7 +40,7 @@ function Supporters() {
                   <PopoverContent
                     side="top"
                     align="center"
-                    className="border border-disabled-text/20 bg-background rounded-xl text-sm shadow-md text-sidebar-content p-6 w-[300px]"
+                    className="border border-disabled-text/20 bg-background rounded-xl text-sm shadow-md text-sidebar-content p-6 md:w-[300px] w-[250px] mt-2 ml-6"
                   >
                     <PopupProfile />
                   </PopoverContent>

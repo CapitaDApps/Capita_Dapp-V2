@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaLinkedinIn, FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
+import Socials from "../campaigns/Socials";
 
 // import { useGetProfile } from "../hooks/useGetProfile";
 // import { useAccount } from "../hooks/useAccount";
@@ -47,27 +48,7 @@ export default function ProfileBio() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-[#111] text-sm mt-3 md:mt-2">
-            <Link
-              href={profile?.tgLink || "#"}
-              className="text-white text-center bg-blue-950 rounded-md p-[6px] border border-zinc-900"
-            >
-              <FaTelegramPlane />
-            </Link>
-            <Link
-              href={profile?.xLink || "#"}
-              className="text-white text-center bg-background rounded-md p-[6px] border border-zinc-800"
-            >
-              <FaXTwitter />
-            </Link>
-            <Link
-              href={profile?.lnLink || "#"}
-              className="text-white/80 text-center bg-blue-800 rounded-md p-[6px] border border-zinc-900"
-            >
-              <FaLinkedinIn />
-            </Link>
-          </div>
-
+          <Socials />
           {/* verification pill shown under name on small screens */}
           <div className="mt-3 md:hidden">
             <div className="inline-flex items-center gap-2 text-sm border border-[#383838] rounded-md font-semibold cursor-pointer px-3 py-1 text-blue-600">

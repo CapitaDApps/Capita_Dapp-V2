@@ -16,7 +16,7 @@ export default function ProfileTab() {
   return (
     <>
       <div className="w-full overflow-x-auto">
-        <div className="flex justify-center my-4 pb-4 w-full">
+        <div className="flex justify-center my-4  w-full">
           <div
             className="flex flex-wrap items-center justify-center gap-6 md:gap-12 px-4"
             role="tablist"
@@ -115,12 +115,9 @@ export default function ProfileTab() {
           </div>
 
           <div className="w-full flex flex-col px-4 items-center md:justify-between md:px-8 mt-12 md:mb-6">
-            <div className="border border-disabled-text/20 md:w-[400px] w-[350px] rounded-xl text-sm shadow-md text-sidebar-content p-6">
+            <div className="border border-disabled-text/20 md:w-[400px] w-[300px] rounded-xl text-sm shadow-md text-sidebar-content p-6">
               <Supporters />
             </div>
-            {/* <div>
-              <Socials />
-            </div> */}
           </div>
         </>
       ) : (

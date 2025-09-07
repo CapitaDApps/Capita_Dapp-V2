@@ -11,6 +11,8 @@ export default function VideoHeader() {
         fill
       />
 
+      <div className="absolute inset-0 bg-black/25 z-10" />
+
       <div className="relative bg-custo h-full">
         <div className="flex flex-col lg:flex-row items-center z-20 absolute bottom-[15px] md:bottom-[10px] left-0 right-0 justify-center gap-2 md:gap-3">
           <h1 className="text-3xl md:text-[40px] lg:text-[56px] font-semibold text-background leading-tight">
