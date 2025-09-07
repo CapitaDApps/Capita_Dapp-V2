@@ -215,18 +215,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
 
         <div className="mb-6">
           <div className="flex items-center gap-3">
-            <Popover>
-              <PopoverTrigger>
-                <Avatar src="/layout/avatarboy.svg" alt="you" size={45} />
-              </PopoverTrigger>
-              <PopoverContent
-                side="top"
-                align="center"
-                className="border border-disabled-text/20 bg-background rounded-xl text-sm shadow-md text-sidebar-content p-6 w-[300px]"
-              >
-                <PopupProfile />
-              </PopoverContent>
-            </Popover>
+            <Avatar src="/layout/avatarboy.svg" alt="you" size={45} />
 
             <div className="flex-1">
               <div className="relative">
@@ -264,7 +253,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                   <PopoverContent
                     side="top"
                     align="center"
-                    className="border border-disabled-text/20 bg-background rounded-xl text-sm shadow-md text-sidebar-content p-6 w-[300px]"
+                    className="border border-disabled-text/20 bg-background rounded-xl text-sm shadow-md text-sidebar-content p-6 md:w-[300px] w-[250px] mt-2 ml-6"
                   >
                     <PopupProfile />
                   </PopoverContent>
@@ -480,7 +469,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                               }))
                             }
                             placeholder="Write a reply"
-                            className="w-full rounded-full bg-background border border-sidebar-content px-4 py-3 text-sidebar-content placeholder:text-disabled-text focus:outline-disabled-text/30 pr-28"
+                            className="w-full rounded-full bg-background border border-sidebar-content px-4 py-3 text-sidebar-content md:text-sm text-xs placeholder:text-disabled-text focus:outline-disabled-text/30 pr-28"
                             aria-label="Write a reply"
                           />
 
@@ -491,13 +480,13 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                                   "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
                               }}
                               onClick={() => addReply(c.id)}
-                              className="px-4 py-2 rounded-full bg-primary text-white text-sm cursor-pointer hover:text-background shadow"
+                              className="px-4 py-2 rounded-full bg-primary text-white md:text-sm text-xs cursor-pointer hover:text-background shadow"
                             >
                               Reply
                             </button>
                             <button
                               onClick={() => toggleReply(c.id)}
-                              className="px-4 py-2 rounded-full border border-[#003def ] text-[#003def ] text-sm cursor-pointer hover:bg-white/5 shadow"
+                              className="md:px-4 px-3 md:py-2 py-1 rounded-full border border-[#003def] text-[#003def] md:text-sm text-xs cursor-pointer hover:bg-white/5 shadow"
                             >
                               Cancel
                             </button>

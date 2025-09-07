@@ -7,7 +7,7 @@ export default function VideoHeader() {
       <Image
         src="/layout/Headerimage.png"
         alt="Hero Background"
-        className="object-bottom object-cover"
+        className="object-fit object-buttom"
         fill
       />
 
