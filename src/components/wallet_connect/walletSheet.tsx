@@ -20,7 +20,7 @@ import { MoonLoader } from "react-spinners";
 import { useWalletBalance } from "./hooks/useWalletBalance";
 import TransferDialog from "./transferDialog";
 import FundWalletDialog from "./fundWalletDialog";
-import { IToken } from "@/lib/types/token.types";
+import { IToken } from "@/types/token.types";
 
 function WalletSheet({ children }: { children: ReactNode }) {
   const { user } = usePrivy();

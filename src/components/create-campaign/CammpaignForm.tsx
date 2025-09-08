@@ -13,6 +13,7 @@ import DateForm from "../date/DateForm";
 import ChainSelect from "./ChainSelect";
 import CampaignPhotos from "./CampaignPhotos";
 import { useRouter } from "next/navigation";
+import { useCreateCampaign } from "@/services/api/hooks/campaign/useCreateCampaign";
 
 export function CampaignForm() {
   const router = useRouter();
@@ -77,8 +78,16 @@ export function CampaignForm() {
       name: "Phoenix Baker",
     },
   ];
+  const { createCampaignFunc } = useCreateCampaign();
   function onSubmit(values: z.infer<typeof CampaignFormSchema>) {
     console.log(values);
+    console.log({ values });
+    createCampaignFunc(values, {
+      onSuccess: (data) => {
+        console.log({ data });
+        router.push("/terms");
+      },
+    });
   }
   const watchedStart = form.watch("startDate");
   const startDateObj = watchedStart ? new Date(watchedStart) : null;
@@ -145,7 +154,6 @@ export function CampaignForm() {
             }}
             type="submit"
             className="text-white lg:w-fit w-full text-sm"
-            onClick={() => router.push("/terms")}
           >
             {"Save"}
           </Button>

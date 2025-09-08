@@ -8,7 +8,7 @@ import CreatedModal from "./CreatedModal";
 
 import { useMultiStep } from "@/context/MultiFormContext";
 import { contractEvents } from "@/services/contracts/constants";
-import { useCreateCampaign } from "@/services/contracts/hooks/useCreateCampaign";
+import { useWriteCampaign } from "@/services/contracts/hooks/useWriteCampaign";
 // import { useWatchFactoryEvents } from "@/lib/contracts/hooks/useWatchFactoryEvents";
 
 // import {
@@ -21,17 +21,21 @@ import { useQueryClient } from "@tanstack/react-query";
 import { zeroAddress } from "viem";
 // import { tokenNames } from "@/lib/constants";
 
-// import { MoonLoader } from "react-spinners";
+import { MoonLoader } from "react-spinners";
+
 import { useRouter } from "next/navigation";
 import { usePrivyAccount } from "./hooks/usePrivyAccount";
+import { useCache } from "@/services/api/hooks/useCache";
 
 export default function Preview() {
   const [errorCreating, setErrorCreating] = useState("");
 
   const { address } = usePrivyAccount();
-  const { createChainFundMe } = useCreateCampaign();
+  const { createChainFundMe } = useWriteCampaign();
   const queryClient = useQueryClient();
   const router = useRouter();
+
+  // const { cachedData, gettingCache } = useCache();
 
   // useEffect(() => {
   //   if (!gettingCache) {

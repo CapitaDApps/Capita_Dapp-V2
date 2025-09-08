@@ -1,11 +1,6 @@
 "use client";
 import React from "react";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "../ui/form";
+import { FormControl, FormField, FormItem, FormMessage } from "../ui/form";
 import {
   Control,
   FieldPath,
@@ -27,7 +22,7 @@ interface NetworkOption {
   name: string;
   value: string;
   image: string;
-  label?: string;
+  id: string;
 }
 
 interface FormInput {
@@ -47,7 +42,6 @@ export default function SelectNetwork({
   setValue,
   array,
 }: FormInput) {
-
   const solanaTokens: z.infer<typeof CampaignFormSchema>["tokens"] = [
     "usdc",
     "usdt",
@@ -81,9 +75,7 @@ export default function SelectNetwork({
               }}
             >
               <FormControl>
-                <SelectTrigger
-                  className=" !py-5 rounded-l-[6px] rounded-r-none cursor-pointer   w-full lg:w-full bg-primary/5 outline-primary/30 outline focus-visible:outline-primary  p-3 text-xs text-black  data-[placeholder]:text-gray-500"
-                >
+                <SelectTrigger className=" !py-5 rounded-l-[6px] rounded-r-none cursor-pointer   w-full lg:w-full bg-primary/5 outline-primary/30 outline focus-visible:outline-primary  p-3 text-xs text-black  data-[placeholder]:text-gray-500">
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
               </FormControl>
@@ -96,7 +88,7 @@ export default function SelectNetwork({
                   >
                     <Image
                       src={select.image}
-                      alt={`${select.label ?? select.name} icon`}
+                      alt={`${select.name} icon`}
                       width={20}
                       height={20}
                       className="inline-block mr-2"

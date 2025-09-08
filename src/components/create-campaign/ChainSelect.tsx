@@ -10,6 +10,9 @@ import {
 } from "react-hook-form";
 import SelectNetwork from "./SelectNetwork";
 import Image from "next/image";
+import { base, bsc } from "wagmi/chains";
+import { chainConfig } from "@/lib/networks/chains";
+
 interface FormInput {
   control: Control<z.infer<typeof CampaignFormSchema>>;
   getValues: UseFormGetValues<z.infer<typeof CampaignFormSchema>>;
@@ -42,23 +45,7 @@ export default function ChainSelect({
   setValue,
   watch,
 }: FormInput) {
-  const chain = [
-    {
-      value: "base",
-      name: "Base",
-      image: "/tokens/base.svg",
-    },
-    {
-      value: "solana",
-      name: "Solana",
-      image: "/tokens/solana.svg",
-    },
-    {
-      value: "bnb",
-      name: "BNB",
-      image: "/tokens/binance.svg",
-    },
-  ];
+  const chain = chainConfig;
 
   const network = watch("chain");
   const tokens = watch("tokens");

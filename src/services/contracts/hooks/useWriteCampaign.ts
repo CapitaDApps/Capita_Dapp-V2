@@ -4,7 +4,7 @@ import { useWriteFundingFactory } from "./useWriteFundingFactory";
 
 import { useQueryClient } from "@tanstack/react-query";
 
-export function useCreateCampaign() {
+export function useWriteCampaign() {
   const createCampaignFunc = useWriteFundingFactory();
   const queryClient = useQueryClient();
 
