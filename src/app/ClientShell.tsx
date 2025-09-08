@@ -20,10 +20,7 @@ export default function ClientShell({
         <MobileSidebar />
       </div>
       <div />
-      <div
- 
-        className="min-h-screen flex bg-background flex-col "
-      >
+      <div className="min-h-screen flex bg-background flex-col ">
         <MobileHeader />
         <Header />
 

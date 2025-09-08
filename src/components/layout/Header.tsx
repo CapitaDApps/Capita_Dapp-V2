@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
 import { IoIosNotifications } from "react-icons/io";
 import { initialNotifications } from "@/lib/notifications";
+import CreateWalletButton from "../wallet_connect/CreateWalletButton";
 
 export default function Header() {
   const pathname = usePathname();
@@ -100,7 +101,7 @@ export default function Header() {
               )}
             </div>
 
-            <button
+            {/* <button
               style={{
                 background:
                   "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
@@ -108,7 +109,8 @@ export default function Header() {
               className="bg-primary text-background px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200"
             >
               Connect Wallet
-            </button>
+            </button> */}
+            <CreateWalletButton />
           </div>
         </div>
       </div>

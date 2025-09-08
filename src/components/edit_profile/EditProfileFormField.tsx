@@ -14,7 +14,7 @@ import { useGetProfile } from "@/components/hooks/useGetProfile";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useMultiStep } from "@/context/MultiFormContext";
-import { useAccount } from "@/components/hooks/useAccount";
+import { usePrivyAccount } from "@/components/hooks/usePrivyAccount";
 
 // Use the exported schema directly; if for some reason it is undefined, fall back to a compatible schema.
 const EditProfileFormSchema =
@@ -43,7 +43,7 @@ export default function EditProfileFormField() {
     },
   });
   const { createProfile, status } = useCreateProfile();
-  const { address } = useAccount();
+  const { address } = usePrivyAccount();
 
   function onSubmit(values: z.infer<typeof EditProfileFormSchema>) {
     if (!address) toast("Connect your wallet to edit your profile");
