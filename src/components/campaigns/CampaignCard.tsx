@@ -2,19 +2,24 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { ReturnCampaignDocument } from "@/types/api";
 
-type Campaign = {
-  id: string | number;
-  title: string;
-  excerpt: string;
-  image: string;
-  avatar?: string;
-  token?: string;
-  tokenImage?: string;
-  status?: string;
-};
+// type Campaign = {
+//   id: string | number;
+//   title: string;
+//   excerpt: string;
+//   image: string;
+//   avatar?: string;
+//   token?: string;
+//   tokenImage?: string;
+//   status?: string;
+// };
 
-export default function CampaignCard({ campaign }: { campaign: Campaign }) {
+export default function CampaignCard({
+  campaign,
+}: {
+  campaign: ReturnCampaignDocument;
+}) {
   const router = useRouter();
   return (
     <article
@@ -35,9 +40,9 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
 
       <div className="p-3 md:p-3 flex flex-col gap-2 flex-1">
         <div className="flex items-center justify-center gap-3">
-          {campaign.avatar ? (
+          {campaign.image ? (
             <Image
-              src={campaign.avatar}
+              src={campaign.image}
               alt={campaign.title + " avatar"}
               width={32}
               height={32}
@@ -62,29 +67,32 @@ export default function CampaignCard({ campaign }: { campaign: Campaign }) {
           </div>
         </div>
         <p className="text-xs text-disabled-text line-clamp-1">
-          {campaign.excerpt.split(" ").length > 20
-            ? campaign.excerpt.split(" ").slice(0, 20).join(" ") + "..."
-            : campaign.excerpt}
+          {campaign.description.split(" ").length > 20
+            ? campaign.description.split(" ").slice(0, 20).join(" ") + "..."
+            : campaign.description}
         </p>
 
         <div className="mt-auto flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs text-secondary-text">
-            {campaign.tokenImage && (
-              <Image
-                src={campaign.tokenImage}
-                alt={(campaign.token ?? "token") as string}
-                width={14}
-                height={14}
-                className="rounded-full"
-              />
-            )}
+            <Image
+              src={"/tokens/base.svg"}
+              alt={""}
+              width={14}
+              height={14}
+              className="rounded-full"
+            />
+
             <span className="text-[12px] text-surface md:text-sm truncate">
-              {campaign.token ?? ""}
+              BASE
             </span>
           </div>
-          <Button  style={{background: "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)"}}
+          <Button
+            style={{
+              background:
+                "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+            }}
             className="w-[72px] md:w-[81px] h-9 md:h-[36px] px-[12px] md:px-[20px] py-[6px] md:py-[8px] text-sm bg-primary text-white rounded-md flex items-center justify-center"
-            onClick={() => router.push(`/campaigns/${campaign.id}`)}
+            onClick={() => router.push(`/campaigns/${campaign.cmid}`)}
           >
             Fund
           </Button>

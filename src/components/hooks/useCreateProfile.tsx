@@ -2,7 +2,7 @@
 
 import React from "react";
 import { createProfileApi } from "@/lib/action";
-import { Profile } from "@/lib/types/profile.type";
+import { Profile } from "@/types/profile.type";
 
 export default function useCreateProfile() {
   const [status, setStatus] = React.useState<"idle" | "pending" | "done">(

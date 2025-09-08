@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Popover,
@@ -12,61 +12,19 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
 import Avatar from "@/components/ui/Avatar";
 import PopupProfile from "./PopupProfile";
+import { Comment, Reply } from "@/types/api";
+import { useAddComment } from "@/services/api/hooks/campaign/useAddComment";
+import { useAddReply } from "@/services/api/hooks/campaign/useAddReply";
 
-type Reply = {
-  id: number;
-  name: string;
-  date: string;
-  text: string;
-  likes: number;
-};
-
-type Comment = {
-  id: number;
-  name: string;
-  date: string;
-  text: string;
-  likes: number;
-  replies: Reply[];
-};
-
-export default function Comments({ initial = [] }: { initial?: Comment[] }) {
+export default function Comments({
+  initial = [],
+  campaignId,
+}: {
+  initial?: Comment[];
+  campaignId: string;
+}) {
   const [comments, setComments] = useState<Comment[]>(
-    initial.length
-      ? initial
-      : [
-          {
-            id: 1,
-            name: "User Name",
-            date: "June 22",
-            text: "This Campaign will go a Long way in ending the famine in Gaza. Those Little kids deserve to be happy. No amount is too small",
-            likes: 45,
-            replies: [
-              {
-                id: 11,
-                name: "Reply User",
-                date: "June 23",
-                text: "Absolutely — glad to help!",
-                likes: 2,
-              },
-              {
-                id: 12,
-                name: "Another",
-                date: "June 24",
-                text: "Such an important cause.",
-                likes: 1,
-              },
-            ],
-          },
-          {
-            id: 2,
-            name: "Another User",
-            date: "June 20",
-            text: "Amazing project — happy to support.",
-            likes: 12,
-            replies: [],
-          },
-        ]
+    initial.length ? initial : ([] as Comment[])
   );
 
   const [visibleCommentsCount, setVisibleCommentsCount] = useState<number>(10);
@@ -86,6 +44,13 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
   );
   const [likedReplies, setLikedReplies] = useState<Record<number, boolean>>({});
 
+  const { addCommentFunc } = useAddComment();
+  const { addReplyFunc } = useAddReply();
+
+  useEffect(() => {
+    setComments(initial);
+  }, [initial]);
+
   function addComment() {
     if (!newText.trim()) return;
     const next: Comment = {
@@ -99,6 +64,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
       likes: 0,
       replies: [],
     };
+    addCommentFunc({ campaignId, comment: newText });
     setComments([next, ...comments]);
     setNewText("");
     setVisibleCommentsCount((v) => Math.max(v, 1));
@@ -139,7 +105,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
     setVisibleRepliesCount((s) => ({ ...s, [id]: s[id] ?? 3 }));
   }
 
-  function addReply(parentId: number) {
+  function addReply(parentId: number, commentId: string) {
     const text = (replyText[parentId] || "").trim();
     if (!text) return;
     const newReply: Reply = {
@@ -152,6 +118,8 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
       text,
       likes: 0,
     };
+
+    addReplyFunc({ commentId, reply: text });
 
     setComments((s) =>
       s.map((c) =>
@@ -479,7 +447,7 @@ export default function Comments({ initial = [] }: { initial?: Comment[] }) {
                                 background:
                                   "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
                               }}
-                              onClick={() => addReply(c.id)}
+                              onClick={() => addReply(c.id, c._id!)}
                               className="px-4 py-2 rounded-full bg-primary text-white md:text-sm text-xs cursor-pointer hover:text-background shadow"
                             >
                               Reply

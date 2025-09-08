@@ -1,4 +1,4 @@
-import { Token } from "@/lib/types/token.types";
+import { Token } from "@/types/token.types";
 
 export const tokenNames: Token = {
   usdc: "USDC(base)",

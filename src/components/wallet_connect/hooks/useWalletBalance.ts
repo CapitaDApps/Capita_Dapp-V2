@@ -1,7 +1,7 @@
 "use client";
 
 import { usePrivy } from "@privy-io/react-auth";
-import { IToken, TokenType } from "@/lib/types/token.types";
+import { IToken, TokenType } from "@/types/token.types";
 import { getCoinBalance } from "@/services/contracts/utils";
 import { tokens } from "@/services/contracts/tokensConfig";
 import { useQuery } from "@tanstack/react-query";
