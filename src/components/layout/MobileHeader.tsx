@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import React, { useRef, useState, useEffect } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { initialNotifications } from "@/lib/notifications";
+import CreateWalletButton from "../wallet_connect/CreateWalletButton";
 
 export default function MobileHeader() {
   const [open, setOpen] = useState(false);
@@ -120,15 +121,16 @@ export default function MobileHeader() {
             )}
           </div>
 
-          <button
+          {/* <button
             style={{
               background:
                 "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
             }}
-            className="bg-primary text-background px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200"
+            className="bg-primary text-background px-3 md:px-4 py-2 rounded-lg font-medium text-xs md:text-sm transition-colors hover:bg-gray-200 cursor-pointer"
           >
             Connect Wallet
-          </button>
+          </button> */}
+          <CreateWalletButton />
         </div>
       </div>
     </header>

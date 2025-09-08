@@ -12,8 +12,10 @@ import CampaignSelect from "./CampaignSelect";
 import DateForm from "../date/DateForm";
 import ChainSelect from "./ChainSelect";
 import CampaignPhotos from "./CampaignPhotos";
+import { useRouter } from "next/navigation";
 
 export function CampaignForm() {
+  const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof CampaignFormSchema>>({
     resolver: zodResolver(CampaignFormSchema),
@@ -82,7 +84,10 @@ export function CampaignForm() {
   const startDateObj = watchedStart ? new Date(watchedStart) : null;
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3.5 mt-2 mb-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-3.5 mt-2 mb-8"
+      >
         <CampaignPhotos control={form.control} />
         <CampaignInput
           control={form.control}
@@ -140,6 +145,7 @@ export function CampaignForm() {
             }}
             type="submit"
             className="text-white lg:w-fit w-full text-sm"
+            onClick={() => router.push("/terms")}
           >
             {"Save"}
           </Button>

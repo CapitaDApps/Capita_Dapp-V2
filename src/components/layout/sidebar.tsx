@@ -45,9 +45,12 @@ export default function Sidebar() {
 
         <div className="mx-auto mt-4">
           <Link
-            href="/create-campaigns"
+            href="/create-campaign"
             // onClick={() => onClose && onClose()}
-            style={{background: "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)"}}
+            style={{
+              background:
+                "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+            }}
             className="w-full px-8 inline-flex  py-3 bg-primary text-white text-xs font-semibold rounded-full text-center cursor-pointer items-center justify-center"
           >
             <GoPlus className="mr-2" />

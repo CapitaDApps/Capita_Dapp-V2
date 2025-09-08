@@ -21,15 +21,17 @@ const ChainFundMe = () => {
 
       <div className="flex flex-col md:flex-row items-center text-center md:justify-center gap-3 px-6 md:px-0">
         <Link
-          href="/campaigns/create-campaigns"
-          style={{background: "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)"}}
+          href="/campaigns/create-campaign"
+          style={{
+            background:
+              "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+          }}
           className="w-50 md:w-auto  items-center text-center justify-center bg-primary px-6  py-3  rounded-lg font-semibold text-xs  md:text-sm transition-colors"
         >
           Start a Chainfundme
         </Link>
 
-        <button
-         className="w-50 md:w-auto inline-flex text-[#003def] text-center items-center justify-center border border-primary hover:border-primary/80 px-6  py-3  rounded-lg font-semibold text-xs md:text-sm  transition-colors">
+        <button className="w-50 md:w-auto inline-flex text-[#003def] text-center items-center justify-center border border-primary hover:border-primary/80 px-6  py-3  rounded-lg font-semibold text-xs md:text-sm  transition-colors">
           Explore Campaigns
         </button>
       </div>
