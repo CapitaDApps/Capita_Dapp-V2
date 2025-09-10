@@ -5,7 +5,7 @@ import {
 import { getAuthToken } from "./config";
 import axios from "axios";
 
-const url = "http://localhost:3000";
+const url = process.env.NEXT_PUBLIC_BASE_API_URL || "http://localhost:3000";
 
 const baseUrl = `${url}/api/v1/campaign`;
 
