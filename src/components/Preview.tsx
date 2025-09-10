@@ -32,18 +32,18 @@ export default function Preview() {
   const [isCreating, setIsCreating] = useState(false);
   const { address } = usePrivyAccount();
   const { createChainFundMe } = useWriteCampaign();
-  const queryClient = useQueryClient();
-  const router = useRouter();
+  // const queryClient = useQueryClient();
+  // const router = useRouter();
 
   const { cachedData, gettingCache } = useCache();
 
-  useEffect(() => {
-    if (!gettingCache) {
-      if (!cachedData) {
-        router.push("/create-campaign");
-      }
-    }
-  }, [gettingCache, cachedData]);
+  // useEffect(() => {
+  //   if (!gettingCache) {
+  //     if (!cachedData) {
+  //       router.push("/create-campaign");
+  //     }
+  //   }
+  // }, [gettingCache, cachedData]);
 
   // useWatchFactoryEvents({
   //   eventName: contractEvents.FundingFactory.ChainFundMeCreated,

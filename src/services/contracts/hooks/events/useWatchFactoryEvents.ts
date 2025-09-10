@@ -34,11 +34,14 @@ export function useWatchFactoryEvents({
     address: fundingFactoryAddress as `0x${string}`,
     eventName,
     onLogs: async (logs) => {
-      // console.log({ log }, log[0].args.fundMeAddress);
+      console.log({ logs, connectedAddress });
       const accessToken = await getAccessToken();
       for (const log of logs) {
         if (eventName == contractEvents.FundingFactory.CampaignFunded) {
-          if ((log as CreatedCampaignLog).args.sender == connectedAddress) {
+          if (
+            (log as CreatedCampaignLog).args.sender.toLowerCase() ==
+            connectedAddress?.toLowerCase()
+          ) {
             console.log(`Event ${eventName} detected on funding factory`);
             await cb();
           }

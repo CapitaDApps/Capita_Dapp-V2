@@ -11,7 +11,7 @@ export function useCreateCampaign() {
       const tokenAddresses = data.tokens.map((token) => token.address);
       const chainId = getChainId(config);
       console.log({ sd: data.startDate });
-      const startDateTime = new Date(data.startDate).getTime() + 10 * 60 * 1000;
+      const startDateTime = new Date(data.startDate).getTime() + 3 * 60 * 1000;
       console.log({ sdt: new Date(startDateTime).toISOString });
       return await createCampaignDraft({
         title: data.campaignName,
