@@ -4,6 +4,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { LuCrown } from "react-icons/lu";
 import { z } from "zod";
+import { TokenObjectType, TokenType } from "@/services/contracts/tokensConfig";
 
 export const menuItems = [
   {
@@ -118,9 +119,18 @@ export const CampaignFormSchema = z.object({
     .string({ message: "End date is required" })
     .min(1, "End date is required"),
   tokens: z
-    .array(z.string(), {
-      message: "Please select a token.",
-    })
+    .array(
+      z.object({
+        name: z.string(),
+        src: z.string(),
+        decimals: z.number(),
+        type: z.string(),
+        address: z.string(),
+      }),
+      {
+        message: "Please select a token.",
+      }
+    )
     .min(1, { message: "Please select at least one token." })
     .max(5, { message: "You can select up to 5 tokens only." }),
 });

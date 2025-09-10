@@ -11,7 +11,8 @@ import {
 import SelectNetwork from "./SelectNetwork";
 import Image from "next/image";
 import { base, bsc } from "wagmi/chains";
-import { chainConfig } from "@/lib/networks/chains";
+import { getNetworkTokens } from "@/services/contracts/tokensConfig";
+import { chains } from "@/lib/networks/config";
 
 interface FormInput {
   control: Control<z.infer<typeof CampaignFormSchema>>;
@@ -20,47 +21,28 @@ interface FormInput {
   watch: UseFormWatch<z.infer<typeof CampaignFormSchema>>;
 }
 
-const baseToks = [
-  { label: "FRENCHIE", value: "frenchie", image: "/tokens/frenchie.svg" },
-  { label: "ENB", value: "enb", image: "/tokens/enb.svg" },
-  { label: "Bhusky", value: "bhusky", image: "/tokens/bhusky.svg" },
-  { label: "Eth(base)", value: "eth(base)", image: "/tokens/eth.svg" },
-  { label: "USDC", value: "usdc", image: "/tokens/usdc.svg" },
-  { label: "CNGN", value: "cngn", image: "/tokens/cngn.svg" },
-];
-const solToks = [
-  { label: "UNICOIN", value: "unicoin", image: "/tokens/unicorn.svg" },
-  { label: "CNGN", value: "cngn", image: "/tokens/cngn.svg" },
-  { label: "USDC", value: "usdc", image: "/tokens/usdc.svg" },
-  { label: "USDT", value: "usdt", image: "/tokens/usdt.svg" },
-];
-const bnbToks = [
-  { label: "BNB", value: "bnb", image: "/tokens/binance.svg" },
-  { label: "ETH", value: "eth", image: "/tokens/eth.svg" },
-  { label: "USDT", value: "usdt", image: "/tokens/usdt.svg" },
-];
+// const baseToks = [
+//   { label: "FRENCHIE", value: "frenchie", image: "/tokens/frenchie.svg" },
+//   { label: "ENB", value: "enb", image: "/tokens/enb.svg" },
+//   { label: "Bhusky", value: "bhusky", image: "/tokens/bhusky.svg" },
+//   { label: "Eth(base)", value: "eth(base)", image: "/tokens/eth.svg" },
+//   { label: "USDC", value: "usdc", image: "/tokens/usdc.svg" },
+//   { label: "CNGN", value: "cngn", image: "/tokens/cngn.svg" },
+// ];
+
+// const bnbToks = [
+//   { label: "BNB", value: "bnb", image: "/tokens/binance.svg" },
+//   { label: "ETH", value: "eth", image: "/tokens/eth.svg" },
+//   { label: "USDT", value: "usdt", image: "/tokens/usdt.svg" },
+// ];
 export default function ChainSelect({
   control,
   getValues,
   setValue,
   watch,
 }: FormInput) {
-  const chain = chainConfig;
-
-  const network = watch("chain");
   const tokens = watch("tokens");
 
-  const chains = !network
-    ? []
-    : network === "base"
-    ? baseToks
-    : network === "solana"
-    ? solToks
-    : bnbToks;
-
-  const findToken = tokens?.map((token) =>
-    chains.find((x) => x.value === token)
-  );
   return (
     <div className="space-y-1">
       <p className="text-xs text-[var(--form-label)] font-normal">
@@ -74,10 +56,9 @@ export default function ChainSelect({
           placeholder="Select Chain"
           setValue={setValue}
           watch={watch}
-          array={chain}
+          array={chains}
         />
         <CampaignTokens
-          chains={chains}
           getValues={getValues}
           setValue={setValue}
           watch={watch}
@@ -85,18 +66,18 @@ export default function ChainSelect({
         />
       </div>
       <div className="flex flex-wrap items-center gap-2 mt-2">
-        {findToken?.map((token) => (
+        {tokens?.map((token) => (
           <div
             className="flex items-center gap-1 text-xs rounded-full bg-primary/10 border border-primary/50 font-medium px-2 py-1"
-            key={token?.label}
+            key={token?.name}
           >
             <Image
-              src={token?.image || ""}
-              alt={`${token?.label} icon`}
+              src={token?.src || ""}
+              alt={`${token?.name} icon`}
               width={20}
               height={20}
             />
-            {token?.label}
+            {token?.name}
           </div>
         ))}
       </div>

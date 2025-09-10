@@ -42,6 +42,7 @@ export default function CampaignInput({
           <div className="w-full flex justify-center items-center">
             <FormControl>
               {type === "input" ? (
+                // @ts-expect-error type
                 <Input
                   className="  w-[98%] md:w-[92%] lg:w-full   bg-primary/5 outline-primary/30 outline focus-visible:outline-primary rounded-[8px] p-3 text-xs text-sidebar-content"
                   placeholder={placeholder}

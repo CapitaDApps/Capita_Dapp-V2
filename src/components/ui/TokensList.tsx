@@ -2,36 +2,15 @@
 
 import React from "react";
 import Image from "next/image";
-
-type Props = {
-  tokens?: string[];
-  className?: string;
-  showIcons?: boolean;
-};
-
-const DEFAULT_TOKENS = ["BNB", "Eth(Base)", "USDC(Base)"];
-
-function getTokenIconPath(token: string) {
-  const s = token
-    .toLowerCase()
-    .replace(/\(.*\)/, "")
-    .replace(/[^a-z0-9]/g, "")
-    .trim();
-
-  const map: Record<string, string> = {
-    eth: "/tokens/eth.svg",
-    usdc: "/tokens/usdc.svg",
-    bnb: "/tokens/binance.svg",
-  };
-
-  return map[s] ?? `/tokens/${s}.svg`;
-}
+import { TokenObjectType } from "@/services/contracts/tokensConfig";
 
 export default function TokensList({
-  tokens = DEFAULT_TOKENS,
+  tokens,
   className = "",
-  showIcons = true,
-}: Props) {
+}: {
+  tokens: TokenObjectType[];
+  className?: string;
+}) {
   return (
     <div className="w-full pt-2">
       <div className="text-sm mb-2 text-sidebar-content">Accepted Tokens</div>
@@ -39,22 +18,21 @@ export default function TokensList({
         className={`flex flex-wrap gap-2 items-center justify-start ${className}`}
       >
         {tokens.map((t) => {
-          const icon = showIcons ? getTokenIconPath(t) : null;
           return (
             <div
-              key={t}
+              key={t.address}
               className="px-2 sm:px-3 py-1 rounded-full bg-secondary-text/50 font-medium text-sidebar-content text-xs sm:text-sm flex items-center gap-2 min-w-[56px] justify-center"
             >
-              {icon && (
+              {t.src && (
                 <Image
-                  src={icon}
+                  src={t.src}
                   alt={`${t} icon`}
                   width={18}
                   height={18}
                   className="object-contain"
                 />
               )}
-              <span>{t}</span>
+              <span>{t.name}</span>
             </div>
           );
         })}

@@ -1,19 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { getBalance, getChainId, readContract } from "@wagmi/core";
-
+import { getBalance, readContract } from "@wagmi/core";
 import TokenABI from "./abi/Token.json";
-
-import { networkContractAddresses } from "./constants";
-import { formatEther, zeroAddress } from "viem";
-import { tokenNames } from "./tokensConfig";
 import { config } from "@/lib/networks/config";
+import { formatEther } from "viem";
+import { getTokenAddress, tokenNames } from "./tokensConfig";
 
 async function getCoinBalance(
   coin: string,
   address: string | undefined
 ): Promise<string> {
-  if (coin == tokenNames.eth) {
+  if (
+    coin.toLowerCase() == tokenNames.eth.toLowerCase() ||
+    coin.toLowerCase() == tokenNames.bsc.toLowerCase()
+  ) {
     const data = await getBalance(config, {
       address: address as `0x${string}`,
     });
@@ -36,31 +34,4 @@ async function getCoinBalance(
   return "0";
 }
 
-function getTokenAddress(tokenName: string) {
-  const chainId = getChainId(config);
-  let tokenAddress: string = "";
-  switch (tokenName.toLowerCase()) {
-    case tokenNames.eth.toLowerCase():
-      tokenAddress = zeroAddress;
-      break;
-    case tokenNames.usdc.toLowerCase():
-      tokenAddress = networkContractAddresses[`${chainId}`].usdcAddress;
-      break;
-    case tokenNames.frenchie.toLowerCase():
-      tokenAddress = networkContractAddresses[`${chainId}`].frenchieAddress;
-      break;
-    case tokenNames.enb.toLowerCase():
-      tokenAddress = networkContractAddresses[`${chainId}`].enbAddress;
-      break;
-    case tokenNames.cngn.toLowerCase():
-      tokenAddress = networkContractAddresses[`${chainId}`].cngnAddress;
-      break;
-    case tokenNames.bhusky.toLowerCase():
-      tokenAddress = networkContractAddresses[`${chainId}`].bhuskyAddress;
-    default:
-      break;
-  }
-  return tokenAddress;
-}
-
-export { getCoinBalance, getTokenAddress };
+export { getCoinBalance };

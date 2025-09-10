@@ -137,8 +137,11 @@ export default function Page() {
             <div className="w-full bg-secondary-text rounded-full h-3 overflow-hidden">
               <div
                 className="h-3 bg-primary rounded-full transition-all duration-500 ease-in-out"
-                style={{ background:
-                  "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",width: `${progressPct}%` }}
+                style={{
+                  background:
+                    "linear-gradient(270.05deg, #003def 68.33%, #001f7a 114.25%)",
+                  width: `${progressPct}%`,
+                }}
               />
             </div>
             <div className="mt-2 text-sm text-sidebar-content">
@@ -146,9 +149,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div>
-            <TokensList />
-          </div>
+          <div>{/* <TokensList /> */}</div>
 
           <div className="mt-14 flex flex-col sm:flex-row items-center justify-center  gap-3">
             <button
@@ -174,7 +175,7 @@ export default function Page() {
             </button>
           </div>
 
-          <Comments initial={sampleComments} />
+          {/* <Comments initial={sampleComments} /> */}
         </div>
       </div>
     </div>

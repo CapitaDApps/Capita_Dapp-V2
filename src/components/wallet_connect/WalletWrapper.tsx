@@ -10,7 +10,7 @@
 //   WalletDropdown,
 // } from "@coinbase/onchainkit/wallet";
 import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
-
+import { base, baseSepolia } from "wagmi/chains";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -58,7 +58,7 @@ export default function WalletWrapper() {
 
   const { login, authenticated } = usePrivy();
   useEffect(() => {
-    if (chainId && chainId != connectingChain.id) {
+    if (chainId && !connectingChain.includes(chainId)) {
       setIsOpenModal(true);
     } else {
       setIsOpenModal(false);
@@ -174,7 +174,12 @@ function WrongNetworkModal({
                 "linear-gradient(270.05deg, #003DEF 68.33%, #001F7A 114.25%)",
             }}
             onClick={() => {
-              switchChain({ chainId: connectingChain.id });
+              switchChain({
+                chainId:
+                  process.env.NEXT_PUBLIC_PRODUCTION == "true"
+                    ? base.id
+                    : baseSepolia.id,
+              }); // switch by default to base / base Sepolia
               setIsOpenModal(false);
             }}
           >

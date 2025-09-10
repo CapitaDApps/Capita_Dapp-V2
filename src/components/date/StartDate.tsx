@@ -5,7 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { format, startOfDay, isBefore } from "date-fns";
+import { format, startOfDay, isBefore, isToday } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import {
@@ -70,7 +70,7 @@ export default function StartDate({ control }: Props) {
                         }
                         aria-hidden
                       >
-                     <CgCalendarDates className="text-sidebar-content/70 text-lg" />
+                        <CgCalendarDates className="text-sidebar-content/70 text-lg" />
                       </span>
                     </div>
                   </div>
@@ -86,7 +86,13 @@ export default function StartDate({ control }: Props) {
                 mode="single"
                 selected={field.value ? new Date(field.value) : undefined}
                 onSelect={(date) => {
-                  field.onChange(date ? date.toISOString() : "");
+                  field.onChange(
+                    date
+                      ? isToday(date.toISOString())
+                        ? new Date().toISOString()
+                        : date.toISOString()
+                      : ""
+                  );
                   // close the popover after selecting a date to ensure the click is handled
                   setIsOpen(false);
                 }}

@@ -33,23 +33,40 @@ import {
   UseFormWatch,
 } from "react-hook-form";
 import Image from "next/image";
+import {
+  getNetworkTokens,
+  TokenObjectType,
+} from "@/services/contracts/tokensConfig";
+import { useEffect, useState } from "react";
+import { getEnvChainId } from "@/lib/networks/config";
+import { NetworkMainnet } from "@/lib/networks/types";
 
 interface FormInput {
   control: Control<z.infer<typeof CampaignFormSchema>>;
   getValues: UseFormGetValues<z.infer<typeof CampaignFormSchema>>;
   setValue: UseFormSetValue<z.infer<typeof CampaignFormSchema>>;
   watch: UseFormWatch<z.infer<typeof CampaignFormSchema>>;
-  chains: { [keys: string]: string }[];
 }
 export function CampaignTokens({
   control,
   watch,
   getValues,
   setValue,
-  chains,
 }: FormInput) {
   const value = watch("tokens");
-  const dis = ["usdc", "usdt", "cngn", "eth(base)"];
+  const network = watch("chain");
+
+  const defaultTokens = (value || [])
+    .filter((token) => token.type == "default")
+    .map((token) => token.name);
+
+  const [tokens, setTokens] = useState<TokenObjectType[]>([]);
+
+  useEffect(() => {
+    console.log({ network });
+    setTokens(getNetworkTokens(getEnvChainId(network as NetworkMainnet)));
+  }, [network]);
+
   return (
     <FormField
       control={control}
@@ -80,34 +97,36 @@ export function CampaignTokens({
                   <CommandEmpty>No token found.</CommandEmpty>
 
                   <CommandGroup className="cursor-pointer max-h-[120px] overflow-y-auto no-scroll">
-                    {chains.map((chain) => (
+                    {tokens.map((chain) => (
                       <CommandItem
-                        disabled={dis.includes(chain.value)}
-                        value={chain.label}
-                        key={chain.value}
+                        disabled={defaultTokens.includes(chain.name)}
+                        value={chain.name}
+                        key={chain.name}
                         className="hover:bg-primary hover:text-white cursor-pointer text-xs"
                         onSelect={() => {
                           const current = getValues("tokens") || [];
-                          if (current.includes(chain.value)) {
+                          if (current.some((c) => c.name == chain.name)) {
                             setValue(
                               "tokens",
-                              current.filter((val) => val !== chain.value)
+                              current.filter((val) => val.name !== chain.name)
                             );
                           } else {
-                            setValue("tokens", [...current, chain.value]);
+                            setValue("tokens", [...current, chain]);
                           }
                         }}
                       >
                         <Image
-                          src={chain.image}
-                          alt={`${chain.label} icon`}
+                          src={chain.src}
+                          alt={`${chain.name} icon`}
                           width={20}
                           height={20}
                         />
-                        {chain.label}
+                        {chain.name}
                         <Check
                           className={
-                            watch("tokens")?.includes(chain.value)
+                            watch("tokens")?.some(
+                              (token) => token.name == chain.name
+                            )
                               ? "opacity-100"
                               : "opacity-0"
                           }

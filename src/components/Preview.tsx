@@ -29,21 +29,21 @@ import { useCache } from "@/services/api/hooks/useCache";
 
 export default function Preview() {
   const [errorCreating, setErrorCreating] = useState("");
-
+  const [isCreating, setIsCreating] = useState(false);
   const { address } = usePrivyAccount();
   const { createChainFundMe } = useWriteCampaign();
   const queryClient = useQueryClient();
   const router = useRouter();
 
-  // const { cachedData, gettingCache } = useCache();
+  const { cachedData, gettingCache } = useCache();
 
-  // useEffect(() => {
-  //   if (!gettingCache) {
-  //     if (!cachedData) {
-  //       router.push("/chainfundme/create");
-  //     }
-  //   }
-  // }, [gettingCache, cachedData]);
+  useEffect(() => {
+    if (!gettingCache) {
+      if (!cachedData) {
+        router.push("/create-campaign");
+      }
+    }
+  }, [gettingCache, cachedData]);
 
   // useWatchFactoryEvents({
   //   eventName: contractEvents.FundingFactory.ChainFundMeCreated,
@@ -52,40 +52,61 @@ export default function Preview() {
   //   },
   // });
 
-  // if (gettingCache) {
-  //   return (
-  //     <div className="flex items-center justify-center">
-  //       <MoonLoader color="#fff" size={30} />
-  //     </div>
-  //   );
-  // }
+  if (gettingCache) {
+    return (
+      <div className="flex items-center justify-center">
+        <MoonLoader color="#fff" size={30} />
+      </div>
+    );
+  }
 
   const campaignData = {
-    profileImage: "",
-    coverImage: "",
-    campaignName: "Random campaign",
-    bio: "Random",
-    tokens: [],
+    profileImage: cachedData?.image,
+    coverImage: cachedData?.coverImage,
+    campaignName: cachedData?.title,
+    bio: cachedData?.category,
+    tokens: cachedData?.tokens,
     supportingImages: [],
-    startDate: "",
-    endDate: "",
-    fundTarget: 10000,
-    userType: "",
-    category: "",
+    startDate: cachedData?.startDate,
+    endDate: cachedData?.endDate,
+    fundTarget: cachedData?.targetAmount,
+    userType: cachedData?.creator,
+    category: cachedData?.category,
     website: "",
   };
-
-  const img = campaignData.profileImage
-    ? { imgUrl: campaignData.profileImage }
-    : null;
-  const coverImg = campaignData.coverImage
-    ? { imgUrl: campaignData.coverImage }
-    : null;
 
   const formLink = "/create-campaign";
   // const previewLink = `/chainfundme/preview`;
 
   const connected = address ? true : false;
+  console.log({ cachedData });
+
+  const handleWriteCampaign = async () => {
+    const uri = localStorage.getItem("campaignId");
+    if (!cachedData) return;
+    if (uri) {
+      setIsCreating(true);
+      setErrorCreating("");
+      const startTime = Math.ceil(
+        new Date(cachedData.startDate).getTime() / 1000
+      );
+      const endTime = Math.ceil(new Date(cachedData.endDate).getTime() / 1000);
+      const otherTokens = cachedData.tokens
+        .map((token) => token.address)
+        .filter((token) => token !== zeroAddress);
+      console.log({ otherTokens });
+      createChainFundMe(
+        { uri: JSON.parse(uri), startTime, endTime, otherTokens },
+        (err) => {
+          if (err) {
+            setErrorCreating(err);
+          } else {
+            setIsCreating(false);
+          }
+        }
+      );
+    }
+  };
 
   return (
     <div className="space-y-5 w-full pb-24">
@@ -94,7 +115,7 @@ export default function Preview() {
           <p className="text-xs text-white font-normal">Preview Campaign</p>
           <div className="relative aspect-square w-full h-[150px] lg:h-[200px] cursor-pointer">
             <Image
-              src={"/campaign/banner.png"}
+              src={campaignData?.coverImage || "/campaign/banner.png"}
               fill
               className="rounded-[16px] object-center object-cover"
               alt="banner"
@@ -103,7 +124,7 @@ export default function Preview() {
             <div className="absolute bottom-[-18%] flex items-center justify-center w-full">
               <div className="relative aspect-square w-[80px] h-[80px]">
                 <Image
-                  src={"/campaign/c.png"}
+                  src={campaignData?.profileImage || "/campaign/c.png"}
                   fill
                   className="border-4 border-black w-[70px] lg:w-[80px] rounded-full"
                   alt="profile"
@@ -139,12 +160,16 @@ export default function Preview() {
         <p className="text-sidebar-content">
           Target: {campaignData.fundTarget}
         </p>
-        <p className="text-sidebar-content">Website: {campaignData.website}</p>
+        {campaignData.website && (
+          <p className="text-sidebar-content">
+            Website: {campaignData.website}
+          </p>
+        )}
         <p className="text-sidebar-content">
-          Start: {new Date(campaignData.startDate).toDateString()}
+          Start: {new Date(campaignData.startDate || "").toDateString()}
         </p>
         <p className="text-sidebar-content">
-          End: {new Date(campaignData.endDate).toDateString()}
+          End: {new Date(campaignData.endDate || "").toDateString()}
         </p>
         <p className="text-sidebar-content">
           Category: {campaignData.category}
@@ -153,10 +178,10 @@ export default function Preview() {
           User Type: {campaignData.userType}
         </p>
         <div className="text-sidebar-content flex items-center gap-x-5 gap-y-3 flex-wrap">
-          {campaignData.tokens.map((token: { name: string; src: string }) => (
+          {campaignData?.tokens?.map((token) => (
             <div key={token.name} className="flex gap-2 items-center">
               <Image
-                src={`${token.src}`}
+                src={`${token.imagePath}`}
                 width={20}
                 height={20}
                 alt={`${token.name}`}
@@ -187,14 +212,19 @@ export default function Preview() {
         )}
       </div>
       <div className="space-y-2 ">
-        <CreatedModal type="personal" errorCreating={errorCreating}>
+        <CreatedModal
+          type="personal"
+          errorCreating={errorCreating}
+          isCreating={isCreating}
+        >
           <Button
             style={{
               background:
                 "linear-gradient(270.05deg, #003DEF 68.33%, #001F7A 114.25%)",
             }}
-            className="hover:bg-transparent text-white w-full"
+            className="hover:bg-transparent text-white w-full cursor-pointer"
             disabled={!connected}
+            onClick={handleWriteCampaign}
           >
             {connected
               ? "Create Campaign"
