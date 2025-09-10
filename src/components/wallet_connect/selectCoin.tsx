@@ -5,8 +5,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { tokens } from "@/services/contracts/tokensConfig";
+import { getNetworkTokens } from "@/services/contracts/tokensConfig";
 import { Dispatch, SetStateAction } from "react";
+import { useAccount } from "wagmi";
 
 function SelectCoin({
   selectedToken,
@@ -15,6 +16,10 @@ function SelectCoin({
   selectedToken: string;
   setSelectedToken: Dispatch<SetStateAction<string>>;
 }) {
+  const { chainId } = useAccount();
+  if (!chainId) throw new Error("Please connect your wallet");
+  const tokens = getNetworkTokens(chainId);
+
   return (
     <Select onValueChange={setSelectedToken} value={selectedToken}>
       <SelectTrigger className="text-xs w-fit px-2 rounded-xl border-[1px] border-gray-300 focus:ring-0 focus:border-gray-400  text-sidebar-content">

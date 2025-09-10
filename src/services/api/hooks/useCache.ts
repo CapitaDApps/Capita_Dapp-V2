@@ -5,16 +5,21 @@ import { useEffect, useState } from "react";
 import { getCampaign } from "../campaign";
 
 export function useCache() {
-  const [campaignId] = useState(() => localStorage.getItem("campaignId"));
-  const [gettingCache, setGettingCache] = useState(false);
+  const [campaignId, setCampaignId] = useState<string | null>(null);
+  const [gettingCache, setGettingCache] = useState(true);
   const [cachedData, setCachedData] = useState<ReturnCampaignDocument>();
+
+  useEffect(() => {
+    setCampaignId(localStorage.getItem("campaignId"));
+  }, []);
 
   useEffect(() => {
     (async () => {
       if (campaignId) {
-        setGettingCache(true);
-        const data = await getCampaign(campaignId);
+        const data = await getCampaign(JSON.parse(campaignId));
         setCachedData(data);
+        setGettingCache(false);
+      } else {
         setGettingCache(false);
       }
     })();

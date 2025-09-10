@@ -40,20 +40,20 @@ export default function RootLayout({
               <Footer />
             </div>
           </ClientShell>
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar
+            stacked={true}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            pauseOnHover
+            limit={1}
+            theme="light"
+            transition={Bounce}
+          />
         </Web3Provider>
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar
-          stacked={true}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          pauseOnHover
-          limit={1}
-          theme="light"
-          transition={Bounce}
-        />
       </body>
     </html>
   );

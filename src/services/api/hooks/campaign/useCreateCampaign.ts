@@ -1,15 +1,18 @@
 import { CampaignFormSchema } from "@/lib/constants";
+import { config } from "@/lib/networks/config";
 import { useMutation } from "@tanstack/react-query";
+import { getChainId } from "wagmi/actions";
 import z from "zod";
 import { createCampaignDraft } from "../../campaign";
-import { chainConfig } from "@/lib/networks/chains";
 
 export function useCreateCampaign() {
   const { mutate, isPending: isSaving } = useMutation({
     mutationFn: async (data: z.infer<typeof CampaignFormSchema>) => {
-      const chain =
-        chainConfig.find((chainC) => data.chain == chainC.value)?.id || "";
-      console.log({ chain });
+      const tokenAddresses = data.tokens.map((token) => token.address);
+      const chainId = getChainId(config);
+      console.log({ sd: data.startDate });
+      const startDateTime = new Date(data.startDate).getTime() + 10 * 60 * 1000;
+      console.log({ sdt: new Date(startDateTime).toISOString });
       return await createCampaignDraft({
         title: data.campaignName,
         description: data.bio,
@@ -17,11 +20,12 @@ export function useCreateCampaign() {
         coverImage: data.cover,
         category: data.category,
         targetAmount: +data.fundingTarget,
-        startDate: data.startDate,
+        startDate: new Date(startDateTime).toISOString(),
         endDate: data.endDate,
-        chain,
+        chain: chainId.toString(),
         otherImages: [],
-        userCategory: data.creator,
+        creator: data.creator,
+        tokenAddresses,
       });
     },
   });

@@ -1,13 +1,18 @@
 "use client";
-import React from "react";
-import { FormControl, FormField, FormItem, FormMessage } from "../ui/form";
+import { CampaignFormSchema } from "@/lib/constants";
+import { config, getEnvChainId } from "@/lib/networks/config";
+import { ChainType, NetworkMainnet } from "@/lib/networks/types";
+import { getNetworkTokens } from "@/services/contracts/tokensConfig";
+import Image from "next/image";
 import {
   Control,
   FieldPath,
   UseFormSetValue,
   UseFormWatch,
 } from "react-hook-form";
-import { CampaignFormSchema } from "@/lib/constants";
+import { useSwitchChain } from "wagmi";
+import { z } from "zod";
+import { FormControl, FormField, FormItem, FormMessage } from "../ui/form";
 import {
   Select,
   SelectContent,
@@ -15,15 +20,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { z } from "zod";
-import Image from "next/image";
-
-interface NetworkOption {
-  name: string;
-  value: string;
-  image: string;
-  id: string;
-}
 
 interface FormInput {
   control: Control<z.infer<typeof CampaignFormSchema>>;
@@ -32,7 +28,7 @@ interface FormInput {
   watch: UseFormWatch<z.infer<typeof CampaignFormSchema>>;
   label: string;
   placeholder: string;
-  array: NetworkOption[];
+  array: ChainType[];
 }
 
 export default function SelectNetwork({
@@ -42,16 +38,7 @@ export default function SelectNetwork({
   setValue,
   array,
 }: FormInput) {
-  const solanaTokens: z.infer<typeof CampaignFormSchema>["tokens"] = [
-    "usdc",
-    "usdt",
-  ];
-  const baseTokens: z.infer<typeof CampaignFormSchema>["tokens"] = [
-    "usdc",
-    "cngn",
-    "eth(base)",
-  ];
-  const bnbTokens: z.infer<typeof CampaignFormSchema>["tokens"] = ["usdt"];
+  const { switchChain } = useSwitchChain({ config: config });
 
   return (
     <FormField
@@ -62,15 +49,11 @@ export default function SelectNetwork({
           <div className="w-full flex-1 flex justify-center items-center">
             <Select
               onValueChange={(val) => {
-                if (val === "solana") {
-                  setValue("tokens", solanaTokens);
-                }
-                if (val === "base") {
-                  setValue("tokens", baseTokens);
-                }
-                if (val === "bnb") {
-                  setValue("tokens", bnbTokens);
-                }
+                setValue(
+                  "tokens",
+                  getNetworkTokens(getEnvChainId(val as NetworkMainnet))
+                );
+                switchChain({ chainId: getEnvChainId(val as NetworkMainnet) });
                 return field.onChange(val);
               }}
             >
@@ -88,12 +71,12 @@ export default function SelectNetwork({
                   >
                     <Image
                       src={select.image}
-                      alt={`${select.name} icon`}
+                      alt={`${select.symbol} icon`}
                       width={20}
                       height={20}
                       className="inline-block mr-2"
                     />
-                    {select.name}
+                    {select.symbol}
                   </SelectItem>
                 ))}
               </SelectContent>

@@ -39,7 +39,7 @@ function WalletSheet({ children }: { children: ReactNode }) {
     <Sheet>
       <SheetTrigger>{children}</SheetTrigger>
 
-      <SheetContent className="h-[95%] top-[3%] right-3 bg-sidebar border-[1px] border-white/20 rounded-2xl">
+      <SheetContent className="hidden sm:block h-[95%] top-[3%] right-3 bg-sidebar border-[1px] border-white/20 rounded-2xl">
         <WalletSheetContent
           address={address}
           connectorType={connectorType}
@@ -72,7 +72,7 @@ export function UserMobileSheet({ children }: { children: ReactNode }) {
 
       <SheetContent
         side="bottom"
-        className=" bg-primary-bg border-t-[1px] border-white/20 rounded-3xl block sm:hidden"
+        className="bg-sidebar border-t-[1px] border-white/20 rounded-3xl block sm:hidden"
       >
         <WalletSheetContent
           address={address}

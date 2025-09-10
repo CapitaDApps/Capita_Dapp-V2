@@ -1,7 +1,6 @@
 "use client";
 
-import { tokenNames } from "@/services/contracts/tokensConfig";
-import { getTokenAddress } from "@/services/contracts/utils";
+import { getTokenAddress, tokenNames } from "@/services/contracts/tokensConfig";
 import { useSendTransaction } from "@privy-io/react-auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { encodeFunctionData, parseEther, parseUnits } from "viem";

@@ -17,14 +17,15 @@ export default function CreatedModal({
   children,
   type,
   errorCreating,
+  isCreating,
 }: {
   children: React.ReactNode;
   type: string;
   errorCreating: string;
+  isCreating: boolean;
 }) {
   console.log(type);
 
-  const isCreating = false;
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>

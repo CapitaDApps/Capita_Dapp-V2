@@ -14,6 +14,66 @@ import ChainSelect from "./ChainSelect";
 import CampaignPhotos from "./CampaignPhotos";
 import { useRouter } from "next/navigation";
 import { useCreateCampaign } from "@/services/api/hooks/campaign/useCreateCampaign";
+import { MoonLoader } from "react-spinners";
+import { useCache } from "@/services/api/hooks/useCache";
+import { useEffect } from "react";
+import { urlToFile } from "@/lib/utils";
+const creator = [
+  {
+    value: "individual",
+    name: "Individual",
+  },
+  {
+    value: "organization",
+    name: "Organization",
+  },
+  {
+    value: "start-up",
+    name: "Start up",
+  },
+  {
+    value: "dao",
+    name: "DAO",
+  },
+];
+const category = [
+  {
+    value: "travel",
+    name: "Travel",
+  },
+  {
+    value: "health",
+    name: "Health",
+  },
+  {
+    value: "academics",
+    name: "Academics",
+  },
+  {
+    value: "crises-relif",
+    name: "Crises Relif",
+  },
+  {
+    value: "community-rescue",
+    name: "Comunity Rescue",
+  },
+  {
+    value: "creativies/community",
+    name: "Creativies/Community",
+  },
+  {
+    value: "organizations",
+    name: "Organizations",
+  },
+  {
+    value: "Personal",
+    name: "personal",
+  },
+  {
+    value: "phoenix baker",
+    name: "Phoenix Baker",
+  },
+];
 
 export function CampaignForm() {
   const router = useRouter();
@@ -21,64 +81,27 @@ export function CampaignForm() {
   const form = useForm<z.infer<typeof CampaignFormSchema>>({
     resolver: zodResolver(CampaignFormSchema),
   });
+  const { createCampaignFunc, isSaving } = useCreateCampaign();
+  const { cachedData } = useCache();
 
-  const creator = [
-    {
-      value: "individual",
-      name: "Individual",
-    },
-    {
-      value: "organization",
-      name: "Organization",
-    },
-    {
-      value: "start-up",
-      name: "Start up",
-    },
-    {
-      value: "dao",
-      name: "DAO",
-    },
-  ];
-  const category = [
-    {
-      value: "travel",
-      name: "Travel",
-    },
-    {
-      value: "health",
-      name: "Health",
-    },
-    {
-      value: "academics",
-      name: "Academics",
-    },
-    {
-      value: "crises-relif",
-      name: "Crises Relif",
-    },
-    {
-      value: "community-rescue",
-      name: "Comunity Rescue",
-    },
-    {
-      value: "creativies/community",
-      name: "Creativies/Community",
-    },
-    {
-      value: "organizations",
-      name: "Organizations",
-    },
-    {
-      value: "Personal",
-      name: "personal",
-    },
-    {
-      value: "phoenix baker",
-      name: "Phoenix Baker",
-    },
-  ];
-  const { createCampaignFunc } = useCreateCampaign();
+  useEffect(() => {
+    if (!cachedData) return;
+    form.reset({
+      campaignName: cachedData.title,
+      bio: cachedData.description,
+      startDate: cachedData.startDate,
+      endDate: cachedData.endDate,
+      tokens: cachedData.tokens.map((token) => ({
+        src: token.imagePath,
+        name: token.name,
+        decimals: token.decimals,
+        address: token.address,
+      })),
+      creator: cachedData.creator,
+      category: cachedData.category,
+    });
+  }, [cachedData]);
+
   function onSubmit(values: z.infer<typeof CampaignFormSchema>) {
     console.log(values);
     console.log({ values });
@@ -154,8 +177,9 @@ export function CampaignForm() {
             }}
             type="submit"
             className="text-white lg:w-fit w-full text-sm"
+            disabled={isSaving}
           >
-            {"Save"}
+            {isSaving ? <MoonLoader color="#fff" size={20} /> : "Save"}
           </Button>
         </div>
       </form>

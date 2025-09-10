@@ -2,5 +2,7 @@ export type TokenDocument = {
   name: string;
   symbol: string;
   address: string;
-  chain: string;
+  chainId: number;
+  decimals: number;
+  imagePath: string;
 };

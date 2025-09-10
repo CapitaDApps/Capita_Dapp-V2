@@ -3,11 +3,18 @@
 import { usePrivy } from "@privy-io/react-auth";
 import { IToken, TokenType } from "@/types/token.types";
 import { getCoinBalance } from "@/services/contracts/utils";
-import { tokens } from "@/services/contracts/tokensConfig";
 import { useQuery } from "@tanstack/react-query";
+import { useAccount } from "wagmi";
+import { getNetworkTokens } from "@/services/contracts/tokensConfig";
+
 export function useWalletBalance() {
   const { user } = usePrivy();
   const address = user?.wallet?.address;
+  const { chainId } = useAccount();
+
+  const tokens = getNetworkTokens();
+
+  console.log({ chainId, tokens });
 
   const { data, isFetching } = useQuery({
     queryKey: ["walletBalances", address],
