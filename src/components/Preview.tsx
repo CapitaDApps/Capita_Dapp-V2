@@ -64,7 +64,7 @@ export default function Preview() {
     profileImage: cachedData?.image,
     coverImage: cachedData?.coverImage,
     campaignName: cachedData?.title,
-    bio: cachedData?.category,
+    bio: cachedData?.description,
     tokens: cachedData?.tokens,
     supportingImages: [],
     startDate: cachedData?.startDate,
