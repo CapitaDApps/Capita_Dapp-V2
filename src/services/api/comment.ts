@@ -2,7 +2,11 @@ import { getAuthToken } from "./config";
 import axios from "axios";
 
 const url = process.env.NEXT_PUBLIC_BASE_API_URL || "http://localhost:3000";
-const baseUrl = `${url}/api/v1/campaign/comments`;
+const prodUrl = `${url}/api/v1/campaign/comments`;
+const baseUrl =
+  process.env.NEXT_PUBLIC_PRODUCTION == "true"
+    ? prodUrl
+    : "/api/campaign/comments";
 
 // comments/create
 const addComment = async (campaignId: string, comment: string) => {

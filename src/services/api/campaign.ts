@@ -7,7 +7,10 @@ import axios from "axios";
 
 const url = process.env.NEXT_PUBLIC_BASE_API_URL || "http://localhost:3000";
 
-const baseUrl = `${url}/api/v1/campaign`;
+const prodUrl = `${url}/api/v1/campaign`;
+
+const baseUrl =
+  process.env.NEXT_PUBLIC_PRODUCTION == "true" ? prodUrl : "/api/campaign";
 
 const getCampaigns = async (): Promise<ReturnCampaignDocument[]> => {
   // /
